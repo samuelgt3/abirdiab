@@ -5,21 +5,22 @@ from datetime import datetime
 import requests
 import mux_python
 import os
+import json
+import asyncio
 
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def createAppointment(request, user_id):
 
-    user=get_object_or_404(User, email=user_id)
 
-    if user.is_authenticated:
-
+    if user_id:
+        user=get_object_or_404(User, email=user_id)
         name=user.first_name
         email = user.email
         body = request.POST
-        time = body["datetime"] #format yyyy-MM-ddTHH:mm:ss
-        duration = body["duration"]
+        time = body.get("datetime") #format yyyy-MM-ddTHH:mm:ss
+        duration = int(body.get("duration"))
 
         zoom = requests.post(
             "https://api.zoom.us/v2/users/30R7kT7bTIKSNUFEuH_Qlg/meetings", #replace with userid
@@ -30,7 +31,7 @@ def createAppointment(request, user_id):
         },
 
         json={
-            "agenda": "{name}'s Consultation",
+            "agenda": f"{name}'s Consultation",
             "duration": duration,
             "pre_schedule": True,
             "schedule_for": email,
@@ -39,18 +40,36 @@ def createAppointment(request, user_id):
             "type": 2
         }
             )
+        data=zoom.json()
+        try:
+            time = datetime.strptime(time,'%Y%m%d%H%M%S')
+        except (KeyError, ValueError):
+            return HttpResponse()
+
+        if not time or time<datetime.now():
+            return HttpResponse()
+        if 0>duration or duration>180:
+            return HttpResponse()
+        appts = Appointment.objects.filter(aptTime=time)
+        if len(appts):
+            return HttpResponse()
         
-        zoomLink = zoom["registration_url"]
-        time = datetime.strptime(time)
+        if zoom.status_code==201:
 
-        apt = Appointment(
-            aptTime = time,
-            user = user_id,
-            length = duration,
-            zoomLink = zoomLink,
+            zoomLink = data["registration_url"]
+            
+            apt = Appointment(
+                aptTime = time,
+                user = user,
+                length = duration,
+                zoomLink = zoomLink,
 
-        )
+            )
+            apt.save()
+        else:
+            return HttpResponse()
         return HttpResponse()
+
     
     else:
         return redirect("frontend/login") #replace when created
