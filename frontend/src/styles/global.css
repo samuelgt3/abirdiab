@@ -1,0 +1,126 @@
+/* Design tokens carried over 1:1 from the original design (colors are used
+   as literals throughout components to match the source exactly). */
+
+/* overflow-x:hidden is set on html only (not body) — putting it on both
+   turns body into its own nested scroll container in most browsers, which
+   silently breaks position:sticky for anything inside it (like the header). */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+body {
+  margin: 0;
+  max-width: 100%;
+  background: #FDFBF6;
+}
+input, textarea, select {
+  font-size: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+
+@keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ring-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes ring-ccw { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(1.4); } }
+@keyframes eq-bar { 0%, 100% { transform: scaleY(.3); } 50% { transform: scaleY(1); } }
+@keyframes faq-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .ring-cw, .ring-ccw, .pulse-dot, .eq-bar { animation: none !important; }
+  .lib-card, .lib-card img, .lib-card:hover, .lib-card:hover img { transform: none !important; transition: none !important; }
+}
+
+.courses-nav-item:hover .courses-dropdown { display: block !important; }
+
+@media (max-width: 860px) {
+  .nav-links { display: none !important; }
+  .mobile-toggle { display: flex !important; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; }
+  .header-book, .header-auth-label { display: none !important; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr) !important; }
+  .about-grid { grid-template-columns: 1fr !important; }
+  .sess-grid { grid-template-columns: 1fr !important; }
+  .timeline-row { flex-direction: column !important; gap: 28px !important; }
+  .timeline-line { display: none !important; }
+  .testi-grid { grid-template-columns: 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+  .services-row { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; }
+  #workshop { grid-template-columns: 1fr !important; padding: 22px !important; text-align: center; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .courses-row { gap: 8px !important; }
+  .lib-card .card-img { height: 70px !important; }
+  .lib-card { font-size: 11px; }
+  .lib-card > div:last-child { padding: 6px 2px 8px !important; }
+  .lib-card > div:last-child > div:nth-child(2) { font-size: 12.5px !important; min-height: auto !important; margin-bottom: 4px !important; }
+  .lib-card > div:last-child > div:nth-child(3) { display: none !important; }
+  .lib-card > div:last-child > div:last-child { margin-bottom: 6px !important; }
+  .lib-card > div:last-child span { font-size: 11px !important; }
+  .lib-card > div:last-child button { padding: 6px !important; font-size: 11px !important; }
+  .watch-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .watch-grid > div:last-child { min-height: 320px; }
+  .med-grid { grid-template-columns: 1fr !important; }
+  .journal-reader { grid-template-columns: 1fr !important; }
+  .group-photo-row { flex-direction: column !important; align-items: flex-start !important; }
+  .modal-box { padding: 24px !important; max-width: 94vw !important; }
+  h1 { font-size: 2.5rem !important; }
+  .section-pad { padding-inline: 20px !important; }
+  header .section-pad { padding: 12px 16px !important; }
+  header button, header a { min-height: 40px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .hero-grid h1 { font-size: 2.1rem !important; }
+  .stats-bar { grid-template-columns: 1fr 1fr !important; }
+  .booking-dates { grid-template-columns: repeat(3, 1fr) !important; }
+  .booking-times { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+a { color: #123F35; text-decoration: none; }
+a:hover { color: #DD8452; }
+a.btn-solid:hover { color: #FDFBF6; opacity: .9; }
+a.btn-accent:hover { color: #16211D; opacity: .88; }
+a, button { transition: background-color .18s ease, color .18s ease, border-color .18s ease, opacity .18s ease; }
+button:hover { opacity: .86; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #C1922F;
+  outline-offset: 3px;
+}
+[lang="ar"] h1 { font-size: 3.5rem; line-height: 1.32; letter-spacing: 0; }
+[lang="ar"] h2 { font-size: 2.5rem; line-height: 1.4; letter-spacing: 0; }
+[lang="ar"] h3 { font-size: 1.95rem; line-height: 1.45; }
+[lang="ar"] p, [lang="ar"] li { line-height: 1.95; }
+
+.lib-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(18, 63, 53, .1);
+  box-shadow: 0 2px 8px rgba(18, 63, 53, .06);
+}
+.lib-card:hover { transform: translateY(-4px); box-shadow: 0 18px 34px rgba(18, 63, 53, .18); border-color: rgba(18, 63, 53, .22); }
+.lib-card > div:last-child { margin-top: auto; }
+.lib-card img { transition: transform .5s ease; }
+.lib-card:hover img { transform: scale(1.06); }
+.lib-card .card-img { border-radius: 0; }
+
+.jr-row:hover { background: rgba(18, 63, 53, .05); }
+.jr-row:hover .jr-arrow { transform: translateX(4px); }
+.jr-arrow { display: inline-block; transition: transform .2s ease; }
+
+.faq-answer { animation: faq-in .22s ease; }
+
+/* Hover treatments that the design tool expressed as a per-element
+   `style-hover` attribute; translated to real CSS classes here since inline
+   React styles can't express :hover. */
+.nav-dropdown-link:hover { background: #F5EDE0; }
+.header-book:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(18, 63, 53, .28); }
+.cart-btn:hover { transform: translateY(-1px); background: #0D2E27 !important; color: #FDFBF6 !important; }
+.admin-lock-btn:hover { background: rgba(18, 63, 53, .08); }
+.admin-remove-btn:hover { background: #C06B3C; color: #FDFBF6; }
+.view-all-btn:hover { background: #123F35; color: #FDFBF6; }
+.filter-chip:hover { transform: translateY(-1px); }
