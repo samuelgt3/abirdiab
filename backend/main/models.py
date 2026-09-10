@@ -28,7 +28,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS = [first_name, last_name]
     objects = UserManager()
 
-
+class Series(models.Models):
+    class Language(models.TextChoices):
+        ENG="English"
+        AR="Arabic"
+    language=models.CharField(max_length=20, default="English", choices=Language)
 
 class Appointment(models.Model):
 
@@ -50,11 +54,12 @@ class Appointment(models.Model):
     updatedTime = models.DateTimeField(auto_now=True)
     zoomLink=models.TextField()
 
-class Course(models.Model):
+class VideoCourse(models.Model):
     class Language(models.TextChoices):
         ENG="English"
         AR="Arabic"
     name=models.CharField(max_length=100)
+    course = models.ForeignKey(Series, on_delete=models.CASCADE)
     description=models.TextField()
     price=models.PositiveIntegerField()
     downloadable=models.BooleanField()
@@ -62,6 +67,8 @@ class Course(models.Model):
     playback_id=models.TextField()
     manage_id=models.TextField()
     language=models.CharField(max_length=20, default="English", choices=Language)
+
+
 
 class BlogPost(models.Model):
     title=models.TextField()
