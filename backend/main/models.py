@@ -28,7 +28,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = [first_name, last_name]
     objects = UserManager()
 
-class Series(models.Models):
+class Series(models.Model):
     class Language(models.TextChoices):
         ENG="English"
         AR="Arabic"
@@ -58,6 +58,12 @@ class VideoCourse(models.Model):
     class Language(models.TextChoices):
         ENG="English"
         AR="Arabic"
+
+    class Status(models.TextChoices):
+        PROCESSING="Processing"
+        READY="Ready"
+        FAILED="Failed"
+
     name=models.CharField(max_length=100)
     course = models.ForeignKey(Series, on_delete=models.CASCADE)
     description=models.TextField()
@@ -67,8 +73,8 @@ class VideoCourse(models.Model):
     playback_id=models.TextField()
     manage_id=models.TextField()
     language=models.CharField(max_length=20, default="English", choices=Language)
-
-
+    status=models.CharField(max_length=20, default = "Processing", choices=Status)
+    upload_id=models.TextField(default="")
 
 class BlogPost(models.Model):
     title=models.TextField()

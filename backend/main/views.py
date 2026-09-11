@@ -1,18 +1,14 @@
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect
-from .models import Appointment, User, VideoCourse
+from django.http import JsonResponse
+from django.shortcuts import redirect
+from .models import Appointment
 from datetime import datetime
 import requests
-import mux_python
 import os
 from dotenv import load_dotenv
-import asyncio
 from django.contrib.auth import authenticate, login, logout
-
+from .courses import createUploadUrl, mux_webhook
 load_dotenv()
-zoom_key=os.getenv("ZOOM_KEY")
-mux_user=os.getenv['MUX_TOKEN_ID']
-mux_pass=os.getenv['MUX_TOKEN_SECRET']
+zoom_key=os.getenv('ZOOM_KEY')
 
 def login_view(request):
 
@@ -24,22 +20,21 @@ def login_view(request):
     if user is not None:
 
         login(request, user)  
-        return HttpResponse({"status": "ok"})
+        return JsonResponse({"status": "ok"})
     
-    return HttpResponse({"error": "Invalid credentials"}, status=401)
+    return JsonResponse({"error": "Invalid credentials"}, status=401)
 
 def logout_view(request):
 
     logout(request) 
 
-    return HttpResponse({"status": "ok"})
+    return JsonResponse({"status": "ok"})
 
 
-def createAppointment(request, user_id):
+def createAppointment(request):
+    user=request.user
+    if user:
 
-    if user_id:
-
-        user=get_object_or_404(User, email=user_id)
         name=user.first_name
         email = user.email
         body = request.POST
@@ -69,18 +64,18 @@ def createAppointment(request, user_id):
             time = datetime.strptime(time,'%Y%m%d%H%M%S')
 
         except (KeyError, ValueError):
-            return HttpResponse()
+            return JsonResponse()
 
         if not time or time<datetime.now():
-            return HttpResponse()
+            return JsonResponse()
         
         if 0>duration or duration>180:
-            return HttpResponse()
+            return JsonResponse()
         
         appts = Appointment.objects.filter(aptTime=time)
 
         if len(appts):
-            return HttpResponse()
+            return JsonResponse()
         
         if zoom.status_code==201:
 
@@ -97,43 +92,12 @@ def createAppointment(request, user_id):
 
         else:
 
-            return HttpResponse()
+            return JsonResponse()
         
-        return HttpResponse()
+        return JsonResponse()
 
     
     else:
         return redirect("frontend/login") #replace when created
     
-def uploadCourse(request, user_id):
-
-    if not user_id:
-        return HttpResponse()
-    
-    else:
-        if not user_id.is_super_user():
-            return HttpResponse()
-    video=request.POST["video"]
-
-    configuration = mux_python.Configuration()
-    configuration.username = mux_user
-    configuration.password = mux_pass
-    assets_api = mux_python.AssetsApi(mux_python.ApiClient(configuration))
-    input_settings = [mux_python.InputSettings(video)]
-    create_asset_request = mux_python.CreateAssetRequest(inputs=input_settings, playback_policies=[mux_python.PlaybackPolicy.PUBLIC], video_quality="basic")
-    create_asset_response = assets_api.create_asset(create_asset_request)
-
-    playback=create_asset_response["data"]["playback_ids"][0]["id"]
-    manage=create_asset_response["data"]["id"]
-
-    course = VideoCourse(
-        name=request.POST["name"],
-        description=request.POST["description"],
-        playback_id=playback,
-        manage_id=manage,
-        downloadable=request.POST["downloadable"],
-        language=request.POST.get("language"),
-        price=request.POST["price"]
-    )
-
 
