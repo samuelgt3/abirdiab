@@ -12,7 +12,7 @@ mux_pass=os.getenv('MUX_TOKEN_SECRET')
 
 
 def createUploadUrl(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
+    if not request.user.is_staff:
         return JsonResponse({"error": "Forbidden"}, status=403)
 
     name = request.POST.get("name")

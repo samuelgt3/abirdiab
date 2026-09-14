@@ -89,3 +89,5 @@ class GroupSession(models.Model):
     seats_left=models.IntegerField()
     time=models.DateTimeField()
     name=models.TextField()
+    zoom_link=models.TextField(default=None)
+    duration=models.IntegerField(default=0)
