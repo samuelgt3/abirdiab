@@ -91,3 +91,12 @@ class GroupSession(models.Model):
     name=models.TextField()
     zoom_link=models.TextField(default=None)
     duration=models.IntegerField(default=0)
+
+class CourseAccess(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    course=models.ForeignKey(Series, on_delete=models.CASCADE)
+    unique_together = ('user', 'course')
+
+class GroupBooking(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    session=models.ForeignKey(GroupSession, on_delete=models.CASCADE)

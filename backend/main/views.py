@@ -1,6 +1,6 @@
 from django.http import JsonResponse
-from django.shortcuts import redirect
-from .models import Appointment, GroupSession
+from django.shortcuts import redirect, get_object_or_404
+from .models import Appointment, GroupSession, GroupBooking
 from datetime import datetime, timezone
 import requests
 import os
@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from django.db import transaction
 from django.contrib.auth import authenticate, login, logout
 from .courses import createUploadUrl, mux_webhook
+
 load_dotenv()
 
 zoom_key=os.getenv('ZOOM_KEY')
@@ -56,8 +57,9 @@ def _parse_and_validate(time_str, duration):
 
 
 def createAppointment(request):
+
     if not request.user.is_authenticated:
-        return redirect("frontend/login")
+        return redirect("frontend/login") #replace later
 
     user = request.user
     body = request.POST
@@ -164,3 +166,32 @@ def createGroupSession(request):
     )
 
     return JsonResponse({"zoom link": zoom_link}, status=201)
+
+def joinGroup(request, id):
+
+    user=request.user
+
+    if not user.is_authenticated:
+        return redirect("")
+    
+    with transaction.atomic():
+
+        group = get_object_or_404(GroupSession.objects.select_for_update(), id=id)
+
+        if group.seats_left==0:
+            return JsonResponse({"error": "session full"}, status= 400)
+        
+        if GroupBooking.objects.filter(user=user, session=group).exists():
+            return JsonResponse({"error": "booking already exists"}, status=400)
+        
+        group.seats_left=group.seats_left-1
+        group.save()
+
+        booking = GroupBooking.objects.create(
+            user=user,
+            session=group
+        )
+
+        link = group.zoom_link
+        return JsonResponse({"link": link}, status=200)    
+
