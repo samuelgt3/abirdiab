@@ -77,8 +77,11 @@ class VideoCourse(models.Model):
     upload_id=models.TextField(default="")
 
 class BlogPost(models.Model):
-    title=models.TextField()
+    titleEng=models.TextField()
+    titleArb=models.TextField()
     contentEng=models.TextField()
+    contentArb=models.TextField()
+    required=[]
 
 class Testimonial(models.Model):
     name=models.TextField()
@@ -100,3 +103,4 @@ class CourseAccess(models.Model):
 class GroupBooking(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     session=models.ForeignKey(GroupSession, on_delete=models.CASCADE)
+    unique_together = ('user', 'session')

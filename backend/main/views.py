@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, get_object_or_404
-from .models import Appointment, GroupSession, GroupBooking
+from .models import Appointment, GroupSession, GroupBooking, BlogPost, Testimonial
 from datetime import datetime, timezone
 import requests
 import os
@@ -193,5 +193,40 @@ def joinGroup(request, id):
         )
 
         link = group.zoom_link
-        return JsonResponse({"link": link}, status=200)    
+        return JsonResponse({"link": link}, status=200)  
+
+def createBlogPost(request):
+
+    user = request.user
+    if not user.is_authenticated or not user.is_super_user:
+        return JsonResponse({"Access denied"}, status=400)
+    
+    body=request.POST
+    contentA=body.get("contentArabic")
+    titleA=body.get("titleArabic")
+    contentE=body.get("contentEnglish")
+    titleE=body.get("titleEnglish")
+
+    blog = BlogPost.objects.create(
+        titleEng=titleE,
+        titleArb=titleA,
+        contentEng=contentE,
+        contentArb=contentA
+    )
+
+    return JsonResponse({"Success"}, status=200)
+
+def getBlogPosts():
+    blogs = list(BlogPost.objects.all().values)
+    return JsonResponse(blogs, safe=False)
+
+'''
+
+
+def getCourses():
+
+def getTestimonials():
+
+def processPayment(request):
+'''  
 
