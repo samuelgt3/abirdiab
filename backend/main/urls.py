@@ -1,12 +1,24 @@
 from django.urls import path
 
-from . import authviews
+from . import authviews, functions, rpc, storage, tableapi
 
 urlpatterns = [
+    # accounts
     path("auth/signup", authviews.signup),
     path("auth/token", authviews.token),
     path("auth/logout", authviews.logout),
     path("auth/recover", authviews.recover),
     path("auth/verify", authviews.verify),
     path("auth/user", authviews.me),
+    # tables, named functions, "functions"
+    path("db/<str:table>", tableapi.db),
+    path("rpc/<str:name>", rpc.call),
+    path("fn/geo", functions.geo),
+    path("fn/setup-status", functions.setup_status),
+    # files (public path keeps the same shape the admin screen already recognises)
+    path("storage/<str:bucket>/upload", storage.upload),
+    path("storage/<str:bucket>/remove", storage.remove),
+    path("storage/v1/object/public/media/<path:path>", storage.public_media),
+    path("storage/paid-files/sign", storage.sign),
+    path("storage/v1/object/sign/paid-files/download", storage.download),
 ]

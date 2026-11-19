@@ -116,6 +116,15 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
+# Uploaded files. Both folders must be on a disk that is kept between restarts / deploys.
+MEDIA_ROOT = env("MEDIA_ROOT", str(BASE_DIR / "data" / "media"))                 # public pictures / audio
+PRIVATE_FILES_ROOT = env("PRIVATE_FILES_ROOT", str(BASE_DIR / "data" / "private"))  # paid PDFs etc.
+MAX_UPLOAD_MB = int(env("MAX_UPLOAD_MB", "100"))
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # normal (non-file) requests are small
+
+# Bunny Stream (paid course videos). The token key is the library's "Token Authentication Key" - keep it secret.
+BUNNY_TOKEN_KEY = env("BUNNY_TOKEN_KEY", "")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # ---- Login tokens (the site keeps them in the browser; no cookies, so no CSRF risk on the API) ----

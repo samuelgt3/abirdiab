@@ -19,10 +19,11 @@ def is_admin_user(user) -> bool:
 class ApiError(Exception):
     """Raise anywhere in an API view; the message must be one of the phrases the website understands."""
 
-    def __init__(self, message, status=400):
+    def __init__(self, message, status=400, code=None):
         super().__init__(message)
         self.message = message
         self.status = status
+        self.code = code
 
 
 def json_body(request) -> dict:
@@ -60,7 +61,10 @@ def api(*, auth=False, admin=False, methods=("POST",)):
                     return result
                 return JsonResponse(result, safe=False)
             except ApiError as e:
-                return JsonResponse({"message": e.message}, status=e.status)
+                body = {"message": e.message}
+                if e.code:
+                    body["code"] = e.code
+                return JsonResponse(body, status=e.status)
 
         return wrapper
 

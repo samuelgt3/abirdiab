@@ -11,6 +11,7 @@ import { useCheckout } from '../components/checkout/CheckoutContext.jsx';
 import { useCart } from '../hooks/CartContext.jsx';
 import { usePageMeta } from '../lib/pageMeta.js';
 import { findBySlug } from '../lib/slug.js';
+import { bunnyEmbedUrl } from '../lib/bunny.js';
 
 const BUNNY_LIBRARY = import.meta.env.VITE_BUNNY_LIBRARY_ID;
 
@@ -60,8 +61,7 @@ export default function CoursePage() {
   const priceLabel = isFree ? u.free : price(course.price_usd);
   const items = course.pack_items || [];
   const wyg = lang === 'ar' && course.what_you_get_ar?.length ? course.what_you_get_ar : course.what_you_get || [];
-  const embed = isFree && access?.video_id && BUNNY_LIBRARY
-    ? `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY}/${access.video_id}` : null;
+  const embed = isFree && access?.video_id ? bunnyEmbedUrl(BUNNY_LIBRARY, access.video_id, access.video_token, access.video_expires) : null;
   const related = content.courses.filter((x) => x !== course && x.type === course.type).slice(0, 4);
   const it = (x, f) => (lang === 'ar' && x[`${f}_ar`]) || x[f] || '';
   // filter inside the course: only the kinds this course really has (v = video, a = audio, anything else = PDF)

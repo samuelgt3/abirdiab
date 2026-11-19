@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { assetUrl } from '../../lib/content.js';
 import { COURSE_KEY, certificateHtml, courseProgress, lessonsOf, touchCourse } from '../../lib/learning.js';
 import { signedFileUrl } from '../../lib/orders.js';
+import { bunnyEmbedUrl } from '../../lib/bunny.js';
 
 const BUNNY_LIBRARY = import.meta.env.VITE_BUNNY_LIBRARY_ID;
 const fill = (s, v) => Object.entries(v).reduce((a, [k, x]) => a.replaceAll(`{${k}}`, x ?? ''), s);
@@ -16,7 +17,7 @@ export default function CourseView({ course: c, p, a, lang, kindLabel, pick, nam
   const [fileUrl, setFileUrl] = useState(null);
   const [watching, setWatching] = useState(false);
   const [err, setErr] = useState('');
-  const embed = c.video_id && BUNNY_LIBRARY ? `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY}/${c.video_id}` : null;
+  const embed = bunnyEmbedUrl(BUNNY_LIBRARY, c.video_id, c.video_token, c.video_expires);
 
   useEffect(() => { touchCourse(c.id); }, [c.id]);
   useEffect(() => { let alive = true; if (c.file_path) signedFileUrl(c.file_path).then((u) => alive && setFileUrl(u)); return () => { alive = false; }; }, [c.file_path]);

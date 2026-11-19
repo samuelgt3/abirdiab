@@ -74,16 +74,24 @@ class User(AbstractUser):
 
 # --------------------------------------------------------------------------- settings
 
+def default_booking_times():
+    return ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"]
+
+
+def all_weekdays():
+    return [0, 1, 2, 3, 4, 5, 6]  # website numbering: Sunday = 0
+
+
 class SiteSettings(models.Model):
     """One row only (id = 1). Never exposed whole to the public: see public_settings()."""
     id = models.PositiveSmallIntegerField(primary_key=True, default=1)
     session_price_usd = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    session_length = models.TextField(blank=True, default="")
-    session_length_ar = models.TextField(blank=True, default="")
-    booking_times = ArrayField(models.CharField(max_length=5), default=list, blank=True)
-    booking_timezone = models.CharField(max_length=64, default="Africa/Cairo")
+    session_length = models.TextField(blank=True, default="60 min")
+    session_length_ar = models.TextField(blank=True, default="60 دقيقة")
+    booking_times = ArrayField(models.CharField(max_length=5), default=default_booking_times, blank=True)
+    booking_timezone = models.CharField(max_length=64, default="Asia/Dubai")
     booking_days_ahead = models.PositiveIntegerField(default=60)
-    booking_weekdays = ArrayField(models.PositiveSmallIntegerField(), default=list, blank=True)
+    booking_weekdays = ArrayField(models.PositiveSmallIntegerField(), default=all_weekdays, blank=True)
     payments_enabled = models.BooleanField(default=False)
     payment_currency = models.CharField(max_length=3, default="EGP")
     payment_test_mode = models.BooleanField(default=False)
@@ -91,7 +99,7 @@ class SiteSettings(models.Model):
     require_email_verification = models.BooleanField(default=False)
     require_phone_verification = models.BooleanField(default=False)
     session_link_base = models.TextField(blank=True, default="")
-    emails_enabled = models.BooleanField(default=True)
+    emails_enabled = models.BooleanField(default=False)  # the owner switches this on once email sending is connected
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
