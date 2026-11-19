@@ -1,61 +1,78 @@
-# Abir Diab Site
+﻿> **Backend developer: read [BACKEND_HANDOFF.md](BACKEND_HANDOFF.md) first.** This copy contains the website and admin only; the backend is for you to build.
 
-React (Vite) implementation of the `Abir Diab Site.dc.html` design from the
-`project/` Claude Design handoff bundle in the repo root. This is a real,
-buildable app — not the design prototype — recreated to match that design
-pixel-for-pixel, with all interactive flows (booking, cart/checkout,
-auth/account, admin editing, EN/AR language toggle) fully wired up.
+# Abir Diab â€” Website & Content Admin
 
-## Running it
+Bilingual (English / Arabic, right-to-left) marketing and shop site for **Abir Diab**, an energy-healing
+practitioner, plus a private admin page where the client edits her own content.
+
+| Part | Technology |
+| --- | --- |
+| Public site + admin | React 18, React Router, Tailwind CSS 3, built with Vite |
+| Database, login, file storage | Supabase (PostgreSQL + Auth + Storage) |
+| Hosting | Static files (cPanel / any static host). No server of our own to run |
 
 ```
+visitor â”€â”€â–¶ static site (React) â”€â”€â–¶ Supabase REST (read published rows only)
+admin   â”€â”€â–¶ /admin (React)      â”€â”€â–¶ Supabase Auth login â”€â”€â–¶ read/write rows + upload files
+```
+
+## Quick start
+
+Requires **Node 18+** (tested on Node 24).
+
+```bash
 npm install
-npm run dev      # dev server
-npm run build    # production build to dist/
-npm run preview  # preview the production build
+cp .env.example .env.local     # then paste the anon key (see docs/SETUP.md)
+npm run dev                    # http://localhost:5173  (admin: /admin)
 ```
 
-## Current data/backend: mocked, but Django-ready
+The site also runs **without** any `.env` â€” it then shows the bundled starter content, so a fresh clone is never blank.
 
-Booking, checkout/payment, auth, and admin content-editing are **mocked**,
-matching the original design exactly (no real payment provider, no real
-password checking, WhatsApp/email links instead of real notifications).
-All of that logic lives behind `src/api/*.js`, and every function there is
-already shaped like a real REST call (`getCourses()`, `login()`,
-`createBooking()`, `completeCheckout()`, etc.) backed today by
-`localStorage`/in-memory state instead of `fetch`.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Local dev server with hot reload |
+| `npm run build` | Production build into `dist/` (upload this folder) |
+| `npm run preview` | Serve the built `dist/` locally |
+| `npm run lint` | ESLint, zero warnings allowed |
+| `npm test` | Unit tests (pricing, admin form logic) |
+| `npm run check` | lint + test + build â€” run before every commit |
 
-To connect a real Django (DRF) backend later:
+## What is in the repo
 
-1. Set `VITE_API_BASE_URL` to the API root (e.g. in a `.env` file).
-2. In each `src/api/*.js` file, replace the mock branch with the
-   `request(...)` call that's already stubbed in next to it — the intended
-   endpoint shape for each is documented in `src/api/client.js`.
-3. Swap session-cookie or token auth into `request()` as needed (a CSRF
-   header for Django's `SessionAuthentication` is already wired in).
+```
+src/
+  components/      public site sections (Hero, Courses, Workshops, â€¦)
+  pages/           Home, policy pages
+  admin/           the admin app (code-split, loaded only at /admin)
+  hooks/           SiteContext: language, content, currency
+  lib/             supabase client, pricing, content loading, links
+  content/         EN / AR interface text (JSON), policies
+  data/            fallback.json â€” bundled starter content (same shape as the DB)
+public/            images, .htaccess (SPA routing for cPanel), robots.txt
+supabase/
+  migrations/      0001 schema Â· 0002 course packs Â· 0003 admin allow-list (optional) Â· 0004 newsletter Â· 0005 advisor fix
+  seed.sql         starter content for a fresh database
+docs/              all documentation (start at docs/README.md)
+legacy/            the original exports this project was built from (reference only)
+```
 
-No component or context talks to `localStorage` or mock data directly —
-they all go through `src/api/*.js`, so this swap doesn't touch UI code.
+## Documentation
 
-## Structure
+Everything is indexed in **[docs/README.md](docs/README.md)**. The most useful starting points:
 
-- `src/data/` — the site's content: courses, testimonials, EN/AR copy
-  (extracted verbatim from the original design file).
-- `src/i18n/` — `EN`/`AR` translation tables and the `LanguageContext`
-  that switches fonts/direction/copy.
-- `src/api/` — the mock-but-REST-shaped data layer described above.
-- `src/context/` — cross-cutting state: language, auth, cart, courses,
-  testimonials, admin mode, and the shared overlay/modal state (booking,
-  checkout, auth, account, course detail, journal reader, courses portal).
-- `src/components/` — one component per page section, plus `Courses/`,
-  `Journal/`, and `modals/` subfolders for the more involved pieces.
+- New developer â†’ [docs/SETUP.md](docs/SETUP.md), then [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- The client / non-developer â†’ [docs/ADMIN_GUIDE.md](docs/ADMIN_GUIDE.md)
+- Going live â†’ [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) and the launch checklist in [docs/SECURITY.md](docs/SECURITY.md)
+- What is *not* built yet (payments, booking, student login) â†’ [docs/ROADMAP.md](docs/ROADMAP.md)
+- Picking up where the last session stopped â†’ [HANDOFF.md](HANDOFF.md)
 
-## Known content gaps carried over from the design
+## Status
 
-- Arabic journal posts have no full article body (only title/excerpt) —
-  the original design never had this copy written.
-- The courses-portal filter chip labels ("Video", "Audio", "PDF", "Free",
-  "Paid") are English-only in both languages — that's how the source
-  design shipped.
-- The footer "Site admin" password (`abir2026`) and the mock checkout/auth
-  are sample-only, not real security — see the Django note above.
+Public site, admin, database, country-based pricing and docs are done and build cleanly.
+Payments, online booking, student accounts and paid video delivery are **not** built â€” the site sends
+visitors to WhatsApp for those. See the roadmap.
+
+## Licence
+
+Proprietary â€” Â© Abir Diab. All rights reserved. The bundled fonts are open source (SIL OFL) and keep their own licences.
+

@@ -1,0 +1,75 @@
+@import '@fontsource/newsreader/400.css';
+@import '@fontsource/newsreader/400-italic.css';
+@import '@fontsource/dm-sans/400.css';
+@import '@fontsource/dm-sans/600.css';
+@import '@fontsource/almarai/400.css';
+@import '@fontsource/almarai/700.css';
+@import '@fontsource/tajawal/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body { overflow-x: clip; max-width: 100%; }
+  body { @apply bg-cream font-sans text-ink antialiased; }
+  [dir='rtl'] body, [dir='rtl'] { @apply font-ar; }
+  input, textarea, select { font-size: 16px; }
+  a { @apply text-green; }
+  :focus-visible { outline: 2px solid #C1922F; outline-offset: 3px; }
+  /* Arabic needs more generous line-height and no letter-spacing */
+  /* Arabic: the sizes below are only a fallback for headings that have no size of their own (:where keeps them from
+     beating the sizes set on each component, so English and Arabic headings stay the same size); the taller line spacing always applies. */
+  :where([lang='ar']) h1 { font-size: 3.5rem; }
+  :where([lang='ar']) h2 { font-size: 2.5rem; }
+  [lang='ar'] h1 { line-height: 1.32; letter-spacing: 0; }
+  [lang='ar'] h2 { line-height: 1.4; }
+  [lang='ar'] p, [lang='ar'] li { line-height: 1.95; }
+  [lang='ar'] .font-serif { font-family: Tajawal, Almarai, sans-serif; letter-spacing: 0; }
+  @media (max-width: 760px) {
+    :where([lang='ar']) h1 { font-size: 2.2rem; }
+    :where([lang='ar']) h2 { font-size: 1.8rem; }
+  }
+}
+
+@layer components {
+  .section-pad { @apply px-5 py-14 md:px-8 md:py-[88px]; }
+  .container-x { @apply mx-auto max-w-[1240px]; }
+  .kicker { @apply text-[12.5px] uppercase tracking-[.08em] text-terracotta; }
+  .h2 { @apply font-serif text-[1.85rem] font-normal text-ink md:text-[2.5rem]; }
+  .btn { @apply inline-flex items-center justify-center rounded-md px-6 py-3 text-[15px] font-semibold transition hover:opacity-90 active:scale-[.98] disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-solid { @apply btn bg-green text-cream hover:text-cream; }
+  .btn-outline { @apply btn border border-green text-green; }
+  .btn-accent { @apply btn bg-accent text-ink hover:text-ink; }
+  .input { @apply w-full rounded-lg border border-[#8a948f] bg-white px-2.5 py-2 text-ink; }
+  .label { @apply mb-1 mt-3 block text-[0.92rem] font-semibold; }
+  .arch { border-radius: 50% 50% 8px 8px / 38% 38% 4px 4px; }
+  .lib-card { @apply flex h-full flex-col overflow-hidden rounded-[14px] border border-green/10 bg-cream shadow-[0_2px_8px_rgba(18,63,53,.06)] transition hover:-translate-y-1 hover:shadow-[0_18px_34px_rgba(18,63,53,.18)]; }
+}
+
+/* Phones and tablets: 16px fields stop iPhones zooming in when a field is tapped; bigger tap targets; notch-safe bottom padding. */
+@media (pointer: coarse) {
+  input, select, textarea, .input { font-size: 16px !important; }
+  .input { min-height: 44px; }
+  .btn { min-height: 44px; }
+}
+@media (max-width: 767px) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+}
+img, video { max-width: 100%; }
+
+/* Big monitors: scale the whole page up so it fills the screen instead of sitting small in a narrow column. */
+/* The page is already scaled up here, so the gaps between sections can be a little tighter. */
+@media (min-width: 1600px) { .section-pad, #workshop, #courses { padding-top: 64px; padding-bottom: 64px; } }
+/* --vh = one percent of the visible screen height, corrected for the zoom, so pop-ups never grow taller than the screen. */
+:root { --vh: 1vh; }
+@supports (height: 1dvh) { :root { --vh: 1dvh; } }
+@media (min-width: 1600px) { :root { zoom: 1.2; --vh: calc(1vh / 1.2); } }
+@media (min-width: 1920px) { :root { zoom: 1.4; --vh: calc(1vh / 1.4); } }
+@media (min-width: 2400px) { :root { zoom: 1.8; --vh: calc(1vh / 1.8); } }
+@media (min-width: 3200px) { :root { zoom: 2.4; --vh: calc(1vh / 2.4); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-ring-cw, .animate-pulsedot { animation: none !important; }
+  .lib-card { transition: none !important; transform: none !important; }
+}

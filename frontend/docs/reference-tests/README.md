@@ -1,0 +1,1 @@
+﻿These two test files checked the previous backend code (payment signature/amount rules and email wording). They are kept as a **specification**: re-create them against your own backend code, then put them back under src/lib/.

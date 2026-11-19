@@ -1,0 +1,2 @@
+# Single-page app: any address the server does not know opens the site (Cloudflare Pages / Netlify)
+/*  /index.html  200

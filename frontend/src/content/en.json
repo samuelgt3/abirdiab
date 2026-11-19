@@ -1,0 +1,350 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "library": "Materials",
+    "workshops": "Workshops",
+    "journal": "Journal",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "book": "Book",
+    "contactLabel": "Contact",
+    "videoCourses": "Courses",
+    "audioMeditations": "Meditations",
+    "guides": "Manuals",
+    "allCourses": "All Materials",
+    "myItems": "My items"
+  },
+  "hero": {
+    "eyebrow": "Energy Healing & Therapy",
+    "pre": "You are here for a",
+    "accent": "reason",
+    "post": "— let’s find it together",
+    "lead": "One-on-one healing sessions, guided meditations, courses and live workshops with Abir Diab — a space to come home to yourself.",
+    "cta1": "Book a session",
+    "cta2": "Explore the Materials",
+    "since": "Since 2008 · Guiding the journey."
+  },
+  "stats": [
+    {
+      "n": "2008",
+      "label": "Healing Since"
+    },
+    {
+      "n": "5",
+      "label": "Healing Modalities"
+    },
+    {
+      "n": "3",
+      "label": "Years of Miraculous Monday"
+    },
+    {
+      "n": "2",
+      "label": "Languages Offered"
+    }
+  ],
+  "about": {
+    "kicker": "About Abir",
+    "title": "A journey guided by energy and purpose",
+    "bio": "I'm Abir Diab, and I truly believe you are here for a reason. My journey started in 2008, fueled by a deep passion for understanding energy, healing, and the unseen magic of the universe. Along the way, I mastered Reiki, Pranic Healing, Hypnosis, Dowsing, and, most powerfully, Pendulum Healing. Beyond techniques, my purpose has always been the same — to help others remember their power, heal from within, and create a life of harmony and abundance. Through 1:1 coaching, guided meditations, and deep energy work, I've helped so many beautiful souls release old wounds and step into their true essence.",
+    "quote": "You are worthy of healing. You are worthy of love. And you are capable of incredible transformation.",
+    "chips": [
+      "Reiki",
+      "Pranic Healing",
+      "Hypnosis",
+      "Dowsing",
+      "Pendulum Healing"
+    ],
+    "beliefs": [
+      {
+        "title": "You are not broken.",
+        "desc": "Nothing in you needs fixing. Healing is remembering who you already are."
+      },
+      {
+        "title": "Healing at your pace.",
+        "desc": "No rush, no pressure. We move only as fast as feels safe for you."
+      },
+      {
+        "title": "Energy follows intention.",
+        "desc": "Where you place your attention, change begins. We set it with care."
+      }
+    ],
+    "timeline": [
+      {
+        "year": "2008",
+        "title": "The Calling",
+        "desc": "A deep dive into energy and healing begins."
+      },
+      {
+        "year": "2010",
+        "title": "Mastery",
+        "desc": "Reiki, Pranic Healing, Hypnosis and Dowsing learned and integrated."
+      },
+      {
+        "year": "2015",
+        "title": "Pendulum Healing",
+        "desc": "The most powerful modality becomes the heart of the practice."
+      },
+      {
+        "year": "2023",
+        "title": "3 Years — Miraculous Monday",
+        "desc": "Weekly meditations bringing healing to those who needed it most."
+      }
+    ]
+  },
+  "services": {
+    "kicker": "Offerings",
+    "title": "Ways to work together",
+    "learnMore": "Learn more",
+    "items": [
+      {
+        "num": "01",
+        "title": "1:1 Coaching",
+        "desc": "Personalized support for real shifts in your life.",
+        "href": "#sessions"
+      },
+      {
+        "num": "02",
+        "title": "Guided Meditations",
+        "desc": "Powerful energy work at your own pace.",
+        "href": "#meditations"
+      },
+      {
+        "num": "03",
+        "title": "Live Workshops",
+        "desc": "Structured guidance and community support.",
+        "href": "#workshop"
+      },
+      {
+        "num": "04",
+        "title": "Energy Sessions",
+        "desc": "Clear blocks, restore natural flow.",
+        "href": "#sessions"
+      }
+    ]
+  },
+  "sessions": {
+    "kicker": "1:1 Work",
+    "title": "1:1 Sessions",
+    "body1": "Have you ever felt like you're carrying a weight no one else can see? Sometimes life shakes us so deeply that returning to \"normal\" feels impossible.\n\nBut you don't have to go through this alone. No two sessions are the same, because no two journeys are the same.",
+    "checklist": [
+      "Release emotional and energetic blocks",
+      "Find clarity after trauma or loss",
+      "Reconnect with yourself",
+      "Step into your power"
+    ],
+    "body2": "Support doesn’t end when the session does — you’ll leave with grounding practices and an open line to reach out as you integrate what came up.",
+    "cta": "Book a session"
+  },
+  "meditations": {
+    "kicker": "Guided Audio",
+    "title": "What if meditation could unlock miracles?",
+    "body": "For three years, Miraculous Monday has brought a weekly guided meditation to those who needed it most. The science is simple: meditative states reduce stress and enhance brain function — and these recordings were created so that healing work could travel with you, wherever you are.",
+    "sampleLabel": "Sample: Miraculous Monday (2 min)",
+    "sampleNote": "Full recordings available in the Materials below.",
+    "samples": [
+      {
+        "title": "Miraculous Monday",
+        "duration": "22 min",
+        "note": "Weekly reset meditation"
+      },
+      {
+        "title": "Releasing Old Wounds",
+        "duration": "31 min",
+        "note": "Grief and emotional release"
+      },
+      {
+        "title": "Grounding Before Sleep",
+        "duration": "2 min",
+        "note": "Gift from Abir"
+      }
+    ],
+    "play": "Play",
+    "pause": "Pause",
+    "playFailed": "Could not play this audio. Please try again.",
+    "soon": "Audio coming soon"
+  },
+  "watch": {
+    "kicker": "On Camera",
+    "playHere": "Play video",
+    "openYt": "Watch on YouTube",
+    "title": "Watch & Listen",
+    "body": "A short teaser from the practice, plus every channel where new sessions, meditations and behind-the-scenes moments get shared first.",
+    "followKicker": "Follow along",
+    "moreLabel": "More on the channel",
+    "ytLabel": "Watch on YouTube",
+    "secondVideoTitle": "A conversation on energy and healing",
+    "play": "Play video",
+    "pause": "Pause video",
+    "replay": "Replay video"
+  },
+  "courses": {
+    "title": "Courses, Meditations & Manuals",
+    "kicker": "Materials",
+    "unlock": "Unlock",
+    "remove": "Remove",
+    "addItem": "Add item",
+    "viewAll": "View all materials",
+    "lmsTitle": "Courses, Meditations & Manuals",
+    "back": "Back",
+    "free": "Gift from Abir",
+    "whatYouGet": "What you’ll get",
+    "download": "Downloadable",
+    "portalOnly": "Portal only",
+    "access": "Access",
+    "unlockAll": "Unlock for all",
+    "lockAgain": "Lock again",
+    "viewMore": "View more",
+    "inCart": "View Cart",
+    "giftTitle": "Gift this course",
+    "giftLead": "Make your gift special, and help your loved ones live the life they deserve.",
+    "giftCta": "Give the gift now!",
+    "discover": "Discover More",
+    "unlockFull": "Unlock Full",
+    "finalPrice": "Final price",
+    "inside": "Inside this pack",
+    "teaser": "Play teaser",
+    "paid": "Paid",
+    "filterAll": "All"
+  },
+  "workshops": {
+    "kicker": "Live Workshops",
+    "title": "Live Workshops",
+    "lead": "A handful of live circles each year — held online, in a small group, in real time with Abir.",
+    "discover": "Discover More",
+    "bookNow": "Book now",
+    "overview": "Overview",
+    "format": "Format",
+    "duration": "Total duration",
+    "spotsLeft": "spots left",
+    "spotsOpen": "spots open",
+    "onlyWord": "Only",
+    "ended": "Ended",
+    "endedBtn": "This workshop has ended",
+    "deliveryTitle": "Where should your joining link go?",
+    "confirmTitle": "Confirm your seat",
+    "confirmLead": "We hold your place the moment this is confirmed.",
+    "nameLabel": "Your name",
+    "emailLabel2": "Email",
+    "phoneLabel": "WhatsApp number",
+    "payLabel": "Confirm & pay",
+    "seatPrice": "Seat",
+    "deliveryLead": "Your seat is held. Choose how you’d like to receive the link and joining notes.",
+    "wa": "Send on WhatsApp",
+    "email": "Email it to me",
+    "copy": "Copy the link",
+    "copied": "Joining link copied",
+    "soldOut": "Sold out",
+    "comingSoon": "Coming soon",
+    "comingSoonLead": "New live workshops are being planned. Dates will be announced here.",
+    "prevLabel": "Previous workshops",
+    "nextLabel": "Next workshops"
+  },
+  "journal": {
+    "title": "Journal",
+    "kicker": "Writing",
+    "readMore": "Read more",
+    "moreLabel": "More from the journal",
+    "mediaTag": "Watch the conversation"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "kicker": "Client Voices",
+    "readMore": "Read more testimonials",
+    "back": "Back",
+    "pageTitle": "In their own words",
+    "pageLead": "Written reflections, messages clients sent after sessions, and voice notes recorded in the days that followed. Shared with permission.",
+    "tabAll": "All",
+    "tabWritten": "Written",
+    "tabShots": "Screenshots",
+    "tabVoice": "Voice notes",
+    "play": "Play",
+    "pause": "Pause",
+    "byService": "Filter by service:",
+    "allServices": "All services",
+    "empty": "Nothing here yet for this filter.",
+    "showTx": "Read transcript",
+    "hideTx": "Hide transcript",
+    "enlarge": "View",
+    "closeLbl": "Close",
+    "shareTitle": "Share your experience",
+    "shareLead": "Worked with Abir? Your words might be what someone else needs to hear before they take the first step.",
+    "shareBtn": "Share your story",
+    "storyPh": "What changed for you?",
+    "attachLbl": "Add a screenshot or voice note (optional)",
+    "consent": "I agree my testimonial may be shared on this site, with my first name and initial only.",
+    "sendStory": "Send testimonial",
+    "thanks": "Thank you — your story was received.",
+    "add": "Add testimonial",
+    "remove": "Remove",
+    "groupCaption": "A recent Miraculous Monday circle — three years of showing up together, every week."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "kicker": "Questions",
+    "items": [
+      {
+        "q": "How do I book a session?",
+        "a": "Use the Book button on this site to pick a date and time, then confirm your booking online."
+      },
+      {
+        "q": "Do I need prior experience with energy work?",
+        "a": "No prior experience is needed — every session and course starts from wherever you are."
+      },
+      {
+        "q": "Are sessions online or in person?",
+        "a": "Both. Most 1:1 sessions happen online over video call; in-person sessions can be arranged by request."
+      },
+      {
+        "q": "How long do I have access after purchasing a course?",
+        "a": "Lifetime access to everything you purchase, streamed through the portal or downloadable, depending on the item."
+      },
+      {
+        "q": "Can I try something before I buy?",
+        "a": "Yes — every course and meditation has a free preview: a sample lesson, chapter, or short audio clip."
+      },
+      {
+        "q": "What languages are sessions offered in?",
+        "a": "Arabic and English, for sessions, courses and written material alike."
+      }
+    ]
+  },
+  "newsletter": {
+    "title": "Stay connected",
+    "sub": "Occasional notes on new meditations, workshops, and the practice.",
+    "placeholder": "Your email",
+    "button": "Subscribe"
+  },
+  "contact": {
+    "title": "If you feel the call, trust it.",
+    "body": "You are not broken. You are not alone. Reach out whenever you’re ready — there’s no wrong time to begin.",
+    "kicker": "Get in touch",
+    "email": "hello@abirdiab.com",
+    "appointment": "Sessions by appointment",
+    "languages": "Arabic · English",
+    "whatsapp": "Book online",
+    "bookLead": "Pick a date and time, then confirm, all on this site.",
+    "bookBtn": "Book a session",
+    "workshopBtn": "Reserve a workshop seat",
+    "cardTitle": "Message us directly",
+    "cardLead": "Questions before you book? Send a message on WhatsApp or email, whichever is easier for you.",
+    "waBtn": "Chat on WhatsApp",
+    "emailBtn": "Email us"
+  },
+  "footer": {
+    "tagline": "A space to come home to yourself.",
+    "contact": "Contact",
+    "explore": "Explore",
+    "offerings": "Offerings",
+    "payment": "Payment",
+    "rights": "All rights reserved."
+  },
+  "policy": {
+    "privacyLink": "Privacy policy",
+    "refundLink": "Refund policy",
+    "finalNote": "All sales are final, no refunds.",
+    "back": "← Back",
+    "termsLink": "Terms of use"
+  },
+  "langToggle": "العربية"
+}

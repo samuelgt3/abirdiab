@@ -1,30 +1,40 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
+import { useSite } from '../hooks/SiteContext.jsx';
+import { CONTACT_EMAIL, WHATSAPP_DISPLAY, mailto, whatsapp } from '../lib/links.js';
+import { WhatsAppIcon } from './Icons.jsx';
 
 export default function Contact() {
-  const { L, bodyFont } = useLanguage();
-
+  const { t } = useSite();
+  const c = t.contact;
   return (
-    <section id="contact" className="section-pad" style={{ position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse at 12% 108%,#1D5B4C,#123F35 42%,#08130f 100%)', padding: '80px 32px' }}>
-      <img src="/images/pendulum-sand.jpg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: .08, mixBlendMode: 'luminosity' }} />
-      <div style={{ position: 'relative', maxWidth: 1000, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 40 }}>
-          <div style={{ fontFamily: 'Newsreader,serif', fontSize: '1.5rem', color: 'rgba(253,251,246,.35)', marginBottom: 4 }}>10</div>
-          <div style={{ fontFamily: bodyFont, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase', color: '#DD8452' }}>{L.contact.kicker}</div>
-        </div>
-        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr .8fr', gap: 50, alignItems: 'center' }}>
+    <section id="contact" className="section-pad relative scroll-mt-16 overflow-hidden bg-[radial-gradient(circle_at_85%_20%,#1D5B4C,#123F35_55%,#0c1c17)] text-cream">
+      <img loading="lazy" src={`${import.meta.env.BASE_URL}images/pendulum-sand.jpg`} alt=""
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[.08] mix-blend-luminosity" />
+      <div className="container-x relative">
+        <div className="mb-10 text-center text-[12.5px] uppercase tracking-[.08em] text-[#F2A877]">{c.kicker}</div>
+        <div className="grid items-start gap-10 md:grid-cols-[1.3fr_1fr]">
           <div>
-            <h2 style={{ fontFamily: 'Newsreader,serif', fontWeight: 400, fontSize: '3rem', color: '#FDFBF6', margin: '0 0 24px', lineHeight: 1.15 }}>{L.contact.title}</h2>
-            <p style={{ fontFamily: bodyFont, fontSize: 15.5, lineHeight: 1.75, color: 'rgba(253,251,246,.78)', margin: '0 0 28px' }}>{L.contact.body}</p>
-            <div style={{ fontFamily: bodyFont, fontSize: 14.5, color: 'rgba(253,251,246,.85)', lineHeight: 2 }}>
-              <div>{L.contact.email}</div>
-              <div>{L.contact.appointment}</div>
-              <div>{L.contact.languages}</div>
-            </div>
+            <h2 className="mb-5 font-serif text-[2rem] font-normal leading-tight md:text-[2.8rem]">{c.title}</h2>
+            <p className="mb-7 max-w-md text-[16.5px] leading-relaxed text-cream/80">{c.body}</p>
+            <ul className="space-y-2 text-[15px] text-cream/85">
+              <li>
+                <a href={whatsapp()} target="_blank" rel="noopener" className="inline-flex items-center gap-2.5 text-[17px] font-semibold !text-cream no-underline max-md:min-h-[44px]">
+                  <WhatsAppIcon /> <span dir="ltr">{WHATSAPP_DISPLAY}</span>
+                </a>
+              </li>
+              <li><a href={mailto()} className="inline-flex items-center !text-cream/85 hover:!text-accent max-md:min-h-[44px]">{CONTACT_EMAIL}</a></li>
+              <li>{c.appointment}</li>
+              <li>{c.languages}</li>
+            </ul>
           </div>
-          <div style={{ background: 'rgba(253,251,246,.07)', border: '1px solid rgba(253,251,246,.15)', borderRadius: 6, padding: 28, display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <div style={{ fontFamily: 'Newsreader,serif', fontSize: 17, color: '#FDFBF6', marginBottom: 6 }}>{L.contact.whatsapp}</div>
-            <a href="https://wa.me/201080736170" target="_blank" rel="noopener" className="btn-accent" style={{ background: '#DD8452', color: '#16211D', textAlign: 'center', borderRadius: 2, padding: 13, fontFamily: bodyFont, fontWeight: 600, fontSize: 14 }}>+20 108 073 6170</a>
-            <a href="https://wa.me/201007778908" target="_blank" rel="noopener" style={{ border: '1px solid rgba(253,251,246,.4)', color: '#FDFBF6', textAlign: 'center', borderRadius: 2, padding: 13, fontFamily: bodyFont, fontWeight: 600, fontSize: 14 }}>+20 100 777 8908</a>
+          <div className="rounded-md border border-cream/15 bg-cream/[.06] p-7">
+            <h3 className="mb-2 font-serif text-[1.4rem] font-normal">{c.cardTitle}</h3>
+            <p className="mb-6 text-[15px] text-cream/80">{c.cardLead}</p>
+            <div className="flex flex-col gap-3">
+              <a href={whatsapp()} target="_blank" rel="noopener" className="btn-accent gap-2 no-underline">
+                <WhatsAppIcon /> {c.waBtn}
+              </a>
+              <a href={mailto()} className="btn border border-cream/45 !text-cream no-underline">{c.emailBtn}</a>
+            </div>
           </div>
         </div>
       </div>

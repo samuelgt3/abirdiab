@@ -1,45 +1,72 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
-import { useOverlay } from '../context/OverlayContext.jsx';
-import { oneOnOneLabel } from '../utils/copy.js';
+import { Link } from 'react-router-dom';
+import { useSite } from '../hooks/SiteContext.jsx';
+import { useCheckout } from './checkout/CheckoutContext.jsx';
 
 export default function Hero() {
-  const { L, lang, bodyFont } = useLanguage();
-  const { openBooking, openLmsClick } = useOverlay();
-  const priceHint = lang === 'ar' ? 'الجلسات والدورات تبدأ من 7$' : 'Sessions & courses from $7';
+  const { t, u, lang, content, price } = useSite();
+  const { bookSession } = useCheckout();
+  const h = t.hero;
+  const marquee = [...t.about.chips, ...t.services.items.map((s) => s.title)];
+  const cheapest = content?.courses?.filter((c) => !c.is_free && c.price_usd > 0).reduce((m, c) => Math.min(m, c.price_usd), Infinity);
 
   return (
-    <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', padding: '56px 32px 0', minHeight: '92vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <div className="hero-grid" style={{ maxWidth: 1240, margin: '0 auto', display: 'grid', gridTemplateColumns: '1.1fr .9fr', gap: 60, alignItems: 'center' }}>
-        <div>
-          <span style={{ display: 'inline-block', border: '1px solid rgba(221,132,82,.4)', color: '#DD8452', borderRadius: 999, padding: '6px 16px', fontFamily: bodyFont, fontSize: 13, marginBottom: 22 }}>✦ {L.hero.eyebrow}</span>
-          <h1 style={{ fontFamily: 'Newsreader,serif', fontWeight: 400, fontSize: '4.2rem', lineHeight: 1.08, color: '#16211D', margin: '0 0 22px' }}>
-            {L.hero.pre} <em style={{ color: '#DD8452', fontStyle: 'italic' }}>{L.hero.accent}</em> {L.hero.post}
-          </h1>
-          <p style={{ fontFamily: bodyFont, fontSize: 18, lineHeight: 1.7, color: 'rgba(22,33,29,.7)', maxWidth: 520, margin: '0 0 32px' }}>{L.hero.lead}</p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 18 }}>
-            <button onClick={() => openBooking(oneOnOneLabel(lang))} className="btn-solid" style={{ background: '#123F35', color: '#FDFBF6', border: 'none', borderRadius: 2, padding: '15px 30px', fontFamily: bodyFont, fontWeight: 600, fontSize: 15, cursor: 'pointer' }}>{L.hero.cta1}</button>
-            <a href="#courses" onClick={openLmsClick} style={{ border: '1px solid #123F35', color: '#123F35', borderRadius: 2, padding: '15px 30px', fontFamily: bodyFont, fontWeight: 600, fontSize: 15 }}>{L.hero.cta2}</a>
+    <>
+      <section className="relative overflow-hidden px-5 pb-10 pt-10 md:px-8">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
+          <div>
+            <span className="mb-5 inline-block rounded-full border border-accent/40 px-4 py-1.5 text-[13.5px] text-terracotta">
+              ✦ {h.eyebrow}
+            </span>
+            <h1 className="mb-6 font-serif text-[2.1rem] font-normal leading-[1.14] text-ink sm:text-[2.8rem] lg:text-[4.2rem]">
+              {h.pre} <em className="italic text-terracotta">{h.accent}</em> {h.post}
+            </h1>
+            <p className="mb-8 max-w-[520px] text-lg leading-[1.7] text-ink/70">{h.lead}</p>
+            <div className="mb-4 flex flex-wrap gap-4">
+              <button type="button" onClick={bookSession} className="btn-solid !px-7 !py-4">
+                {h.cta1}
+              </button>
+              <Link to="/materials" className="btn-outline !px-7 !py-4 no-underline">{h.cta2}</Link>
+            </div>
+            {Number.isFinite(cheapest) && (
+              <div className="text-[13.5px] text-ink/70">
+                {u.priceHintPrefix} {price(cheapest)}
+              </div>
+            )}
           </div>
-          <div style={{ fontFamily: bodyFont, fontSize: 13, color: 'rgba(22,33,29,.72)' }}>{priceHint}</div>
-        </div>
-        <div style={{ position: 'relative', justifySelf: 'center' }}>
-          <div className="ring-cw" style={{ position: 'absolute', inset: -26, border: '1px solid rgba(193,146,47,.5)', borderRadius: '50% 50% 8px 8px / 38% 38% 4px 4px', animation: 'ring-cw 40s linear infinite' }} />
-          <div style={{ position: 'relative', width: 320, height: 400, borderRadius: '50% 50% 8px 8px / 38% 38% 4px 4px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(18,63,53,.18)' }}>
-            <img src="/images/portrait.jpg" alt="Abir Diab smiling warmly, seated in a softly lit studio" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div className="relative justify-self-center">
+            <div className="arch pointer-events-none absolute -inset-[26px] animate-ring-cw border border-gold/50" />
+            <div className="arch relative h-[400px] w-[320px] max-w-[80vw] overflow-hidden shadow-[0_30px_60px_rgba(18,63,53,.18)]">
+              <img
+                src={`${import.meta.env.BASE_URL}images/portrait.jpg`}
+                alt={lang === 'ar' ? "عبير دياب تبتسم بدفء وهي جالسة في استوديو بإضاءة هادئة" : "Abir Diab smiling warmly, seated in a softly lit studio"}
+                fetchpriority="high"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-[18px] -start-4 max-w-[200px] rounded-md bg-green px-5 py-3.5 text-[13.5px] text-cream shadow-[0_14px_30px_rgba(0,0,0,.2)] md:-start-[30px]">
+              {h.since}
+            </div>
           </div>
-          <div style={{ position: 'absolute', bottom: -18, insetInlineStart: -30, background: '#123F35', color: '#FDFBF6', borderRadius: 2, padding: '14px 20px', fontFamily: bodyFont, fontSize: 13, boxShadow: '0 14px 30px rgba(0,0,0,.2)', maxWidth: 200 }}>{L.hero.since}</div>
         </div>
-      </div>
+        <dl className="container-x relative z-[2] mt-14 grid max-w-[1000px] grid-cols-2 rounded-md bg-cream shadow-[0_20px_50px_rgba(18,63,53,.12)] md:grid-cols-4">
+          {t.stats.map((s) => (
+            <div key={s.label} className="border-e border-green/10 px-5 py-6 text-center last:border-e-0">
+              <dt className="font-serif text-[2rem] text-green">{s.n}</dt>
+              <dd className="mt-1 text-[13px] text-ink/70">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-      <div className="stats-bar section-pad" style={{ maxWidth: 1000, margin: '44px auto 0', background: '#FDFBF6', borderRadius: 4, boxShadow: '0 20px 50px rgba(18,63,53,.12)', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', position: 'relative', top: 30, zIndex: 2 }}>
-        {L.stats.map((s, i) => (
-          <div key={i} style={{ padding: '26px 20px', textAlign: 'center', borderInlineEnd: '1px solid rgba(18,63,53,.1)' }}>
-            <div style={{ fontFamily: 'Newsreader,serif', fontSize: '2rem', color: '#123F35' }}>{s.n}</div>
-            <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: 'rgba(22,33,29,.72)', marginTop: 4 }}>{s.label}</div>
-          </div>
-        ))}
+      <div className="overflow-hidden bg-[radial-gradient(circle_at_85%_20%,#3a2416,#123F35_55%,#0c1c17)] py-5" aria-hidden="true">
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          {[...marquee, ...marquee].map((m, i) => (
+            <span key={i} className="whitespace-nowrap px-[26px] font-serif text-xl italic text-sand">
+              {m} <span className="text-gold">✦</span>
+            </span>
+          ))}
+        </div>
       </div>
-      <div style={{ height: 40 }} />
-    </section>
+    </>
   );
 }

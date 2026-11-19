@@ -1,58 +1,87 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
-import { useAdmin } from '../context/AdminContext.jsx';
-import { useOverlay } from '../context/OverlayContext.jsx';
+import { Link } from 'react-router-dom';
+import { useSite } from '../hooks/SiteContext.jsx';
+import { CONTACT_EMAIL, SOCIAL, WHATSAPP_DISPLAY, mailto, whatsapp } from '../lib/links.js';
+import { InstagramIcon, TikTokIcon, WhatsAppIcon, YouTubeIcon } from './Icons.jsx';
 
-const PAYMENT_METHODS = ['Visa', 'Mastercard', 'Fawry', 'Vodafone Cash'];
+const round = 'flex h-11 w-11 items-center justify-center rounded-full border border-green/20 !text-green no-underline hover:bg-green/5';
+const colHead = 'mb-3.5 text-[13px] font-bold uppercase tracking-[.05em] text-terracotta';
+const link = 'inline-block py-1.5 !text-ink no-underline hover:!text-terracotta max-md:py-2.5';
+
+/** Simple wordmark badges; swap for official logos once the payment provider is chosen. */
+function PayBadge({ children, label }) {
+  return (
+    <span title={label} aria-label={label}
+      className="flex h-[30px] min-w-[48px] items-center justify-center rounded-[5px] border border-green/15 bg-white px-2 text-[12px] font-extrabold italic tracking-tight">
+      {children}
+    </span>
+  );
+}
 
 export default function Footer() {
-  const { L, lang, bodyFont } = useLanguage();
-  const { manageMode, toggleManage } = useAdmin();
-  const { openLmsClick } = useOverlay();
-  const manageLabel = manageMode
-    ? (lang === 'ar' ? 'إنهاء وضع الإدارة' : 'Exit admin mode')
-    : (lang === 'ar' ? 'إدارة الموقع' : 'Site admin');
+  const { t, lang } = useSite();
+  const f = t.footer;
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="section-pad" style={{ background: '#FDFBF6', borderTop: '1px solid rgba(18,63,53,.14)', padding: '52px 32px 24px' }}>
-      <div className="footer-grid" style={{ maxWidth: 1240, margin: '0 auto', display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1.2fr', gap: 40, marginBottom: 50 }}>
+    <footer className="border-t border-green/15 bg-cream px-5 pb-24 pt-14 md:px-8 lg:pb-7">
+      <div className="container-x mb-11 grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <div style={{ fontFamily: 'Newsreader,serif', fontSize: 19, color: '#16211D', marginBottom: 8 }}>Abir Diab</div>
-          <div style={{ fontFamily: bodyFont, fontSize: 13.5, color: 'rgba(22,33,29,.72)', marginBottom: 16, maxWidth: 220 }}>{L.footer.tagline}</div>
-          <div style={{ display: 'flex', gap: 14 }}>
-            <a href="https://instagram.com/abir_diaab" target="_blank" rel="noopener" style={{ color: '#123F35', fontFamily: bodyFont, fontSize: 13 }}>IG</a>
-            <a href="https://youtube.com/@Abir_Diab" target="_blank" rel="noopener" style={{ color: '#123F35', fontFamily: bodyFont, fontSize: 13 }}>YT</a>
-            <a href="https://tiktok.com/@.abir.diab" target="_blank" rel="noopener" style={{ color: '#123F35', fontFamily: bodyFont, fontSize: 13 }}>TT</a>
+          <div className="mb-2 font-serif text-xl text-ink">{lang === 'ar' ? 'عبير دياب' : 'Abir Diab'}</div>
+          <div className="mb-[18px] max-w-[240px] text-sm leading-relaxed text-ink/75">{f.tagline}</div>
+          <div className="flex gap-2.5">
+            <a href={SOCIAL.instagram} target="_blank" rel="noopener" aria-label="Instagram" className={round}><InstagramIcon /></a>
+            <a href={SOCIAL.youtube} target="_blank" rel="noopener" aria-label="YouTube" className={round}><YouTubeIcon /></a>
+            <a href={SOCIAL.tiktok} target="_blank" rel="noopener" aria-label="TikTok" className={round}><TikTokIcon /></a>
           </div>
         </div>
-        <div>
-          <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: '#DD8452', marginBottom: 12 }}>{L.footer.explore}</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: bodyFont, fontSize: 13.5 }}>
-            <a href="#about" style={{ color: '#16211D' }}>{L.nav.about}</a>
-            <a href="#journal" style={{ color: '#16211D' }}>{L.nav.journal}</a>
-            <a href="#faq" style={{ color: '#16211D' }}>{L.nav.faq}</a>
+        <nav aria-label={f.explore}>
+          <div className={colHead}>{f.explore}</div>
+          <div className="flex flex-col gap-[11px] text-[14.5px]">
+            <Link to="/#about" className={link}>{t.nav.about}</Link>
+            <Link to="/journal" className={link}>{t.nav.journal}</Link>
+            <Link to="/testimonials" className={link}>{t.nav.testimonials}</Link>
+            <Link to="/#faq" className={link}>{t.nav.faq}</Link>
           </div>
-        </div>
-        <div>
-          <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: '#DD8452', marginBottom: 12 }}>{L.footer.offerings}</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontFamily: bodyFont, fontSize: 13.5 }}>
-            <a href="#sessions" style={{ color: '#16211D' }}>{L.nav.services}</a>
-            <a href="#courses" onClick={openLmsClick} style={{ color: '#16211D' }}>{L.nav.library}</a>
-            <a href="#meditations" style={{ color: '#16211D' }}>Meditations</a>
+        </nav>
+        <nav aria-label={f.offerings}>
+          <div className={colHead}>{f.offerings}</div>
+          <div className="flex flex-col gap-[11px] text-[14.5px]">
+            <Link to="/#sessions" className={link}>{t.nav.services}</Link>
+            <Link to="/materials" className={link}>{t.nav.library}</Link>
+            <Link to="/materials?type=Audio" className={link}>{t.nav.audioMeditations}</Link>
+            <Link to="/#workshop" className={link}>{t.nav.workshops}</Link>
           </div>
-        </div>
+        </nav>
         <div>
-          <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: '#DD8452', marginBottom: 12 }}>{L.footer.payment}</div>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 14 }}>
-            {PAYMENT_METHODS.map((pm) => (
-              <span key={pm} style={{ border: '1px solid rgba(18,63,53,.14)', borderRadius: 999, padding: '5px 12px', fontFamily: bodyFont, fontSize: 12, color: 'rgba(22,33,29,.72)' }}>{pm}</span>
-            ))}
+          <div className={colHead}>{f.contact}</div>
+          <div className="flex flex-col gap-[11px] text-[14.5px]">
+            <a href={whatsapp()} target="_blank" rel="noopener" aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
+              className="inline-flex items-center gap-2 font-bold !text-green no-underline max-md:min-h-[40px]">
+              <WhatsAppIcon /> <span dir="ltr">{WHATSAPP_DISPLAY}</span>
+            </a>
+            <a href={mailto()} className={link}>{CONTACT_EMAIL}</a>
+            <Link to="/#contact" className={link}>{t.nav.contactLabel}</Link>
           </div>
-          <a href="#contact" style={{ color: '#123F35', fontFamily: bodyFont, fontSize: 13.5 }}>{L.nav.contactLabel}</a>
         </div>
       </div>
-      <div style={{ maxWidth: 1240, margin: '0 auto', borderTop: '1px solid rgba(18,63,53,.1)', paddingTop: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
-        <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: 'rgba(22,33,29,.7)' }}>© 2026 Abir Diab. {L.footer.rights}</div>
-        <button onClick={toggleManage} style={{ fontFamily: bodyFont, fontSize: 11.5, color: 'rgba(22,33,29,.35)', background: 'none', border: 'none', cursor: 'pointer' }}>{manageLabel}</button>
+
+      <div className="container-x flex flex-wrap items-center justify-between gap-4 border-t border-green/10 pt-[22px]">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="me-1 text-[13px] text-ink/70">{f.payment}</span>
+          <PayBadge label="Visa"><span className="text-[#1A1F71]">VISA</span></PayBadge>
+          <PayBadge label="Mastercard">
+            <span className="relative flex">
+              <span className="h-[18px] w-[18px] rounded-full bg-[#EB001B]" />
+              <span className="-ms-2 h-[18px] w-[18px] rounded-full bg-[#F79E1B] mix-blend-multiply" />
+            </span>
+          </PayBadge>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13.5px] text-ink/70">
+          <Link to="/privacy" className="!text-green inline-block py-1.5 max-md:py-2.5 underline underline-offset-[3px]">{t.policy.privacyLink}</Link>
+          <Link to="/terms" className="!text-green inline-block py-1.5 max-md:py-2.5 underline underline-offset-[3px]">{t.policy.termsLink}</Link>
+          <Link to="/refunds" className="!text-green inline-block py-1.5 max-md:py-2.5 underline underline-offset-[3px]">{t.policy.refundLink}</Link>
+          <span>© {year} Abir Diab. {f.rights}</span>
+        </div>
       </div>
     </footer>
   );

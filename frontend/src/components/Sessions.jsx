@@ -1,34 +1,40 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
-import { useOverlay } from '../context/OverlayContext.jsx';
-import { oneOnOneLabel } from '../utils/copy.js';
+import { useSite } from '../hooks/SiteContext.jsx';
+import { useCheckout } from './checkout/CheckoutContext.jsx';
 
-export default function Sessions({ secNum }) {
-  const { L, bodyFont, lang } = useLanguage();
-  const { openBooking } = useOverlay();
-
+export default function Sessions() {
+  const { t, lang, price } = useSite();
+  const { bookSession, settings } = useCheckout();
+  const s = t.sessions;
+  const length = lang === 'ar' ? settings.session_length_ar : settings.session_length;
   return (
-    <section id="sessions" className="section-pad" style={{ position: 'relative', overflow: 'hidden', background: '#0a1a15', padding: 0, minHeight: '92vh', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-      <div className="sess-grid" style={{ maxWidth: 1440, margin: '0 auto', display: 'grid', gridTemplateColumns: '.85fr 1.15fr', alignItems: 'stretch', minHeight: 640 }}>
-        <div style={{ position: 'relative', minHeight: 340 }}>
-          <img src="/images/pendulum-hand.jpg" alt="Abir guiding a pendulum during a 1:1 healing session" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(10,26,21,.15),rgba(10,26,21,.55) 92%,#0a1a15 100%)' }} />
+    <section id="sessions" className="scroll-mt-16 bg-[#0f2a23] text-cream">
+      <div className="grid md:grid-cols-2">
+        <div className="relative min-h-[320px] overflow-hidden">
+          <img loading="lazy" src={`${import.meta.env.BASE_URL}images/pendulum-hand.jpg`}
+            alt={lang === 'ar' ? "عبير تحرّك البندول خلال جلسة شفاء فردية" : "Abir guiding a pendulum during a 1:1 healing session"} className="absolute inset-0 h-full w-full object-cover" />
+          {/* fade the photo into the panel, on the side that touches the text */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f2a23] md:bg-gradient-to-r md:to-[#0f2a23] md:rtl:bg-gradient-to-l" />
         </div>
-        <div style={{ padding: '64px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 32 }}>
-            <span style={{ fontFamily: 'Newsreader,serif', fontSize: '1.5rem', color: 'rgba(253,251,246,.35)' }}>{secNum}</span>
-            <span style={{ fontFamily: bodyFont, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase', color: '#DD8452' }}>{L.sessions.kicker}</span>
-          </div>
-          <h2 style={{ fontFamily: 'Newsreader,serif', fontWeight: 400, fontSize: '2.8rem', color: '#FDFBF6', margin: '0 0 24px' }}>{L.sessions.title}</h2>
-          <p style={{ fontFamily: bodyFont, fontSize: 16, lineHeight: 1.75, color: 'rgba(253,251,246,.78)', maxWidth: 520, margin: '0 0 26px', whiteSpace: 'pre-line' }}>{L.sessions.body1}</p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, margin: '0 0 30px', maxWidth: 520 }}>
-            {L.sessions.checklist.map((ck, i) => (
-              <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontFamily: bodyFont, fontSize: 14.5, color: '#F5EDE0' }}>
-                <span style={{ color: '#C1922F', marginTop: 1 }}>✓</span><span>{ck}</span>
-              </div>
+        <div className="px-6 py-11 md:px-14 md:py-[72px]">
+          <div className="mb-3 text-[12.5px] uppercase tracking-[.08em] text-[#F2A877]">{s.kicker}</div>
+          <h2 className="mb-6 font-serif text-[2rem] font-normal md:text-[2.6rem]">{s.title}</h2>
+          {s.body1.split('\n\n').map((p) => (
+            <p key={p} className="mb-4 text-[16px] leading-relaxed text-cream/85">{p}</p>
+          ))}
+          <ul className="my-6 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+            {s.checklist.map((c) => (
+              <li key={c} className="flex gap-2.5 text-[15px] text-cream/90">
+                <span className="mt-0.5 text-green">✓</span>{c}
+              </li>
             ))}
+          </ul>
+          <p className="mb-7 leading-relaxed text-cream/75">{s.body2}</p>
+          <div className="flex flex-wrap items-center gap-5">
+            <button type="button" onClick={bookSession} className="btn-accent">{s.cta}</button>
+            <span className="text-[14px] text-cream/75">
+              {length}{settings.session_price_usd ? ` · ${price(settings.session_price_usd)}` : ''}
+            </span>
           </div>
-          <p style={{ fontFamily: bodyFont, fontSize: 16, lineHeight: 1.75, color: 'rgba(253,251,246,.78)', maxWidth: 520, margin: '0 0 34px' }}>{L.sessions.body2}</p>
-          <button onClick={() => openBooking(oneOnOneLabel(lang))} className="btn-accent" style={{ width: 'fit-content', background: '#DD8452', color: '#16211D', border: 'none', borderRadius: 2, padding: '15px 30px', fontFamily: bodyFont, fontWeight: 600, fontSize: 15, cursor: 'pointer' }}>{L.sessions.cta}</button>
         </div>
       </div>
     </section>

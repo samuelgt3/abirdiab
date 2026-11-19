@@ -1,46 +1,65 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
+import { useSite } from '../hooks/SiteContext.jsx';
 
-export default function About({ secNum }) {
-  const { L, bodyFont } = useLanguage();
+/** Kicker on a ruled line, as used by the design for About and Workshops. */
+export function RuledKicker({ children, light = false }) {
   return (
-    <section id="about" className="section-pad" style={{ padding: '76px 32px' }}>
-      <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 44, paddingBottom: 14, borderBottom: '1px solid rgba(18,63,53,.14)', justifyContent: 'flex-start' }}>
-          <span style={{ fontFamily: 'Newsreader,serif', fontSize: '1.5rem', color: 'rgba(18,63,53,.3)' }}>{secNum}</span>
-          <span style={{ fontFamily: bodyFont, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase', color: '#DD8452' }}>{L.about.kicker}</span>
-        </div>
-        <div>
-          <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 48, alignItems: 'start' }}>
-            <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', inset: 14, insetInlineEnd: -14, top: 14, background: '#EFD9D1', borderRadius: '50% 50% 8px 8px / 38% 38% 4px 4px', zIndex: 0 }} />
-              <div style={{ position: 'relative', width: '100%', aspectRatio: '3/3.7', borderRadius: '50% 50% 8px 8px / 38% 38% 4px 4px', overflow: 'hidden', zIndex: 1, boxShadow: '0 20px 40px rgba(18,63,53,.14)' }}>
-                <img src="/images/portrait-about.jpg" alt="Abir Diab standing beside a carved Arabic calligraphy panel" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    <div className={`mb-10 flex items-baseline gap-4 border-b pb-3.5 ${light ? 'border-cream/15' : 'border-green/15'}`}>
+      <span className={`text-[12.5px] uppercase tracking-[.08em] ${light ? 'text-[#F2A877]' : 'text-terracotta'}`}>{children}</span>
+    </div>
+  );
+}
+
+export function Ornament() {
+  return (
+    <div className="flex justify-center pb-5" aria-hidden="true">
+      <svg width="90" height="30" viewBox="0 0 90 30" fill="none">
+        <path d="M2 15C25 5 65 5 88 15" stroke="#123F35" strokeWidth="1" />
+        <circle cx="30" cy="10" r="4" stroke="#C1922F" strokeWidth="1" />
+        <circle cx="60" cy="10" r="4" stroke="#123F35" strokeWidth="1" />
+      </svg>
+    </div>
+  );
+}
+
+export default function About() {
+  const { t, lang } = useSite();
+  const a = t.about;
+  return (
+    <>
+      <section id="about" className="section-pad scroll-mt-16">
+        <div className="container-x">
+          <RuledKicker>{a.kicker}</RuledKicker>
+          <div className="grid items-start gap-12 md:grid-cols-[260px_1fr]">
+            <div className="relative mx-auto w-full max-w-[260px]">
+              <div className="arch absolute inset-y-3.5 -end-3.5 start-3.5 bg-blush" />
+              <div className="arch relative aspect-[3/3.7] overflow-hidden shadow-[0_20px_40px_rgba(18,63,53,.14)]">
+                <img loading="lazy" src={`${import.meta.env.BASE_URL}images/about-calligraphy.jpg`}
+                  alt={lang === 'ar' ? "عبير دياب تقف بجانب لوحة خط عربي منحوتة" : "Abir Diab standing beside a carved Arabic calligraphy panel"} className="h-full w-full object-cover" />
               </div>
             </div>
             <div>
-              <h2 style={{ fontFamily: 'Newsreader,serif', fontWeight: 400, fontSize: '3rem', color: '#16211D', margin: '0 0 26px' }}>{L.about.title}</h2>
-              <p style={{ fontFamily: bodyFont, fontSize: 16.5, lineHeight: 1.75, color: 'rgba(22,33,29,.75)', margin: '0 0 24px' }}>{L.about.bio}</p>
-              <p style={{ fontFamily: 'Newsreader,serif', fontStyle: 'italic', fontSize: 20, lineHeight: 1.6, color: '#123F35', borderInlineStart: '2px solid #C1922F', paddingInlineStart: 18, margin: '0 0 28px' }}>{L.about.quote}</p>
-              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 44 }}>
-                {L.about.chips.map((c, i) => (
-                  <span key={i} style={{ border: '1px solid rgba(18,63,53,.14)', color: '#123F35', borderRadius: 999, padding: '8px 16px', fontFamily: bodyFont, fontSize: 13.5 }}>{c}</span>
+              <h2 className="mb-6 font-serif text-[2rem] font-normal text-ink md:text-5xl">{a.title}</h2>
+              <p className="mb-6 text-[17.5px] leading-[1.75] text-ink/75">{a.bio}</p>
+              <p className="mb-7 border-s-2 border-gold ps-[18px] font-serif text-xl italic leading-relaxed text-green">{a.quote}</p>
+              <div className="mb-11 flex flex-wrap gap-2.5">
+                {a.chips.map((c) => (
+                  <span key={c} className="rounded-full border border-green/15 px-4 py-2 text-sm text-green">{c}</span>
                 ))}
               </div>
             </div>
           </div>
-          <div className="timeline-row" style={{ display: 'flex', position: 'relative', marginTop: 20 }}>
-            <div className="timeline-line" style={{ position: 'absolute', top: 8, insetInlineStart: 0, insetInlineEnd: 0, height: 1, background: 'rgba(18,63,53,.14)' }} />
-            {L.about.timeline.map((tl, i) => (
-              <div key={i} style={{ flex: 1, paddingInlineEnd: 16, position: 'relative' }}>
-                <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#C1922F', marginBottom: 14 }} />
-                <div style={{ fontFamily: bodyFont, fontSize: 12.5, color: '#DD8452', fontWeight: 600, marginBottom: 6 }}>{tl.year}</div>
-                <div style={{ fontFamily: 'Newsreader,serif', fontSize: 17, color: '#16211D', marginBottom: 6 }}>{tl.title}</div>
-                <div style={{ fontFamily: bodyFont, fontSize: 13.5, color: 'rgba(22,33,29,.74)', lineHeight: 1.6 }}>{tl.desc}</div>
+          <div className="mt-5 grid border-y border-green/15 md:grid-cols-3">
+            {a.beliefs.map((b) => (
+              <div key={b.title} className="flex flex-col gap-2.5 border-green/10 px-6 py-8 md:border-e md:last:border-e-0">
+                <span className="text-[14.5px] text-gold">✦</span>
+                <div className="font-serif text-[22px] italic leading-snug text-green">{b.title}</div>
+                <div className="text-[14.5px] leading-relaxed text-ink/75">{b.desc}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Ornament />
+    </>
   );
 }

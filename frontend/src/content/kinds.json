@@ -1,0 +1,16 @@
+{
+  "en": {
+    "Video": "Course",
+    "Audio": "Meditation",
+    "PDF": "Manual"
+  },
+  "ar": {
+    "Video": "دورة",
+    "Audio": "تأمل",
+    "PDF": "كتيب"
+  },
+  "inside": {
+    "en": { "v": "Videos", "a": "Audio", "p": "PDFs" },
+    "ar": { "v": "فيديو", "a": "صوت", "p": "ملفات PDF" }
+  }
+}

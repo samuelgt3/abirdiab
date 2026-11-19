@@ -1,0 +1,74 @@
+import { describe, it, expect } from 'vitest';
+import {
+  chargeCents, hmacSha512Hex, hmacString, refFrom, safeEqual, signPayload, splitName, verifyPaymobHmac,
+} from '../../supabase/functions/_shared/paymob.ts';
+
+// Paymob's documented worked example (Transaction Processed callback)
+const sample = {
+  amount_cents: 100, created_at: '2020-03-25T18:39:44.719228', currency: 'EGP', error_occured: false,
+  has_parent_transaction: false, id: 2556706, integration_id: 6741, is_3d_secure: true, is_auth: false,
+  is_capture: false, is_refunded: false, is_standalone_payment: true, is_voided: false, order: { id: 4778239 },
+  owner: 4705, pending: false, source_data: { pan: '2346', sub_type: 'MasterCard', type: 'card' }, success: true,
+};
+
+describe('Paymob HMAC', () => {
+  it('builds the documented concatenation string', () => {
+    expect(hmacString(sample)).toBe('1002020-03-25T18:39:44.719228EGPfalsefalse25567066741truefalsefalsefalsetruefalse47782394705false2346MasterCardcardtrue');
+  });
+  it('accepts a correctly signed callback and rejects tampering', async () => {
+    const secret = 'test-secret';
+    const good = await hmacSha512Hex(secret, hmacString(sample));
+    expect(good).toMatch(/^[0-9a-f]{128}$/);
+    expect(await verifyPaymobHmac(sample, good, secret)).toBe(true);
+    expect(await verifyPaymobHmac(sample, good.toUpperCase(), secret)).toBe(true);
+    expect(await verifyPaymobHmac({ ...sample, amount_cents: 1 }, good, secret)).toBe(false);
+    expect(await verifyPaymobHmac(sample, good, 'wrong-secret')).toBe(false);
+    expect(await verifyPaymobHmac(sample, null, secret)).toBe(false);
+    expect(await verifyPaymobHmac(sample, '', secret)).toBe(false);
+  });
+  it('handles null source fields either way', async () => {
+    const wallet = { ...sample, source_data: { pan: null, sub_type: 'wallet', type: 'wallet' } };
+    const asNull = await hmacSha512Hex('k', hmacString(wallet, 'null'));
+    const asEmpty = await hmacSha512Hex('k', hmacString(wallet, ''));
+    expect(await verifyPaymobHmac(wallet, asNull, 'k')).toBe(true);
+    expect(await verifyPaymobHmac(wallet, asEmpty, 'k')).toBe(true);
+  });
+  it('compares safely', () => {
+    expect(safeEqual('abc', 'abc')).toBe(true);
+    expect(safeEqual('abc', 'abd')).toBe(false);
+    expect(safeEqual('abc', 'ab')).toBe(false);
+    expect(safeEqual('', '')).toBe(false);
+  });
+});
+
+describe('order helpers', () => {
+  it('finds our reference in the merchant order id', () => {
+    expect(refFrom('AD-1A2B3C4D5-lx3k2')).toBe('AD-1A2B3C4D5');
+    expect(refFrom('ad-3c5e15')).toBe('AD-3C5E15');
+    expect(refFrom('something-else')).toBeNull();
+    expect(refFrom(null)).toBeNull();
+  });
+  it('converts and rounds the charge', () => {
+    expect(chargeCents(69, 'USD', 1)).toBe(6900);
+    expect(chargeCents(9.99, 'USD', 1)).toBe(999);
+    expect(chargeCents(69, 'EGP', 53.437041)).toBe(368800); // 3,687.16 -> 3,688.00 EGP
+    expect(chargeCents(10, 'EGP', 50)).toBe(50000); // exact stays exact
+    expect(chargeCents(0, 'EGP', 50)).toBe(0);
+    expect(() => chargeCents(10, 'EGP', 0)).toThrow();
+  });
+  it('splits names for billing data', () => {
+    expect(splitName('Rana Mostafa Ali')).toEqual({ first: 'Rana', last: 'Mostafa Ali' });
+    expect(splitName('Rana')).toEqual({ first: 'Rana', last: 'Rana' });
+  });
+});
+
+describe('signed booking details', () => {
+  it('signs the details so an edited copy is rejected', async () => {
+    const details = JSON.stringify({ _ref: 'AD-1A2B3C4D5', kind: 'session', sessions: [{ date: '2026-11-17', time: '10:00' }], _cents: 10000 });
+    const sig = await signPayload('secret', details);
+    expect(sig).toBe(await signPayload('secret', details));
+    expect(sig).not.toBe(await signPayload('other-secret', details));
+    expect(sig).not.toBe(await signPayload('secret', details.replace('10:00', '11:00')));
+    expect(sig).not.toBe(await hmacSha512Hex('secret', details)); // not the same as the plain HMAC
+  });
+});

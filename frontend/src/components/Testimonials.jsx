@@ -1,58 +1,50 @@
-import { useLanguage } from '../context/LanguageContext.jsx';
-import { useAdmin } from '../context/AdminContext.jsx';
-import { useTestimonials } from '../context/TestimonialsContext.jsx';
+import { Link } from 'react-router-dom';
+import { useSite } from '../hooks/SiteContext.jsx';
 
-export default function Testimonials({ secNum }) {
-  const { L, bodyFont } = useLanguage();
-  const { manageMode } = useAdmin();
-  const { testimonials, updateField, removeTestimonial, addTestimonial } = useTestimonials();
+const GRADIENTS = [
+  'linear-gradient(135deg,#DD8452,#C1922F)',
+  'linear-gradient(135deg,#123F35,#1D5B4C)',
+  'linear-gradient(135deg,#C06B3C,#16211D)',
+  'linear-gradient(135deg,#1D5B4C,#C1922F)',
+];
+const img = (n) => `${import.meta.env.BASE_URL}images/${n}`;
+
+/** Home-page testimonials: group photo + four written quotes; the full page lives at /testimonials. */
+export default function Testimonials() {
+  const { t, lang, content, pick } = useSite();
+  const q = t.testimonials;
+  const featured = (content?.testimonials || []).filter((x) => x.kind === 'written').slice(0, 4);
 
   return (
-    <section id="testimonials" className="section-pad" style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(158deg,#0a1a15 0%,#123F35 58%,#1D5B4C 100%)', padding: '84px 32px' }}>
-      <img src="/images/pendulum-set.jpg" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: .08, mixBlendMode: 'luminosity' }} />
-      <div style={{ position: 'relative' }}>
-        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 40 }}>
-            <div style={{ fontFamily: 'Newsreader,serif', fontSize: '1.5rem', color: 'rgba(253,251,246,.35)', marginBottom: 4 }}>{secNum}</div>
-            <div style={{ fontFamily: bodyFont, fontSize: 12, letterSpacing: '.08em', textTransform: 'uppercase', color: '#DD8452' }}>{L.testimonials.kicker}</div>
-          </div>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 20, marginBottom: 16, flexWrap: 'wrap' }}>
-              <h2 style={{ fontFamily: 'Newsreader,serif', fontWeight: 400, fontSize: '2.7rem', color: '#FDFBF6', margin: 0, textAlign: 'center' }}>{L.testimonials.title}</h2>
-              {manageMode && (
-                <button onClick={addTestimonial} style={{ border: '1px solid #F5EDE0', color: '#F5EDE0', background: 'none', borderRadius: 2, padding: '8px 14px', fontFamily: bodyFont, fontSize: 13, cursor: 'pointer' }}>+ {L.testimonials.add}</button>
-              )}
-            </div>
-            <div className="group-photo-row" style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 40 }}>
-              <img src="/images/group.jpg" alt="Group of participants smiling together after a Miraculous Monday healing circle" style={{ width: '100%', maxWidth: 520, height: 220, objectFit: 'cover', borderRadius: 6 }} />
-              <p style={{ fontFamily: bodyFont, fontSize: 14.5, color: 'rgba(253,251,246,.7)', lineHeight: 1.7, maxWidth: 360 }}>{L.testimonials.groupCaption}</p>
-            </div>
-            <div className="testi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 20 }}>
-              {testimonials.map((t) => (
-                <div key={t.id} style={{ background: 'rgba(253,251,246,.06)', border: '1px solid rgba(253,251,246,.12)', borderRadius: 6, padding: 24 }}>
-                  <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 14 }}>
-                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: t.gradient, flexShrink: 0 }} />
-                    <div>
-                      {manageMode ? (
-                        <input value={t.name} onChange={(e) => updateField(t.id, 'name', e.target.value)} style={{ fontFamily: 'Newsreader,serif', fontSize: 15, color: '#FDFBF6', background: 'rgba(253,251,246,.12)', border: '1px solid rgba(253,251,246,.5)', borderRadius: 2, padding: '4px 8px', marginBottom: 4, display: 'block' }} />
-                      ) : (
-                        <div style={{ fontFamily: 'Newsreader,serif', fontSize: 15, color: '#FDFBF6' }}>{t.name}</div>
-                      )}
-                      <div style={{ fontFamily: bodyFont, fontSize: 11.5, color: '#C1922F' }}>{t.role}</div>
-                    </div>
-                  </div>
-                  {manageMode ? (
-                    <textarea value={t.quote} onChange={(e) => updateField(t.id, 'quote', e.target.value)} style={{ width: '100%', fontFamily: bodyFont, fontSize: 14, color: '#FDFBF6', background: 'rgba(253,251,246,.1)', border: '1px solid rgba(253,251,246,.5)', borderRadius: 2, padding: 8, lineHeight: 1.6, minHeight: 70 }} />
-                  ) : (
-                    <p style={{ fontFamily: bodyFont, fontSize: 14.5, color: 'rgba(253,251,246,.85)', lineHeight: 1.7, margin: 0 }}>&ldquo;{t.quote}&rdquo;</p>
-                  )}
-                  {manageMode && (
-                    <button onClick={() => removeTestimonial(t.id)} style={{ marginTop: 10, fontSize: 11.5, fontFamily: bodyFont, border: '1px solid rgba(253,251,246,.3)', color: '#F5EDE0', background: 'none', borderRadius: 2, padding: '6px 10px', cursor: 'pointer' }}>{L.testimonials.remove}</button>
-                  )}
+    <section id="testimonials" className="section-pad relative scroll-mt-16 overflow-hidden bg-[linear-gradient(158deg,#0a1a15_0%,#123F35_58%,#1D5B4C_100%)] text-cream">
+      <img loading="lazy" src={img('pendulum-set.jpg')} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[.08] mix-blend-luminosity" />
+      <div className="container-x relative">
+        <div className="mb-10 text-center text-[12.5px] uppercase tracking-[.08em] text-[#F2A877]">{q.kicker}</div>
+        <h2 className="mb-4 text-center font-serif text-[2rem] font-normal text-cream md:text-[2.7rem]">{q.title}</h2>
+        <div className="mb-10 flex flex-col items-start gap-4 md:flex-row md:items-center">
+          <img loading="lazy" src={img('group-circle.jpg')} alt={lang === 'ar' ? "مجموعة من المشاركين يبتسمون معاً بعد حلقة شفاء" : "Group of participants smiling together after a Miraculous Monday healing circle"}
+            className="h-[220px] w-full max-w-[520px] rounded-md object-cover" />
+          <p className="max-w-[360px] text-[15.5px] leading-[1.7] text-cream/70">{q.groupCaption}</p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          {featured.map((x, i) => (
+            <figure key={x.id ?? x.name} className="m-0 rounded-md border border-cream/[.12] bg-cream/[.06] p-6">
+              <div className="mb-3.5 flex items-center gap-3">
+                <div className="h-11 w-11 shrink-0 rounded-full" style={{ background: GRADIENTS[i % GRADIENTS.length] }} />
+                <div>
+                  <div className="font-serif text-[15.5px] text-cream">{pick(x, 'name')}</div>
+                  <div className="text-[13px] text-gold-soft">{pick(x, 'role')}</div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+              <blockquote className="m-0 text-[15.5px] leading-[1.7] text-cream/85">“{pick(x, 'quote')}”</blockquote>
+            </figure>
+          ))}
+        </div>
+        <div className="mt-9 flex justify-center">
+          <Link to="/testimonials"
+            className="inline-flex items-center gap-2.5 rounded-full border border-cream/45 px-6 py-3 text-[14.5px] font-semibold !text-cream no-underline hover:bg-cream/10">
+            {q.readMore} <span className="rtl:-scale-x-100">→</span>
+          </Link>
         </div>
       </div>
     </section>

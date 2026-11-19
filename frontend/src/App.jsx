@@ -1,99 +1,70 @@
-import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
-import { ToastProvider } from './context/ToastContext.jsx';
-import { AuthProvider } from './context/AuthContext.jsx';
-import { CoursesProvider } from './context/CoursesContext.jsx';
-import { CartProvider } from './context/CartContext.jsx';
-import { TestimonialsProvider } from './context/TestimonialsContext.jsx';
-import { AdminProvider } from './context/AdminContext.jsx';
-import { OverlayProvider } from './context/OverlayContext.jsx';
+import { lazy, Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { CheckoutProvider } from './components/checkout/CheckoutContext.jsx';
+import { AuthProvider } from './hooks/AuthContext.jsx';
+import { CartProvider } from './hooks/CartContext.jsx';
+import { SiteProvider } from './hooks/SiteContext.jsx';
+import PageMeta from './components/PageMeta.jsx';
+import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
 
-import GrainOverlay from './components/GrainOverlay.jsx';
-import Toast from './components/Toast.jsx';
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import Marquee from './components/Marquee.jsx';
-import About from './components/About.jsx';
-import SectionDivider from './components/SectionDivider.jsx';
-import Services from './components/Services.jsx';
-import Sessions from './components/Sessions.jsx';
-import Meditations from './components/Meditations.jsx';
-import Watch from './components/Watch.jsx';
-import CoursesSection from './components/Courses/CoursesSection.jsx';
-import CoursesPortal from './components/Courses/CoursesPortal.jsx';
-import CourseDetailModal from './components/Courses/CourseDetailModal.jsx';
-import JournalSection from './components/Journal/JournalSection.jsx';
-import JournalReader from './components/Journal/JournalReader.jsx';
-import Testimonials from './components/Testimonials.jsx';
-import FAQ from './components/FAQ.jsx';
-import Newsletter from './components/Newsletter.jsx';
-import Contact from './components/Contact.jsx';
-import Footer from './components/Footer.jsx';
-import FloatingActionButton from './components/FloatingActionButton.jsx';
-import BookingModal from './components/modals/BookingModal.jsx';
-import CheckoutModal from './components/modals/CheckoutModal.jsx';
-import AuthModal from './components/modals/AuthModal.jsx';
-import AccountModal from './components/modals/AccountModal.jsx';
+// Everything except the home page is loaded only when visited, so the first page loads faster.
+const AccountPage = lazy(() => import('./pages/AccountPage.jsx'));
+const BookingPage = lazy(() => import('./pages/BookingPage.jsx'));
+const GiftPage = lazy(() => import('./pages/GiftPage.jsx'));
+const CoursePage = lazy(() => import('./pages/CoursePage.jsx'));
+const JournalPage = lazy(() => import('./pages/JournalPage.jsx'));
+const JournalPostPage = lazy(() => import('./pages/JournalPostPage.jsx'));
+const MaterialsPage = lazy(() => import('./pages/MaterialsPage.jsx'));
+const PaymentReturnPage = lazy(() => import('./pages/PaymentReturnPage.jsx'));
+const PolicyPage = lazy(() => import('./pages/PolicyPage.jsx'));
+const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage.jsx'));
 
-const SEC = { about: '01', services: '02', sessions: '03', meditations: '04', watch: '05', courses: '06', journal: '07', testimonials: '08', faq: '09' };
-
-function Page() {
-  const { dirAttr, langAttr, bodyFont } = useLanguage();
-
-  return (
-    <div dir={dirAttr} lang={langAttr} style={{ background: '#FDFBF6', color: '#16211D', fontFamily: bodyFont, position: 'relative' }}>
-      <GrainOverlay />
-      <Toast />
-      <Header />
-
-      <main id="top" style={{ background: '#FDFBF6' }}>
-        <Hero />
-        <Marquee />
-        <About secNum={SEC.about} />
-        <SectionDivider />
-        <Services secNum={SEC.services} />
-        <Sessions secNum={SEC.sessions} />
-        <Meditations secNum={SEC.meditations} />
-        <Watch secNum={SEC.watch} />
-        <CoursesSection secNum={SEC.courses} />
-        <JournalSection secNum={SEC.journal} />
-        <Testimonials secNum={SEC.testimonials} />
-        <FAQ secNum={SEC.faq} />
-        <Newsletter />
-        <Contact />
-      </main>
-
-      <Footer />
-
-      <CoursesPortal />
-      <CourseDetailModal />
-      <JournalReader />
-      <FloatingActionButton />
-      <BookingModal />
-      <CheckoutModal />
-      <AuthModal />
-      <AccountModal />
-    </div>
-  );
-}
+// The admin is code-split so visitors never download it.
+const AdminApp = lazy(() => import('./admin/AdminApp.jsx'));
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ToastProvider>
-        <AuthProvider>
-          <CoursesProvider>
+    <Routes>
+      <Route
+        path="/admin/*"
+        element={
+          <Suspense fallback={<p className="p-8 text-sm">Loading…</p>}>
+            <AdminApp />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/*"
+        element={
+          <SiteProvider>
+            <AuthProvider>
+            <CheckoutProvider>
             <CartProvider>
-              <TestimonialsProvider>
-                <AdminProvider>
-                  <OverlayProvider>
-                    <Page />
-                  </OverlayProvider>
-                </AdminProvider>
-              </TestimonialsProvider>
+            <Suspense fallback={<p className="p-8 text-center text-sm text-ink/75" role="status">…</p>}>
+            <Routes>
+              <Route path="/" element={<><PageMeta k="home" /><Home /></>} />
+              <Route path="/materials" element={<><PageMeta k="materials" /><MaterialsPage /></>} />
+              <Route path="/materials/:slug" element={<CoursePage />} />
+              <Route path="/journal" element={<><PageMeta k="journal" /><JournalPage /></>} />
+              <Route path="/journal/:slug" element={<JournalPostPage />} />
+              <Route path="/testimonials" element={<><PageMeta k="testimonials" /><TestimonialsPage /></>} />
+              <Route path="/payment/return" element={<><PageMeta k="payment" /><PaymentReturnPage /></>} />
+              <Route path="/account" element={<><PageMeta k="account" /><AccountPage /></>} />
+              <Route path="/booking/:ref" element={<><PageMeta k="booking" /><BookingPage /></>} />
+              <Route path="/gift/:token" element={<><PageMeta k="gift" /><GiftPage /></>} />
+              <Route path="/privacy" element={<><PageMeta k="privacy" /><PolicyPage kind="privacy" /></>} />
+              <Route path="/terms" element={<><PageMeta k="terms" /><PolicyPage kind="terms" /></>} />
+              <Route path="/refunds" element={<><PageMeta k="refunds" /><PolicyPage kind="refund" /></>} />
+              <Route path="*" element={<><PageMeta k="notfound" /><NotFound /></>} />
+            </Routes>
+            </Suspense>
             </CartProvider>
-          </CoursesProvider>
-        </AuthProvider>
-      </ToastProvider>
-    </LanguageProvider>
+            </CheckoutProvider>
+            </AuthProvider>
+          </SiteProvider>
+        }
+      />
+    </Routes>
   );
 }

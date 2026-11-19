@@ -1,0 +1,1086 @@
+{
+  "courses": [
+    {
+      "category": "Meditation",
+      "category_ar": "تأمل صوتي",
+      "type": "Audio",
+      "title": "Miraculous Monday",
+      "title_ar": "الاثنين المُعجزة",
+      "description": "A guided weekly-style healing meditation to reset your energy.",
+      "description_ar": "تأمل شفائي أسبوعي موجّه لإعادة ضبط طاقتك.",
+      "full_description": "This recording distills three years of the weekly Miraculous Monday practice into a single guided session. You’ll move through grounding, energy scanning, and release — the same sequence Abir has used with hundreds of listeners to lower stress and restore a sense of steadiness before the week begins.",
+      "full_description_ar": "يستخلص هذا التسجيل ثلاث سنوات من ممارسة \"الاثنين المُعجزة\" الأسبوعية في جلسة واحدة موجهة. ستنتقلون خلال التأريض، ومسح الطاقة، والتحرر — وهي التسلسل نفسه الذي استخدمته عبير مع مئات المستمعين لخفض التوتر واستعادة الشعور بالثبات قبل بداية الأسبوع.",
+      "meta": "22 min",
+      "meta_ar": "22 دقيقة",
+      "badge": "2 min taster",
+      "badge_ar": "معاينة 2 دقيقة",
+      "what_you_get": [
+        "One 22-minute guided audio session",
+        "A short grounding exercise to use before you start",
+        "MP3 download for offline listening"
+      ],
+      "what_you_get_ar": [
+        "جلسة صوتية موجهة مدتها 22 دقيقة",
+        "تمرين تأريض قصير لاستخدامه قبل البدء",
+        "ملف MP3 للاستماع دون اتصال"
+      ],
+      "image_url": "images/pendulum-gold-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 9,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 1,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "a",
+          "title": "Miraculous Monday — full session",
+          "title_ar": "الاثنين المُعجزة — الجلسة الكاملة",
+          "length": "22 min",
+          "length_ar": "22 دقيقة",
+          "description": "Grounding, energy scan and release, start to finish.",
+          "description_ar": "تأريض، ومسح للطاقة، وتحرر، من البداية للنهاية."
+        },
+        {
+          "kind": "a",
+          "title": "Pre-session grounding cue",
+          "title_ar": "تمرين تأريض قبل الجلسة",
+          "length": "4 min",
+          "length_ar": "4 دقائق",
+          "description": "A short breath sequence to settle before you begin.",
+          "description_ar": "تسلسل تنفس قصير للاستقرار قبل البدء."
+        },
+        {
+          "kind": "p",
+          "title": "Weekly reset tracker",
+          "title_ar": "متابعة إعادة الضبط الأسبوعية",
+          "length": "2 pages",
+          "length_ar": "صفحتان",
+          "description": "Print it and mark how each week lands in the body.",
+          "description_ar": "اطبعوها وسجّلوا كيف يمر كل أسبوع في أجسادكم."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Course",
+      "category_ar": "دورة إلكترونية",
+      "type": "Video",
+      "title": "Foundations of Energy Healing",
+      "title_ar": "أساسيات الشفاء بالطاقة",
+      "description": "Start-to-finish grounding in the practices Abir has taught for over a decade.",
+      "description_ar": "تأسيس شامل في الممارسات التي علّمتها عبير لأكثر من عقد.",
+      "full_description": "A structured, self-paced course covering the core modalities Abir has practiced since 2008 — Reiki, Pranic Healing, and the fundamentals of reading and moving energy. Built for complete beginners, with lifetime access to every lesson and a printable practice log.",
+      "full_description_ar": "دورة منظمة ذاتية التقدّم تغطي الأساليب الجوهرية التي مارستها عبير منذ عام 2008 — الريكي، والشفاء البرانيّ، وأساسيات قراءة الطاقة وتحريكها. مصممة للمبتدئين تمامًا، مع وصول مدى الحياة لكل درس وسجل تدريب قابل للطباعة.",
+      "meta": "8 lessons · 3h 40m",
+      "meta_ar": "8 دروس · 3س 40د",
+      "badge": "First lesson included",
+      "badge_ar": "الدرس الأول مضمّن",
+      "what_you_get": [
+        "8 video lessons streamed through the portal",
+        "A printable practice log",
+        "Lifetime access to future updates to this course"
+      ],
+      "what_you_get_ar": [
+        "8 دروس فيديو تُبث عبر البوابة",
+        "سجل تدريب قابل للطباعة",
+        "وصول مدى الحياة لأي تحديثات مستقبلية للدورة"
+      ],
+      "image_url": "images/pendulum-set.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 49,
+      "is_free": false,
+      "downloadable": false,
+      "sort_order": 2,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "v",
+          "title": "Eight core lessons",
+          "title_ar": "ثمانية دروس أساسية",
+          "length": "3h 40m",
+          "length_ar": "3س 40د",
+          "description": "Reiki, Pranic Healing and reading energy, in sequence.",
+          "description_ar": "الريكي، والشفاء البراني، وقراءة الطاقة، بالتسلسل."
+        },
+        {
+          "kind": "p",
+          "title": "Printable practice log",
+          "title_ar": "سجل تدريب قابل للطباعة",
+          "length": "6 pages",
+          "length_ar": "6 صفحات",
+          "description": "One page per week of guided self-practice.",
+          "description_ar": "صفحة لكل أسبوع من التدريب الذاتي الموجه."
+        },
+        {
+          "kind": "a",
+          "title": "Closing integration meditation",
+          "title_ar": "تأمل الدمج الختامي",
+          "length": "14 min",
+          "length_ar": "14 دقيقة",
+          "description": "Used after the final lesson to settle the learning.",
+          "description_ar": "يُستخدم بعد الدرس الأخير لتثبيت ما تعلمتموه."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Course",
+      "category_ar": "دورة إلكترونية",
+      "type": "Video",
+      "title": "Pendulum Healing Practitioner",
+      "title_ar": "ممارسة الشفاء بالبندول",
+      "description": "Learn the modality Abir considers her most powerful tool.",
+      "description_ar": "تعلّموا الأسلوب الذي تعتبره عبير أقوى أداة لديها.",
+      "full_description": "Abir’s deepest course, walking through the pendulum work she considers the heart of her practice: calibration, asking clean questions, and using the pendulum to locate and clear energetic blocks in yourself and others.",
+      "full_description_ar": "أعمق دورة لدى عبير، تتناول عمل البندول الذي تعتبره جوهر ممارستها: الضبط، وطرح أسئلة واضحة، واستخدام البندول لتحديد وتفريغ الانسدادات الطاقية في الذات والآخرين.",
+      "meta": "12 lessons · 5h 10m",
+      "meta_ar": "12 درسًا · 5س 10د",
+      "badge": "First lesson included",
+      "badge_ar": "الدرس الأول مضمّن",
+      "what_you_get": [
+        "12 video lessons streamed through the portal",
+        "Calibration and question-asking technique breakdowns",
+        "A certificate of completion"
+      ],
+      "what_you_get_ar": [
+        "12 درس فيديو تُبث عبر البوابة",
+        "شرح تقنيات الضبط وطرح الأسئلة",
+        "شهادة إتمام"
+      ],
+      "image_url": "images/pendulum-hand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 69,
+      "is_free": false,
+      "downloadable": false,
+      "sort_order": 3,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "v",
+          "title": "Twelve practitioner lessons",
+          "title_ar": "اثنا عشر درسًا للممارسين",
+          "length": "5h 10m",
+          "length_ar": "5س 10د",
+          "description": "Calibration, clean questions, clearing blocks in others.",
+          "description_ar": "الضبط، والأسئلة النقية، وتفريغ الانسدادات لدى الآخرين."
+        },
+        {
+          "kind": "p",
+          "title": "Calibration reference charts",
+          "title_ar": "جداول الضبط المرجعية",
+          "length": "12 pages",
+          "length_ar": "12 صفحة",
+          "description": "The chart set Abir works from in sessions.",
+          "description_ar": "مجموعة الجداول التي تعمل بها عبير في الجلسات."
+        },
+        {
+          "kind": "p",
+          "title": "Certificate of completion",
+          "title_ar": "شهادة إتمام",
+          "length": "1 page",
+          "length_ar": "صفحة واحدة",
+          "description": "Issued once all twelve lessons are marked complete.",
+          "description_ar": "تُصدر بعد إتمام الدروس الاثني عشر."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Manual",
+      "category_ar": "دليل",
+      "type": "PDF",
+      "title": "The Pendulum Healing Guide",
+      "title_ar": "دليل الشفاء بالبندول",
+      "description": "A written companion guide covering technique, ethics, and daily practice.",
+      "description_ar": "دليل مكتوب مرافق يغطي التقنية والأخلاقيات والممارسة اليومية.",
+      "full_description": "A downloadable written guide — technique diagrams, a code of ethics for practicing on others, and a 30-day daily practice plan to build confidence with the pendulum on your own.",
+      "full_description_ar": "دليل مكتوب قابل للتحميل — رسوم توضيحية للتقنية، وميثاق أخلاقي للممارسة على الآخرين، وخطة ممارسة يومية لمدة 30 يومًا لبناء الثقة في استخدام البندول بمفردك.",
+      "meta": "34 pages",
+      "meta_ar": "34 صفحة",
+      "badge": "First chapter included",
+      "badge_ar": "الفصل الأول مضمّن",
+      "what_you_get": [
+        "34-page illustrated PDF guide",
+        "A 30-day daily practice plan",
+        "Downloadable, yours to keep"
+      ],
+      "what_you_get_ar": [
+        "دليل PDF مصوّر من 34 صفحة",
+        "خطة ممارسة يومية لمدة 30 يومًا",
+        "قابل للتحميل، يبقى لديك"
+      ],
+      "image_url": "images/pendulum-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 19,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 4,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "p",
+          "title": "Illustrated technique guide",
+          "title_ar": "دليل التقنية المصوّر",
+          "length": "34 pages",
+          "length_ar": "34 صفحة",
+          "description": "Diagrams, ethics, and a 30-day practice plan.",
+          "description_ar": "رسوم توضيحية، وأخلاقيات، وخطة ممارسة لـ30 يومًا."
+        },
+        {
+          "kind": "p",
+          "title": "Daily practice cards",
+          "title_ar": "بطاقات الممارسة اليومية",
+          "length": "8 pages",
+          "length_ar": "8 صفحات",
+          "description": "Cut-out prompts, one for each of the 30 days.",
+          "description_ar": "بطاقات للقص، واحدة لكل يوم من الثلاثين."
+        }
+      ],
+      "has_teaser": false
+    },
+    {
+      "category": "Meditation",
+      "category_ar": "تأمل صوتي",
+      "type": "Audio",
+      "title": "Releasing Old Wounds",
+      "title_ar": "تحرير الجروح القديمة",
+      "description": "A slower, deeper session for processing grief and old emotional blocks.",
+      "description_ar": "جلسة أعمق وأبطأ لمعالجة الحزن والانسدادات العاطفية القديمة.",
+      "full_description": "A longer, slower-paced meditation built for processing grief and long-held emotional blocks. Recorded to be returned to again and again, whenever something old resurfaces and needs somewhere safe to be released.",
+      "full_description_ar": "تأمل أطول وأبطأ مصمم لمعالجة الحزن والانسدادات العاطفية المتجذرة. مُسجَّل للعودة إليه مرارًا، كلما طفا شيء قديم وحاجة إلى مكان أمان للتحرر منه.",
+      "meta": "31 min",
+      "meta_ar": "31 دقيقة",
+      "badge": "2 min taster",
+      "badge_ar": "معاينة 2 دقيقة",
+      "what_you_get": [
+        "One 31-minute guided audio session",
+        "MP3 download for offline listening",
+        "Best used in a quiet, uninterrupted space"
+      ],
+      "what_you_get_ar": [
+        "جلسة صوتية موجهة مدتها 31 دقيقة",
+        "ملف MP3 للاستماع دون اتصال",
+        "يُفضَّل استخدامها في مكان هادئ بلا مقاطعة"
+      ],
+      "image_url": "images/pendulum-gold-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 9,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 5,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "a",
+          "title": "Releasing Old Wounds — full session",
+          "title_ar": "تحرير الجروح القديمة — الجلسة الكاملة",
+          "length": "31 min",
+          "length_ar": "31 دقيقة",
+          "description": "A slow, spacious session for grief and old blocks.",
+          "description_ar": "جلسة بطيئة ورحبة للحزن والانسدادات القديمة."
+        },
+        {
+          "kind": "a",
+          "title": "Aftercare wind-down",
+          "title_ar": "رعاية ما بعد الجلسة",
+          "length": "9 min",
+          "length_ar": "9 دقائق",
+          "description": "For the twenty minutes after the main session.",
+          "description_ar": "للعشرين دقيقة التي تلي الجلسة الأساسية."
+        },
+        {
+          "kind": "p",
+          "title": "Reflection prompts",
+          "title_ar": "أسئلة تأملية",
+          "length": "3 pages",
+          "length_ar": "3 صفحات",
+          "description": "Questions to write through whatever surfaced.",
+          "description_ar": "أسئلة للكتابة عن كل ما ظهر."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Manual",
+      "category_ar": "دليل",
+      "type": "PDF",
+      "title": "Energy Journaling Starter Sheet",
+      "title_ar": "ورقة بدء تدوين الطاقة",
+      "description": "A short free worksheet to start tracking your energy day to day.",
+      "description_ar": "ورقة عمل مجانية قصيرة لبدء تتبع طاقتك يوميًا.",
+      "full_description": "A short, free worksheet Abir gives every new client — a simple daily prompt structure for noticing energy shifts before they become bigger blocks.",
+      "full_description_ar": "ورقة عمل قصيرة ومجانية تقدمها عبير لكل عميل جديد — بنية توجيهية يومية بسيطة لملاحظة تحولات الطاقة قبل أن تتحول إلى انسدادات أكبر.",
+      "meta": "4 pages",
+      "meta_ar": "4 صفحات",
+      "badge": "Free",
+      "badge_ar": "مجاني",
+      "what_you_get": [
+        "4-page printable worksheet",
+        "Simple daily prompts",
+        "No account needed to download"
+      ],
+      "what_you_get_ar": [
+        "ورقة عمل قابلة للطباعة من 4 صفحات",
+        "توجيهات يومية بسيطة",
+        "لا حاجة لحساب للتحميل"
+      ],
+      "image_url": "images/pendulum-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 0,
+      "is_free": true,
+      "downloadable": true,
+      "sort_order": 6,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "p",
+          "title": "Energy journaling starter sheet",
+          "title_ar": "ورقة بدء تدوين الطاقة",
+          "length": "4 pages",
+          "length_ar": "4 صفحات",
+          "description": "The daily prompt structure Abir gives new clients.",
+          "description_ar": "بنية التوجيهات اليومية التي تقدمها عبير للعملاء الجدد."
+        },
+        {
+          "kind": "p",
+          "title": "Weekly pattern map",
+          "title_ar": "خريطة الأنماط الأسبوعية",
+          "length": "1 page",
+          "length_ar": "صفحة واحدة",
+          "description": "One sheet for spotting what repeats across a week.",
+          "description_ar": "ورقة واحدة لملاحظة ما يتكرر خلال الأسبوع."
+        }
+      ],
+      "has_teaser": false
+    },
+    {
+      "category": "Course",
+      "category_ar": "دورة إلكترونية",
+      "type": "Video",
+      "title": "Intro to Reiki",
+      "title_ar": "مقدمة في الريكي",
+      "description": "A free two-lesson taste of Reiki fundamentals before you commit to more.",
+      "description_ar": "تجربة مجانية من درسين لأساسيات الريكي قبل الالتزام بالمزيد.",
+      "full_description": "A free two-lesson mini-course covering Reiki hand positions and basic energy sensing — a low-stakes way to see if this kind of work is for you before enrolling in a full course.",
+      "full_description_ar": "دورة مصغرة مجانية من درسين تغطي وضعيات اليد في الريكي واستشعار الطاقة الأساسي — طريقة منخفضة المخاطر لمعرفة ما إذا كان هذا النوع من العمل يناسبك قبل التسجيل في دورة كاملة.",
+      "meta": "2 lessons · 40m",
+      "meta_ar": "درسان · 40د",
+      "badge": "Free",
+      "badge_ar": "مجاني",
+      "what_you_get": [
+        "2 video lessons streamed through the portal",
+        "Basic hand-position reference sheet",
+        "No payment required"
+      ],
+      "what_you_get_ar": [
+        "درسا فيديو يُبثان عبر البوابة",
+        "ورقة مرجعية أساسية لوضعيات اليد",
+        "لا حاجة للدفع"
+      ],
+      "image_url": "images/pendulum-set.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 0,
+      "is_free": true,
+      "downloadable": false,
+      "sort_order": 7,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "v",
+          "title": "Hand positions and energy sensing",
+          "title_ar": "وضعيات اليد واستشعار الطاقة",
+          "length": "40 min",
+          "length_ar": "40 دقيقة",
+          "description": "Two lessons covering the Reiki basics, free.",
+          "description_ar": "درسان يغطيان أساسيات الريكي، مجانًا."
+        },
+        {
+          "kind": "p",
+          "title": "Hand-position reference sheet",
+          "title_ar": "ورقة مرجعية لوضعيات اليد",
+          "length": "2 pages",
+          "length_ar": "صفحتان",
+          "description": "Print and keep beside you while practising.",
+          "description_ar": "اطبعوها واحفظوها بجانبكم أثناء التدريب."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Meditation",
+      "category_ar": "تأمل صوتي",
+      "type": "Audio",
+      "title": "Grounding Before Sleep",
+      "title_ar": "تأريض قبل النوم",
+      "description": "A short, gentle wind-down session to settle the body before bed.",
+      "description_ar": "جلسة استرخاء قصيرة ولطيفة لتهيئة الجسم قبل النوم.",
+      "full_description": "A short, gentle audio built for the last few minutes before sleep — slow breath cues and a body-scan release to help the nervous system settle after a long day.",
+      "full_description_ar": "تسجيل صوتي قصير ولطيف مصمم لآخر دقائق قبل النوم — إشارات تنفس بطيئة وتحرر بمسح الجسم لمساعدة الجهاز العصبي على الاستقرار بعد يوم طويل.",
+      "meta": "12 min",
+      "meta_ar": "12 دقيقة",
+      "badge": "2 min taster",
+      "badge_ar": "معاينة 2 دقيقة",
+      "what_you_get": [
+        "One 12-minute guided audio session",
+        "MP3 download for offline listening",
+        "Best used lying down, lights low"
+      ],
+      "what_you_get_ar": [
+        "جلسة صوتية موجهة مدتها 12 دقيقة",
+        "ملف MP3 للاستماع دون اتصال",
+        "يُفضَّل استخدامها في وضع الاستلقاء مع إضاءة خفيفة"
+      ],
+      "image_url": "images/pendulum-gold-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 7,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 8,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "a",
+          "title": "Grounding Before Sleep",
+          "title_ar": "تأريض قبل النوم",
+          "length": "12 min",
+          "length_ar": "12 دقيقة",
+          "description": "Slow breath cues and a body-scan release.",
+          "description_ar": "إشارات تنفس بطيئة وتحرر بمسح الجسم."
+        },
+        {
+          "kind": "a",
+          "title": "Night-waking reset",
+          "title_ar": "إعادة ضبط الاستيقاظ الليلي",
+          "length": "6 min",
+          "length_ar": "6 دقائق",
+          "description": "For the 3am waking, kept deliberately short.",
+          "description_ar": "للاستيقاظ عند الثالثة فجرًا، قصير بشكل مقصود."
+        }
+      ],
+      "has_teaser": false
+    },
+    {
+      "category": "Meditation",
+      "category_ar": "تأمل صوتي",
+      "type": "Audio",
+      "title": "Clearing Anxious Energy",
+      "title_ar": "تفريغ طاقة القلق",
+      "description": "A steadying session for moments when anxiety takes over the body.",
+      "description_ar": "جلسة مثبِّتة للحظات التي يسيطر فيها القلق على الجسم.",
+      "full_description": "Built for the moments anxiety takes over — a steadying sequence of breath and grounding cues to bring the body back to a calmer baseline, recorded to be used any time of day.",
+      "full_description_ar": "مصممة للحظات التي يسيطر فيها القلق — تسلسل مثبِّت من التنفس وإشارات التأريض لإعادة الجسم إلى حالة أكثر هدوءًا، ومُسجَّلة للاستخدام في أي وقت من اليوم.",
+      "meta": "18 min",
+      "meta_ar": "18 دقيقة",
+      "badge": "2 min taster",
+      "badge_ar": "معاينة 2 دقيقة",
+      "what_you_get": [
+        "One 18-minute guided audio session",
+        "MP3 download for offline listening",
+        "Can be used seated or lying down"
+      ],
+      "what_you_get_ar": [
+        "جلسة صوتية موجهة مدتها 18 دقيقة",
+        "ملف MP3 للاستماع دون اتصال",
+        "يمكن استخدامها جلوسًا أو استلقاءً"
+      ],
+      "image_url": "images/pendulum-gold-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 9,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 9,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "a",
+          "title": "Clearing Anxious Energy",
+          "title_ar": "تفريغ طاقة القلق",
+          "length": "18 min",
+          "length_ar": "18 دقيقة",
+          "description": "A steadying breath and grounding sequence.",
+          "description_ar": "تسلسل تنفس وتأريض مثبِّت."
+        },
+        {
+          "kind": "a",
+          "title": "Two-minute emergency reset",
+          "title_ar": "إعادة ضبط طارئة في دقيقتين",
+          "length": "2 min",
+          "length_ar": "دقيقتان",
+          "description": "For use standing, in public, mid-spike.",
+          "description_ar": "للاستخدام وقوفًا، بين الناس، في ذروة القلق."
+        },
+        {
+          "kind": "p",
+          "title": "Trigger notes sheet",
+          "title_ar": "ورقة ملاحظات المحفزات",
+          "length": "2 pages",
+          "length_ar": "صفحتان",
+          "description": "Track what preceded each spike.",
+          "description_ar": "تتبعوا ما سبق كل موجة قلق."
+        }
+      ],
+      "has_teaser": false
+    },
+    {
+      "category": "Meditation",
+      "category_ar": "تأمل صوتي",
+      "type": "Audio",
+      "title": "Morning Energy Reset",
+      "title_ar": "إعادة ضبط طاقة الصباح",
+      "description": "A short energizing meditation to start the day grounded and clear.",
+      "description_ar": "تأمل صباحي قصير ونشِط لبدء اليوم بثبات ووضوح.",
+      "full_description": "A brighter, shorter session designed for the morning — clearing residual sleep fog and setting an intentional, grounded tone before the day’s demands take over.",
+      "full_description_ar": "جلسة أكثر إشراقًا وأقصر مصممة للصباح — تُزيل بقايا ضباب النوم وتضع نية واضحة ومتجذرة قبل أن تسيطر متطلبات اليوم.",
+      "meta": "10 min",
+      "meta_ar": "10 دقائق",
+      "badge": "2 min taster",
+      "badge_ar": "معاينة 2 دقيقة",
+      "what_you_get": [
+        "One 10-minute guided audio session",
+        "MP3 download for offline listening",
+        "Pairs well with the Energy Journaling sheet"
+      ],
+      "what_you_get_ar": [
+        "جلسة صوتية موجهة مدتها 10 دقائق",
+        "ملف MP3 للاستماع دون اتصال",
+        "تتناسب جيدًا مع ورقة تدوين الطاقة"
+      ],
+      "image_url": "images/pendulum-gold-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 7,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 10,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "a",
+          "title": "Morning Energy Reset",
+          "title_ar": "إعادة ضبط طاقة الصباح",
+          "length": "10 min",
+          "length_ar": "10 دقائق",
+          "description": "Clears sleep fog and sets the day’s tone.",
+          "description_ar": "تزيل ضباب النوم وتضبط نبرة اليوم."
+        },
+        {
+          "kind": "a",
+          "title": "Commute-length version",
+          "title_ar": "نسخة بطول الطريق",
+          "length": "5 min",
+          "length_ar": "5 دقائق",
+          "description": "The same sequence, condensed for a short trip.",
+          "description_ar": "التسلسل نفسه، مختصرًا لرحلة قصيرة."
+        }
+      ],
+      "has_teaser": false
+    },
+    {
+      "category": "Course",
+      "category_ar": "دورة إلكترونية",
+      "type": "Video",
+      "title": "Pranic Healing Essentials",
+      "title_ar": "أساسيات الشفاء البراني",
+      "description": "A practical course in scanning and clearing energy using Pranic Healing.",
+      "description_ar": "دورة عملية في مسح وتفريغ الطاقة باستخدام الشفاء البراني.",
+      "full_description": "A practical, hands-on course in Pranic Healing — scanning for energetic congestion, clearing it, and re-energizing the body’s field. Includes guided practice sessions to try each technique as you learn it.",
+      "full_description_ar": "دورة عملية وتطبيقية في الشفاء البراني — مسح الازدحام الطاقي، وتفريغه، وإعادة تنشيط مجال الجسم. تشمل جلسات تطبيقية موجهة لتجربة كل تقنية أثناء التعلم.",
+      "meta": "10 lessons · 4h 20m",
+      "meta_ar": "10 دروس · 4س 20د",
+      "badge": "First lesson included",
+      "badge_ar": "الدرس الأول مضمّن",
+      "what_you_get": [
+        "10 video lessons streamed through the portal",
+        "Guided practice sessions for each technique",
+        "Lifetime access to future updates"
+      ],
+      "what_you_get_ar": [
+        "10 دروس فيديو تُبث عبر البوابة",
+        "جلسات تطبيقية موجهة لكل تقنية",
+        "وصول مدى الحياة لأي تحديثات مستقبلية"
+      ],
+      "image_url": "images/pendulum-set.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 59,
+      "is_free": false,
+      "downloadable": false,
+      "sort_order": 11,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "v",
+          "title": "Ten Pranic Healing lessons",
+          "title_ar": "عشرة دروس في الشفاء البراني",
+          "length": "4h 20m",
+          "length_ar": "4س 20د",
+          "description": "Scanning, clearing, and re-energising the field.",
+          "description_ar": "المسح، والتفريغ، وإعادة تنشيط المجال."
+        },
+        {
+          "kind": "a",
+          "title": "Guided practice sessions",
+          "title_ar": "جلسات تطبيقية موجهة",
+          "length": "46 min",
+          "length_ar": "46 دقيقة",
+          "description": "One short session per technique, to try as you learn.",
+          "description_ar": "جلسة قصيرة لكل تقنية، للتجربة أثناء التعلم."
+        },
+        {
+          "kind": "p",
+          "title": "Scanning cheat sheet",
+          "title_ar": "ورقة مساعدة للمسح",
+          "length": "4 pages",
+          "length_ar": "4 صفحات",
+          "description": "The scan order, on one printable page.",
+          "description_ar": "ترتيب المسح، على صفحة واحدة قابلة للطباعة."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Course",
+      "category_ar": "دورة إلكترونية",
+      "type": "Video",
+      "title": "Hypnosis for Deep Release",
+      "title_ar": "التنويم للتحرر العميق",
+      "description": "Guided hypnosis techniques for releasing patterns that no longer serve you.",
+      "description_ar": "تقنيات تنويم موجه للتحرر من الأنماط التي لم تعد تخدمك.",
+      "full_description": "A course in guided hypnosis for releasing old patterns and beliefs that quietly run in the background — built from the technique Abir uses most often in 1:1 sessions.",
+      "full_description_ar": "دورة في التنويم الموجه للتحرر من الأنماط والمعتقدات القديمة التي تعمل في الخفاء — مبنية على التقنية التي تستخدمها عبير غالبًا في الجلسات الفردية.",
+      "meta": "7 lessons · 3h 10m",
+      "meta_ar": "7 دروس · 3س 10د",
+      "badge": "First lesson included",
+      "badge_ar": "الدرس الأول مضمّن",
+      "what_you_get": [
+        "7 video lessons streamed through the portal",
+        "Two bonus guided hypnosis recordings",
+        "A certificate of completion"
+      ],
+      "what_you_get_ar": [
+        "7 دروس فيديو تُبث عبر البوابة",
+        "تسجيلا تنويم موجه إضافيان",
+        "شهادة إتمام"
+      ],
+      "image_url": "images/pendulum-hand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 54,
+      "is_free": false,
+      "downloadable": false,
+      "sort_order": 12,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "v",
+          "title": "Seven hypnosis lessons",
+          "title_ar": "سبعة دروس في التنويم",
+          "length": "3h 10m",
+          "length_ar": "3س 10د",
+          "description": "The release technique Abir uses most in 1:1 work.",
+          "description_ar": "تقنية التحرر التي تستخدمها عبير أكثر في العمل الفردي."
+        },
+        {
+          "kind": "a",
+          "title": "Two bonus hypnosis recordings",
+          "title_ar": "تسجيلا تنويم إضافيان",
+          "length": "52 min",
+          "length_ar": "52 دقيقة",
+          "description": "Full guided sessions to receive rather than lead.",
+          "description_ar": "جلستان موجهتان كاملتان لتلقّيهما بدل قيادتهما."
+        },
+        {
+          "kind": "p",
+          "title": "Script templates",
+          "title_ar": "قوالب نصية",
+          "length": "9 pages",
+          "length_ar": "9 صفحات",
+          "description": "Editable inductions to adapt to your own voice.",
+          "description_ar": "مقدمات قابلة للتعديل لتلائم صوتك."
+        }
+      ],
+      "has_teaser": true
+    },
+    {
+      "category": "Manual",
+      "category_ar": "دليل",
+      "type": "PDF",
+      "title": "Dowsing for Beginners",
+      "title_ar": "الاستشعار للمبتدئين",
+      "description": "A written introduction to dowsing as a tool for guidance and clarity.",
+      "description_ar": "مقدمة مكتوبة عن الاستشعار كأداة للتوجيه والوضوح.",
+      "full_description": "A written introduction to dowsing — how it differs from pendulum work, how to start asking your own questions, and how to build confidence reading the answers.",
+      "full_description_ar": "مقدمة مكتوبة عن الاستشعار — كيف يختلف عن عمل البندول، وكيفية بدء طرح أسئلتك الخاصة، وبناء الثقة في قراءة الإجابات.",
+      "meta": "26 pages",
+      "meta_ar": "26 صفحة",
+      "badge": "First chapter included",
+      "badge_ar": "الفصل الأول مضمّن",
+      "what_you_get": [
+        "26-page illustrated PDF guide",
+        "Sample questions to practice with",
+        "Downloadable, yours to keep"
+      ],
+      "what_you_get_ar": [
+        "دليل PDF مصوّر من 26 صفحة",
+        "أسئلة نموذجية للتدريب",
+        "قابل للتحميل، يبقى لديك"
+      ],
+      "image_url": "images/pendulum-sand.jpg",
+      "video_id": null,
+      "file_url": null,
+      "price_usd": 15,
+      "is_free": false,
+      "downloadable": true,
+      "sort_order": 13,
+      "published": true,
+      "pack_items": [
+        {
+          "kind": "p",
+          "title": "Dowsing for beginners guide",
+          "title_ar": "دليل الاستشعار للمبتدئين",
+          "length": "26 pages",
+          "length_ar": "26 صفحة",
+          "description": "How dowsing differs from pendulum work.",
+          "description_ar": "كيف يختلف الاستشعار عن عمل البندول."
+        },
+        {
+          "kind": "p",
+          "title": "Practice question bank",
+          "title_ar": "بنك أسئلة للتدريب",
+          "length": "5 pages",
+          "length_ar": "5 صفحات",
+          "description": "Sixty sample questions to build confidence.",
+          "description_ar": "ستون سؤالًا نموذجيًا لبناء الثقة."
+        }
+      ],
+      "has_teaser": false
+    }
+  ],
+  "workshops": [
+    {
+      "title": "Pendulum Healing: Live Group Circle",
+      "title_ar": "شفاء البندول: دائرة جماعية مباشرة",
+      "starts_at": "2026-03-14T19:00:00+04:00",
+      "time_label": "19:00 GST",
+      "time_label_ar": "19:00 بتوقيت الخليج",
+      "spots": 4,
+      "price_usd": 45,
+      "format": "Live online · circle of 20",
+      "format_ar": "مباشر عبر الإنترنت · دائرة من 20",
+      "duration": "2h 30m",
+      "duration_ar": "ساعتان و30 دقيقة",
+      "overview": "The circle Abir returns to most often — a live, guided group session in pendulum healing. We calibrate together, work through a shared clearing sequence, then hold space for individual questions while the field is still open.",
+      "overview_ar": "الدائرة التي تعود إليها عبير أكثر من غيرها — جلسة جماعية موجهة مباشرة في شفاء البندول. نضبط البندول معًا، ونمر بتسلسل تفريغ مشترك، ثم نفتح المجال للأسئلة الفردية بينما يبقى المجال الطاقي مفتوحًا.",
+      "sort_order": 1,
+      "published": true
+    },
+    {
+      "title": "Energy Reset Day",
+      "title_ar": "يوم إعادة ضبط الطاقة",
+      "starts_at": "2026-06-06T18:00:00+04:00",
+      "time_label": "18:00 GST",
+      "time_label_ar": "18:00 بتوقيت الخليج",
+      "spots": 9,
+      "price_usd": 80,
+      "format": "Live online · group of 40",
+      "format_ar": "مباشر عبر الإنترنت · مجموعة من 40",
+      "duration": "4h across the afternoon",
+      "duration_ar": "4 ساعات على مدى العصر",
+      "overview": "A half-day reset: three guided energy sessions spaced with rest, built to clear a season’s worth of accumulated heaviness in one sitting. Recording shared afterwards with everyone who attends.",
+      "overview_ar": "نصف يوم لإعادة الضبط: ثلاث جلسات طاقية موجهة يفصل بينها راحة، مصممة لتفريغ ثقل فصل كامل في جلسة واحدة. يُشارك التسجيل بعدها مع كل من حضر.",
+      "sort_order": 2,
+      "published": true
+    },
+    {
+      "title": "Pendulum Practitioner Intensive",
+      "title_ar": "تدريب ممارسي البندول المكثف",
+      "starts_at": "2026-09-19T17:00:00+04:00",
+      "time_label": "17:00 GST",
+      "time_label_ar": "17:00 بتوقيت الخليج",
+      "spots": 2,
+      "price_usd": 220,
+      "format": "Live online · small group of 12",
+      "format_ar": "مباشر عبر الإنترنت · مجموعة صغيرة من 12",
+      "duration": "6h over two evenings",
+      "duration_ar": "6 ساعات على مسائين",
+      "overview": "The deepest live training of the year, for people already practising with a pendulum. Two evenings of calibration work, clean question-asking, and supervised practice on other participants, with feedback from Abir in the room.",
+      "overview_ar": "أعمق تدريب مباشر في العام، لمن يمارسون البندول بالفعل. مسائان من عمل الضبط، وطرح الأسئلة النقية، والتطبيق المُشرف عليه على مشاركوان آخرين، مع ملاحظات مباشرة من عبير في الغرفة.",
+      "sort_order": 3,
+      "published": true
+    },
+    {
+      "title": "Year-End Release Circle",
+      "title_ar": "دائرة التحرر في ختام العام",
+      "starts_at": "2026-12-12T20:00:00+04:00",
+      "time_label": "20:00 GST",
+      "time_label_ar": "20:00 بتوقيت الخليج",
+      "spots": 12,
+      "price_usd": 35,
+      "format": "Live online · open circle",
+      "format_ar": "مباشر عبر الإنترنت · دائرة مفتوحة",
+      "duration": "2h",
+      "duration_ar": "ساعتان",
+      "overview": "A gentle closing circle for the year — naming what is being set down, and a long guided release to walk into January without carrying the last twelve months in your body.",
+      "overview_ar": "دائرة ختام لطيفة للعام — نسمّي ما نضعه أرضًا، ثم تحرر موجه طويل لندخل يناير دون أن نحمل الأشهر الاثني عشر الماضية في أجسادنا.",
+      "sort_order": 4,
+      "published": true
+    }
+  ],
+  "journal_posts": [
+    {
+      "category": "Energy Work",
+      "category_ar": "عمل بالطاقة",
+      "read_time": "6 min read",
+      "read_time_ar": "6 دقائق قراءة",
+      "title": "Understanding Pendulum Healing",
+      "title_ar": "فهم شفاء البندول",
+      "excerpt": "A closer look at the modality that became the heart of the practice — and how it works.",
+      "excerpt_ar": "نظرة أقرب على الأسلوب الذي أصبح جوهر الممارسة — وكيف يعمل.",
+      "body": "Pendulum healing works by using a small weighted object, suspended on a chain, to read subtle shifts in the body’s energy — blocks, imbalances, questions the conscious mind can’t easily answer.\n\nAbir came to it after years with Reiki, Pranic Healing, Hypnosis and Dowsing, and found it was the modality that let her get the most specific, the fastest, about where someone was actually holding tension. In a session, the pendulum isn’t the healer — it’s a translator, turning something felt but unspoken into something that can finally be addressed directly.\n\nMost first-time clients are surprised by how calm the process feels. There’s no dramatic release in the room; the shift tends to show up in the days after, as sleep gets easier or an old worry quietly stops being loud.",
+      "body_ar": "يعمل شفاء البندول باستخدام جسم صغير مُثقَّل معلّق على سلسلة، لقراءة التحولات الدقيقة في طاقة الجسم — الانسدادات، وحالات عدم التوازن، والأسئلة التي لا يجيب عنها العقل الواعي بسهولة.\n\nوصلت عبير إليه بعد سنوات مع الريكي والشفاء البراني والتنويم والاستشعار، ووجدت أنه الأسلوب الذي يمنحها أسرع وأدق تحديد لموضع التوتر الحقيقي. في الجلسة، البندول ليس المعالج — بل مترجم يحوّل ما يُشعر به ولا يُقال إلى شيء يمكن التعامل معه مباشرة.\n\nمعظم من يجرّبه للمرة الأولى يتفاجأ بهدوء العملية. لا يوجد تحرر درامي في الغرفة؛ التحول يظهر عادة في الأيام التالية، حين يصبح النوم أسهل أو يهدأ قلق قديم بصمت.",
+      "image_url": null,
+      "sort_order": 1,
+      "published": true,
+      "published_at": "2026-01-01T09:00:00Z"
+    },
+    {
+      "category": "Personal Growth",
+      "category_ar": "نمو شخصي",
+      "read_time": "4 min read",
+      "read_time_ar": "4 دقائق قراءة",
+      "title": "Why \"Normal\" Isn’t the Goal",
+      "title_ar": "لماذا لا يكون \"الطبيعي\" هو الهدف",
+      "excerpt": "Healing rarely means going back to who you were. It means becoming who you’re meant to be.",
+      "excerpt_ar": "الشفاء نادرًا ما يعني العودة لما كنتم عليه. يعني أن تصبحوا من يجب أن تكونوا.",
+      "body": "Almost every new client says some version of the same thing: \"I just want to feel normal again.\" It’s an understandable wish — and also, gently, the wrong goal.\n\n\"Normal\" usually means who you were before whatever happened happened. But you’re not the same person who walked into that moment, and trying to rebuild the old version of yourself means ignoring everything the last chapter taught you.\n\nThe work Abir does isn’t about restoration. It’s about integration — taking what the hard season gave you and building a steadier, wiser version of yourself on top of it. That person doesn’t look like who you were before. They look like who you were always becoming.",
+      "body_ar": "يقول كل عميل جديد تقريبًا نسخة من الجملة نفسها: \"أريد فقط أن أعود كما كنت.\" رغبة مفهومة — وهي أيضًا، بلطف، الهدف الخطأ.\n\n\"الطبيعي\" يعني عادة من كنتم قبل أن يحدث ما حدث. لكنكم لستم الأشخاص أنفسهم الذين دخلوا تلك اللحظة، ومحاولة إعادة بناء نسختكم القديمة تعني تجاهل كل ما علّمكم إياه الفصل الأخير.\n\nالعمل الذي تقوم به عبير لا يتعلق بالاستعادة، بل بالدمج — أن تأخذوا ما منحكم إياه الوقت الصعب وتبنوا عليه نسخة أكثر ثباتًا وحكمة منكم. تلك النسخة لا تشبه من كنتم، بل تشبه من كنتم في طريقكم لتصبحوه دائمًا.",
+      "image_url": null,
+      "sort_order": 2,
+      "published": true,
+      "published_at": "2026-02-01T09:00:00Z"
+    },
+    {
+      "category": "Client Story",
+      "category_ar": "قصة عميلة",
+      "read_time": "5 min read",
+      "read_time_ar": "5 دقائق قراءة",
+      "title": "Rana’s Journey Back to Herself",
+      "title_ar": "رحلة رنا للعودة إلى نفسها",
+      "excerpt": "One client’s path through grief, sessions, and slowly finding steady ground again.",
+      "excerpt_ar": "مسار عميلة واحدة عبر الحزن، والجلسات، وإيجاد أرض ثابتة من جديد.",
+      "body": "Rana came to her first session eight months after losing her mother, describing herself as \"functioning, but hollow.\" She wasn’t sleeping well, and small decisions — what to cook, what to wear — had started to feel enormous.\n\nOver a series of 1:1 sessions, the work moved slowly: grounding first, then gently working through the specific moments of grief that kept resurfacing, one at a time rather than all at once. Around the fourth session, Rana said she noticed she’d laughed at something without immediately feeling guilty about it.\n\nA year later, she still comes in for occasional sessions — not because she’s \"stuck,\" but because she’s learned that maintenance, not just crisis response, is part of taking care of herself.",
+      "body_ar": "جاءت رنا إلى جلستها الأولى بعد ثمانية أشهر من فقدان والدتها، واصفة نفسها بأنها \"تعمل، لكنها فارغة من الداخل\". لم تكن تنام جيدًا، وصارت القرارات الصغيرة — ماذا تطبخ، وماذا تلبس — تبدو ضخمة.\n\nعلى مدى سلسلة من الجلسات الفردية، تحرك العمل ببطء: التأريض أولًا، ثم المرور بلطف على لحظات الحزن التي تستمر في العودة، واحدة تلو الأخرى لا كلها معًا. حول الجلسة الرابعة، قالت رنا إنها لاحظت أنها ضحكت على شيء دون أن تشعر بالذنب فورًا.\n\nبعد عام، ما زالت تأتي لجلسات من حين لآخر — لا لأنها \"متعطلة\"، بل لأنها تعلمت أن الصيانة، لا الاستجابة للأزمات فقط، جزء من الاعتناء بنفسها.",
+      "image_url": null,
+      "sort_order": 3,
+      "published": true,
+      "published_at": "2026-03-01T09:00:00Z"
+    },
+    {
+      "category": "Conversation",
+      "category_ar": "حوار",
+      "read_time": "7 min read",
+      "read_time_ar": "7 دقائق قراءة",
+      "title": "A Conversation on the Unseen Magic",
+      "title_ar": "حوار حول السحر غير المرئي",
+      "excerpt": "Abir sits down to talk energy, intuition, and what keeps her doing this work since 2008.",
+      "excerpt_ar": "عبير تتحدث عن الطاقة والحدس وما يدفعها لهذا العمل منذ 2008.",
+      "body": "\"People ask me if I believe in magic,\" Abir says, \"and I tell them I believe in energy, which is the same thing with better manners.\"\n\nShe traces her interest back to a period in 2008 when she couldn’t explain, medically, why she felt so depleted — and started looking into energy work almost by accident, first for herself. \"I didn’t set out to build a practice. I set out to fix myself, and then people kept asking how I did it.\"\n\nEighteen years and five modalities later, what keeps her doing the work is simple, she says: \"Watching someone put a weight down that they’d been carrying so long they forgot it was optional to carry. That never gets old.\"",
+      "body_ar": "\"يسألني الناس إن كنت أؤمن بالسحر\"، تقول عبير، \"فأقول لهم إنني أؤمن بالطاقة، وهي الشيء نفسه بأدب أكثر.\"\n\nتعيد بداية اهتمامها إلى فترة في عام 2008 لم تستطع فيها أن تشرح طبيًا سبب استنزافها الشديد، فبدأت تبحث في العمل الطاقي بالمصادفة تقريبًا، ولنفسها أولًا. \"لم أخطط لبناء ممارسة. خططت لإصلاح نفسي، ثم صار الناس يسألونني كيف فعلتها.\"\n\nبعد ثمانية عشر عامًا وخمسة أساليب، ما يجعلها تستمر بسيط كما تقول: \"أن أرى شخصًا يضع أرضًا حملًا حمله طويلًا حتى نسي أن حمله كان اختيارًا. هذا لا يفقد أثره أبدًا.\"",
+      "image_url": null,
+      "sort_order": 4,
+      "published": true,
+      "published_at": "2026-04-01T09:00:00Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "kind": "written",
+      "name": "Rana M.",
+      "name_ar": "رنا م.",
+      "role": "1:1 Sessions",
+      "role_ar": "جلسات فردية",
+      "quote": "I walked in carrying years of grief and walked out feeling like I could breathe again. Abir held space for me without judgment.",
+      "quote_ar": "دخلت وأنا أحمل سنوات من الحزن وخرجت أشعر أنني أستطيع التنفس من جديد. عبير احتوت مشاعري بلا أي حكم.",
+      "sort_order": 1,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Hossam K.",
+      "name_ar": "حسام ك.",
+      "role": "Miraculous Monday",
+      "role_ar": "الاثنين المُعجزة",
+      "quote": "The weekly meditations became the one hour I always came back to myself. Three years later I still show up every Monday.",
+      "quote_ar": "التأملات الأسبوعية أصبحت الساعة التي أعود فيها دائمًا إلى نفسي. بعد ثلاث سنوات ما زلت أحضر كل اثنين.",
+      "sort_order": 2,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Dina F.",
+      "name_ar": "دينا ف.",
+      "role": "Pendulum Healing",
+      "role_ar": "شفاء البندول",
+      "quote": "I was skeptical at first. What Abir does with the pendulum work is unlike anything I'd tried — precise, gentle, and deeply healing.",
+      "quote_ar": "كنت متشككة في البداية. ما تفعله عبير بالبندول لا يشبه أي شيء جربته من قبل — دقيق ولطيف وشفاء عميق.",
+      "sort_order": 3,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Youssef A.",
+      "name_ar": "يوسف أ.",
+      "role": "Live Workshop",
+      "role_ar": "ورشة مباشرة",
+      "quote": "The group circle gave me community I didn't know I needed. We healed alongside each other, not just individually.",
+      "quote_ar": "الدائرة الجماعية أعطتني مجتمعًا لم أكن أعرف أنني أحتاجه. تعافينا معًا، لا كل واحد بمفرده.",
+      "sort_order": 4,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Lina S.",
+      "name_ar": "لينا س.",
+      "role": "Pendulum Healing",
+      "role_ar": "شفاء البندول",
+      "quote": "I came for one session about sleep and ended up untangling something I had carried since childhood. I sleep through the night now.",
+      "quote_ar": "جئت لجلسة واحدة بسبب النوم، وانتهى بي الأمر أفك عقدة حملتها منذ الطفولة. أنام الليل كله الآن.",
+      "sort_order": 5,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Omar T.",
+      "name_ar": "عمر ت.",
+      "role": "1:1 Sessions",
+      "role_ar": "جلسات فردية",
+      "quote": "As someone who is very logical, I did not expect to feel this much. Abir explains everything and never pushes.",
+      "quote_ar": "كشخص منطقي جدًا، لم أتوقع أن أشعر بكل هذا. عبير تشرح كل شيء ولا تضغط أبدًا.",
+      "sort_order": 6,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Nour H.",
+      "name_ar": "نور ح.",
+      "role": "Energy Reset Day",
+      "role_ar": "يوم إعادة ضبط الطاقة",
+      "quote": "Four hours that felt like a month-long retreat. I left lighter, and the recording helps me go back whenever I need it.",
+      "quote_ar": "أربع ساعات شعرت وكأنها خلوة لشهر كامل. خرجت أخف، والتسجيل يساعدني على العودة متى احتجت.",
+      "sort_order": 7,
+      "published": true
+    },
+    {
+      "kind": "written",
+      "name": "Sara B.",
+      "name_ar": "سارة ب.",
+      "role": "Miraculous Monday",
+      "role_ar": "الاثنين المُعجزة",
+      "quote": "Monday evenings are sacred for me now. The circle feels like family.",
+      "quote_ar": "أمسيات الاثنين أصبحت مقدسة بالنسبة لي. الدائرة تشبه العائلة.",
+      "sort_order": 8,
+      "published": true
+    },
+    {
+      "kind": "voice",
+      "name": "Mariam K.",
+      "name_ar": "مريم ك.",
+      "role": "1:1 Sessions",
+      "role_ar": "جلسات فردية",
+      "summary": "On the week after her first session and what shifted at home.",
+      "summary_ar": "عن الأسبوع الذي تلا جلستها الأولى وما تغيّر في البيت.",
+      "quote": "I wanted to tell you, the whole week after our session I felt calmer at home. My kids noticed it before I did. Thank you for that.",
+      "quote_ar": "أردت أن أخبرك، طوال الأسبوع بعد جلستنا شعرت بهدوء أكبر في البيت. أطفالي لاحظوا ذلك قبلي. شكرًا لك.",
+      "sort_order": 9,
+      "published": true
+    },
+    {
+      "kind": "voice",
+      "name": "Hana R.",
+      "name_ar": "هنا ر.",
+      "role": "Live Workshop",
+      "role_ar": "ورشة مباشرة",
+      "summary": "Why the group circle felt safer than she expected.",
+      "summary_ar": "لماذا شعرت بأمان في الدائرة الجماعية أكثر مما توقعت.",
+      "quote": "I was nervous about joining a group, but the moment the circle started I felt held. Hearing others share made my own story feel lighter.",
+      "quote_ar": "كنت متوترة من الانضمام لمجموعة، لكن لحظة بدء الدائرة شعرت بالاحتواء. سماع الآخرين جعل قصتي أخف.",
+      "sort_order": 10,
+      "published": true
+    },
+    {
+      "kind": "voice",
+      "name": "Ahmed F.",
+      "name_ar": "أحمد ف.",
+      "role": "Pendulum Healing",
+      "role_ar": "شفاء البندول",
+      "summary": "A short thank-you note recorded the morning after.",
+      "summary_ar": "رسالة شكر قصيرة سُجّلت في صباح اليوم التالي.",
+      "quote": "Good morning Abir. I slept properly for the first time in months. Just wanted you to know. Thank you.",
+      "quote_ar": "صباح الخير عبير. نمت جيدًا لأول مرة منذ شهور. أردت فقط أن تعرفي. شكرًا لك.",
+      "sort_order": 11,
+      "published": true
+    },
+    {
+      "kind": "screenshot",
+      "name": "Rana M.",
+      "name_ar": "رنا م.",
+      "role": "1:1 Sessions",
+      "role_ar": "جلسات فردية",
+      "via": "WhatsApp message",
+      "via_ar": "رسالة واتساب",
+      "image_url": "images/testi-shot-en-1.png",
+      "image_url_ar": "images/testi-shot-ar-1.png",
+      "sort_order": 12,
+      "published": true
+    },
+    {
+      "kind": "screenshot",
+      "name": "Dina F.",
+      "name_ar": "دينا ف.",
+      "role": "Pendulum Healing",
+      "role_ar": "شفاء البندول",
+      "via": "Instagram DM",
+      "via_ar": "رسالة إنستغرام",
+      "image_url": "images/testi-shot-en-2.png",
+      "image_url_ar": "images/testi-shot-ar-2.png",
+      "sort_order": 13,
+      "published": true
+    },
+    {
+      "kind": "screenshot",
+      "name": "Laila A.",
+      "name_ar": "ليلى أ.",
+      "role": "Miraculous Monday",
+      "role_ar": "الاثنين المُعجزة",
+      "via": "WhatsApp message",
+      "via_ar": "رسالة واتساب",
+      "image_url": "images/testi-shot-en-3.png",
+      "image_url_ar": "images/testi-shot-ar-3.png",
+      "sort_order": 14,
+      "published": true
+    },
+    {
+      "kind": "screenshot",
+      "name": "Youssef A.",
+      "name_ar": "يوسف أ.",
+      "role": "Live Workshop",
+      "role_ar": "ورشة مباشرة",
+      "via": "Email",
+      "via_ar": "بريد إلكتروني",
+      "image_url": "images/testi-shot-en-4.png",
+      "image_url_ar": "images/testi-shot-ar-4.png",
+      "sort_order": 15,
+      "published": true
+    }
+  ]
+}

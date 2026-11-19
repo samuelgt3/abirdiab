@@ -1,0 +1,254 @@
+{
+  "privacy": {
+    "en": {
+      "kicker": "Policies",
+      "title": "Privacy Policy",
+      "updated": "Last updated: 17 November 2026",
+      "intro": "We respect your privacy. This page explains what information we collect, why we collect it, and how we look after it.",
+      "contactLine": "Questions about your data? Contact us:",
+      "sections": [
+        {
+          "h": "What we collect",
+          "p": "When you create an account, book a session, reserve a workshop seat, buy a material, subscribe to the newsletter or share a testimonial, we collect what you give us: your name, email address, phone or WhatsApp number, country, and what you booked or bought. Your account also stores your sign-in details (your password is kept only in scrambled form), your course progress and your language choice. Card details are typed only into our payment provider’s secure form and never reach us."
+        },
+        {
+          "h": "How we use it",
+          "p": "To confirm bookings and purchases, give you your personal session link and access to your materials, send joining links and booking emails, reply to your messages and, only if you subscribe, send occasional news. We do not use your details for advertising."
+        },
+        {
+          "h": "Who receives it",
+          "p": "Only the services needed to run the site: Supabase (our database and sign-in, hosted in the cloud), Paymob (card payments), an email service to send booking emails and codes, an SMS or WhatsApp service if phone codes are switched on, and a video-call service for sessions and workshops (a free Jitsi room or another platform we choose). The site also asks a free exchange-rate service (open.er-api.com) for currency rates, which means that service can see your internet address when you open the site. We never sell your data."
+        },
+        {
+          "h": "Where you are",
+          "p": "We work out your country from your IP address, only to show prices in your own currency. Our server sends the address to a free IP-to-country lookup service (api.country.is, or ipwho.is as a spare) and gets back just a country code. We do not store your IP address; the country code is kept on your own device for a week."
+        },
+        {
+          "h": "Testimonials",
+          "p": "We only publish a testimonial with your consent, using your first name and initial. You can ask us to remove it at any time."
+        },
+        {
+          "h": "Session confidentiality",
+          "p": "What you share in a 1:1 session stays between you and Abir. Any session notes are kept private and are never shared."
+        },
+        {
+          "h": "How long we keep it, and your rights",
+          "p": "We keep your details only as long as needed to provide your purchases and meet legal obligations. You can see and correct your details in My account, unsubscribe from the newsletter at any time, and delete your account yourself from Settings in My account (this wipes your name and contact details from your past orders; only the receipt, item and amount remain). You can also ask us to delete anything else we hold about you."
+        },
+        {
+          "h": "Cookies and local storage",
+          "p": "This site stores your language, currency choice, cart and (while you are signed in) your sign-in session on your own device. We do not use advertising or tracking cookies."
+        }
+      ]
+    },
+    "ar": {
+      "kicker": "السياسات",
+      "title": "سياسة الخصوصية",
+      "updated": "آخر تحديث: 17 نوفمبر 2026",
+      "intro": "نحترم خصوصيتكم. توضح هذه الصفحة البيانات التي نجمعها، ولماذا نجمعها، وكيف نحافظ عليها.",
+      "contactLine": "لأي سؤال حول بياناتكم، تواصلوا معنا:",
+      "sections": [
+        {
+          "h": "ما الذي نجمعه",
+          "p": "عند إنشاء حساب أو حجز جلسة أو مقعد في ورشة أو شراء مادة أو الاشتراك في النشرة أو مشاركة شهادة، نجمع ما تقدمونه لنا: الاسم والبريد الإلكتروني ورقم الهاتف أو واتساب والبلد وما حجزتموه أو اشتريتموه. ويحفظ حسابكم أيضًا بيانات تسجيل الدخول (كلمة المرور تُحفظ بشكل مشفّر فقط) وتقدمكم في الدورات واللغة التي اخترتموها. أما بيانات البطاقة فتُكتب فقط في نموذج الدفع الآمن لدى مزوّد الدفع ولا تصلنا أبدًا."
+        },
+        {
+          "h": "كيف نستخدمها",
+          "p": "لتأكيد الحجوزات والمشتريات، وتزويدكم برابط جلستكم الشخصي والوصول إلى موادكم، وإرسال روابط الانضمام ورسائل الحجز، والرد على رسائلكم، وإرسال أخبار من حين لآخر فقط إن اشتركتم. لا نستخدم بياناتكم للإعلانات."
+        },
+        {
+          "h": "من يستلمها",
+          "p": "فقط الخدمات اللازمة لتشغيل الموقع: Supabase (قاعدة البيانات وتسجيل الدخول، على السحابة)، وPaymob (الدفع بالبطاقة)، وخدمة بريد إلكتروني لإرسال رسائل الحجز والرموز، وخدمة رسائل نصية أو واتساب إذا فُعّل التحقق عبر الهاتف، وخدمة مكالمات فيديو للجلسات والورش (غرفة Jitsi مجانية أو منصة أخرى نختارها). كما يطلب الموقع أسعار صرف من خدمة مجانية (open.er-api.com)، وهذا يعني أن هذه الخدمة قد ترى عنوان الإنترنت الخاص بكم عند فتح الموقع. لا نبيع بياناتكم أبدًا."
+        },
+        {
+          "h": "موقعكم",
+          "p": "نحدّد بلدكم من عنوان الإنترنت (IP) الخاص بكم، فقط لعرض الأسعار بعملتكم. يرسل خادمنا العنوان إلى خدمة مجانية لمعرفة البلد من العنوان (api.country.is أو ipwho.is كبديل) ولا يتلقى منها سوى رمز البلد. لا نحفظ عنوانكم؛ ويُحفظ رمز البلد على جهازكم لمدة أسبوع."
+        },
+        {
+          "h": "الشهادات",
+          "p": "لا ننشر شهادة إلا بموافقتكم، باستخدام الاسم الأول والحرف الأول من اسم العائلة. ويمكنكم طلب إزالتها في أي وقت."
+        },
+        {
+          "h": "سرّية الجلسات",
+          "p": "ما تشاركونه في الجلسة الفردية يبقى بينكم وبين عبير. وتُحفظ أي ملاحظات للجلسة بسرّية ولا تُشارك أبدًا."
+        },
+        {
+          "h": "مدة الاحتفاظ وحقوقكم",
+          "p": "نحتفظ ببياناتكم فقط للمدة اللازمة لتقديم مشترياتكم والوفاء بالتزاماتنا القانونية. يمكنكم الاطلاع على بياناتكم وتصحيحها في «حسابي»، وإلغاء الاشتراك في النشرة في أي وقت، وحذف حسابكم بأنفسكم من «الإعدادات» في «حسابي» (وهذا يمسح اسمكم وبيانات التواصل من طلباتكم السابقة ولا يبقى إلا الإيصال والمادة والمبلغ). ويمكنكم أيضًا أن تطلبوا منا حذف أي شيء آخر نحتفظ به عنكم."
+        },
+        {
+          "h": "ملفات الارتباط والتخزين المحلي",
+          "p": "يخزّن هذا الموقع لغتكم وعملتكم وسلتكم، وجلسة تسجيل الدخول (أثناء تسجيلكم الدخول) على جهازكم. لا نستخدم ملفات ارتباط إعلانية أو تتبّعية."
+        }
+      ]
+    }
+  },
+  "refund": {
+    "en": {
+      "kicker": "Policies",
+      "title": "Refund Policy",
+      "updated": "Last updated: 3 October 2026",
+      "intro": "Because our sessions, workshops and digital materials are personal and delivered straight away, all sales are final. We do not offer refunds.",
+      "contactLine": "Questions before you buy? Contact us:",
+      "sections": [
+        {
+          "h": "Digital materials",
+          "p": "Courses, meditations and manuals are available as soon as payment is confirmed, so they can’t be returned or refunded. Every pack has a free preview so you can try it before you buy."
+        },
+        {
+          "h": "1:1 sessions",
+          "p": "Session payments are non-refundable. If something comes up, message us before your session."
+        },
+        {
+          "h": "Live workshops",
+          "p": "Workshop seats are non-refundable once booked. If you can’t attend live, let us know before the workshop starts."
+        },
+        {
+          "h": "Payment problems",
+          "p": "If you were charged twice, or your payment went through but you didn’t receive access, contact us and we’ll put it right straight away."
+        },
+        {
+          "h": "Before you buy",
+          "p": "Please read each description carefully and contact us with any questions before purchasing. By completing a purchase you agree to this policy."
+        }
+      ]
+    },
+    "ar": {
+      "kicker": "السياسات",
+      "title": "سياسة الاسترداد",
+      "updated": "آخر تحديث: 3 أكتوبر 2026",
+      "intro": "لأن جلساتنا وورشنا وموادنا الرقمية شخصية وتُقدَّم فورًا، فإن جميع المبيعات نهائية. لا نقدم أي استرداد للمبالغ.",
+      "contactLine": "لأي سؤال قبل الشراء، تواصلوا معنا:",
+      "sections": [
+        {
+          "h": "المواد الرقمية",
+          "p": "الدورات والتأملات والكتيبات متاحة فور تأكيد الدفع، لذلك لا يمكن إرجاعها أو استرداد ثمنها. كل حزمة تتضمن معاينة مجانية لتجربتها قبل الشراء."
+        },
+        {
+          "h": "الجلسات الفردية",
+          "p": "مبالغ الجلسات غير قابلة للاسترداد. إذا طرأ أمر ما، راسلونا قبل موعد الجلسة."
+        },
+        {
+          "h": "الورش المباشرة",
+          "p": "مقاعد الورش غير قابلة للاسترداد بعد الحجز. إذا لم تتمكنوا من الحضور مباشرة، أخبرونا قبل بدء الورشة."
+        },
+        {
+          "h": "مشكلات الدفع",
+          "p": "إذا تم خصم المبلغ مرتين، أو تم الدفع ولم يصلكم الوصول، تواصلوا معنا وسنحل المشكلة فورًا."
+        },
+        {
+          "h": "قبل الشراء",
+          "p": "يُرجى قراءة وصف كل عنصر بعناية والتواصل معنا بأي سؤال قبل الشراء. بإتمام عملية الشراء، فإنكم توافقون على هذه السياسة."
+        }
+      ]
+    }
+  },
+  "terms": {
+    "en": {
+      "kicker": "Policies",
+      "title": "Terms of Use",
+      "updated": "Last updated: 16 November 2026",
+      "intro": "These terms explain how this website, its sessions, workshops and digital materials work. By creating an account, booking or buying, you agree to them.",
+      "contactLine": "Questions about these terms? Contact us:",
+      "sections": [
+        {
+          "h": "Who we are",
+          "p": "This website is run by Abir Diab, an energy healing practitioner. “We” and “us” mean Abir Diab; “you” means anyone who visits the site, creates an account, books or buys."
+        },
+        {
+          "h": "Not medical advice",
+          "p": "Energy healing, guided meditations and the materials here support wellbeing and relaxation. They are not a medical or psychological diagnosis or treatment and do not replace a doctor, therapist or emergency services. Please keep following your medical care, and tell us before a session if you have a condition we should know about."
+        },
+        {
+          "h": "Your account",
+          "p": "Give us true details and keep your password private. You are responsible for what happens under your account. Tell us at once if you think someone else has used it. We may close an account that is used to cheat, abuse or harm others."
+        },
+        {
+          "h": "1:1 sessions and workshops",
+          "p": "A booking is confirmed when you complete it and the payment goes through. For a 1:1 session, your personal joining link is shown on screen and emailed to you straight away, and stays in My bookings. For a workshop, the joining link is made available 2 hours before the start, in My bookings and by the way you chose (email or WhatsApp). Please arrive on time and from a quiet place. Session links are personal to you; workshop links must not be shared or recorded without our written permission."
+        },
+        {
+          "h": "Courses, meditations and manuals",
+          "p": "When you buy a course, meditation or manual you get a personal licence to use it for yourself. You may not copy, resell, share your login or publish it. Free items are for your personal use too."
+        },
+        {
+          "h": "Prices and payment",
+          "p": "Prices are set in US dollars and shown in your local currency as an estimate; your card may be charged in another currency, as shown at checkout. Payments are handled by our payment provider and we never see or store your card details. Refunds are covered by our Refund Policy."
+        },
+        {
+          "h": "Gifts",
+          "p": "A gift can be sent as a gift card link or directly to the person you name. Once the recipient has opened and claimed it, it is theirs. A gift link anyone holds can be claimed, so share it only with the person it is for."
+        },
+        {
+          "h": "Your messages and testimonials",
+          "p": "We only publish a testimonial with your consent. What you share in a 1:1 session stays private, as described in our Privacy Policy."
+        },
+        {
+          "h": "Our content",
+          "p": "The text, photos, audio, video and design on this website belong to Abir Diab or are used with permission. You may view them for your own use but may not copy or reuse them without asking us first."
+        },
+        {
+          "h": "Limits of our responsibility",
+          "p": "We take care in everything we offer, but we cannot promise a particular result, and the website is provided as it is. To the extent the law allows, we are not responsible for indirect losses, or for interruptions outside our control such as internet or payment-provider outages."
+        },
+        {
+          "h": "Changes",
+          "p": "We may update these terms. The date at the top shows the latest version; using the website after a change means you accept it."
+        }
+      ]
+    },
+    "ar": {
+      "kicker": "السياسات",
+      "title": "شروط الاستخدام",
+      "updated": "آخر تحديث: 16 نوفمبر 2026",
+      "intro": "توضح هذه الشروط كيف يعمل هذا الموقع وجلساته وورشه ومواده الرقمية. بإنشاء حساب أو الحجز أو الشراء فإنكم توافقون عليها.",
+      "contactLine": "أسئلة حول هذه الشروط؟ تواصلوا معنا:",
+      "sections": [
+        {
+          "h": "من نحن",
+          "p": "يديره عبير دياب، ممارِسة في الشفاء بالطاقة. «نحن» تعني عبير دياب، و«أنتم» تعني كل من يزور الموقع أو ينشئ حسابًا أو يحجز أو يشتري."
+        },
+        {
+          "h": "ليست نصيحة طبية",
+          "p": "الشفاء بالطاقة والتأملات الموجّهة والمواد هنا تدعم الراحة والعافية. وهي ليست تشخيصًا أو علاجًا طبيًا أو نفسيًا ولا تغني عن الطبيب أو المعالج أو خدمات الطوارئ. يُرجى متابعة رعايتكم الطبية، وإخبارنا قبل الجلسة بأي حالة ينبغي أن نعرفها."
+        },
+        {
+          "h": "حسابكم",
+          "p": "زوّدونا ببيانات صحيحة وحافظوا على سرية كلمة المرور. أنتم مسؤولون عما يحدث عبر حسابكم، وأخبرونا فورًا إن ظننتم أن أحدًا استخدمه. قد نغلق حسابًا يُستخدم في الغش أو الإساءة أو إيذاء الآخرين."
+        },
+        {
+          "h": "الجلسات الفردية والورش",
+          "p": "يتأكد الحجز عند إتمامه ونجاح الدفع. في الجلسة الفردية يظهر رابطكم الشخصي على الشاشة ويُرسل إليكم بالبريد فورًا، ويبقى في «حجوزاتي». أما الورشة فيتاح رابطها قبل البدء بساعتين، في «حجوزاتي» وبالطريقة التي اخترتموها (البريد أو واتساب). يُرجى الحضور في الموعد ومن مكان هادئ. روابط الجلسات شخصية لكم؛ ولا يجوز مشاركة روابط الورش أو تسجيلها دون إذن كتابي منا."
+        },
+        {
+          "h": "الدورات والتأملات والكتيبات",
+          "p": "عند شراء دورة أو تأمل أو كتيب تحصلون على ترخيص شخصي لاستخدامه لأنفسكم. لا يجوز نسخه أو إعادة بيعه أو مشاركة حسابكم أو نشره. والمواد المجانية كذلك للاستخدام الشخصي."
+        },
+        {
+          "h": "الأسعار والدفع",
+          "p": "الأسعار محددة بالدولار الأمريكي وتُعرض بعملتكم المحلية كتقدير؛ وقد تُخصم بطاقتكم بعملة أخرى كما يظهر عند الدفع. تتولى جهة الدفع معالجة المدفوعات ولا نرى بيانات بطاقتكم ولا نخزنها. يتناول الاسترداد في سياسة الاسترداد."
+        },
+        {
+          "h": "الهدايا",
+          "p": "يمكن إرسال الهدية كرابط بطاقة هدية أو مباشرة إلى الشخص الذي تسمّونه. وبعد أن يفتحها المستلم ويستلمها تصبح له. ويمكن لأي شخص يملك رابط الهدية أن يستلمها، فشاركوه مع صاحبه فقط."
+        },
+        {
+          "h": "رسائلكم وشهاداتكم",
+          "p": "لا ننشر شهادة إلا بموافقتكم. وما تشاركونه في الجلسة الفردية يبقى سريًا كما في سياسة الخصوصية."
+        },
+        {
+          "h": "محتوانا",
+          "p": "النصوص والصور والصوتيات والفيديو وتصميم هذا الموقع ملك لعبير دياب أو مستخدمة بإذن. يمكنكم الاطلاع عليها لاستخدامكم الشخصي، ولا يجوز نسخها أو إعادة استخدامها دون موافقتنا."
+        },
+        {
+          "h": "حدود مسؤوليتنا",
+          "p": "نعتني بكل ما نقدمه، لكن لا نَعِد بنتيجة معينة، والموقع مقدَّم كما هو. وبالقدر الذي يسمح به القانون لا نتحمل الخسائر غير المباشرة ولا الانقطاعات الخارجة عن إرادتنا كأعطال الإنترنت أو جهة الدفع."
+        },
+        {
+          "h": "التغييرات",
+          "p": "قد نحدّث هذه الشروط. يبيّن التاريخ في الأعلى آخر نسخة، واستمرار استخدام الموقع بعد التغيير يعني قبولكم لها."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "en": {
+    "nav": {
+      "sessions": "1:1 Session",
+      "workshops": "Workshops",
+      "learning": "My learning",
+      "gifts": "Gifts",
+      "settings": "Settings",
+      "label": "Account sections"
+    },
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "settings": {
+      "name": "Full name",
+      "save": "Save",
+      "saved": "Saved",
+      "password": "Change password",
+      "newPassword": "New password",
+      "confirmPassword": "Type it again",
+      "update": "Update password",
+      "short": "Use at least 8 characters, with a letter and a number.",
+      "mismatch": "The two passwords don't match.",
+      "updated": "Password updated",
+      "error": "Something went wrong. Please try again.",
+      "deleteTitle": "Delete my account",
+      "deleteWarn": "This permanently deletes your sign-in, your progress and your saved details. Your courses and bookings will no longer be available to you, and this cannot be undone. Receipts of past purchases are kept without your name or contact details.",
+      "deleteType": "Type DELETE to confirm",
+      "deleteBtn": "Delete my account permanently",
+      "deleteFailed": "We could not delete your account. Please try again, or contact us.",
+      "deleteAdmin": "This account cannot be deleted here."
+    },
+    "in": {
+      "days": "in {n} {u}",
+      "hours": "in {n} {u}",
+      "minutes": "in {n} {u}",
+      "now": "starting now"
+    },
+    "units": {
+      "d": [
+        "day",
+        "days"
+      ],
+      "h": [
+        "hour",
+        "hours"
+      ],
+      "m": [
+        "minute",
+        "minutes"
+      ]
+    },
+    "hello": "Hello, {name}",
+    "summary": {
+      "none": "Nothing booked yet. Ready when you are.",
+      "one": "You have 1 upcoming booking.",
+      "many": "You have {n} upcoming bookings."
+    },
+    "book": "Book a session",
+    "ref": "Reference",
+    "addCal": "Add to calendar",
+    "empty": {
+      "bookings": "No bookings yet",
+      "bookingsLead": "Book a 1:1 session or join a live workshop. It will show up here.",
+      "courses": "No courses yet",
+      "coursesLead": "Courses, meditations and manuals you buy will be here, ready to open any time.",
+      "browse": "Browse materials",
+      "gifts": "No gifts yet",
+      "giftsLead": "Gifts you send will appear here with their link.",
+      "sessions": "No 1:1 sessions yet",
+      "sessionsLead": "Book a 1:1 session and it will show up here, with your link.",
+      "workshops": "No workshops yet",
+      "workshopsLead": "Workshops you book will show up here. Your joining link arrives 2 hours before each one."
+    },
+    "learn": {
+      "summary": "{n} {courses} · {p} in progress · {c} completed",
+      "course": [
+        "course",
+        "courses"
+      ],
+      "continue": "Continue where you left off",
+      "resume": "Resume",
+      "start": "Start",
+      "review": "Review",
+      "next": "Next: {title}",
+      "lessonsDone": "{done} of {total} lessons",
+      "percent": "{pct}% complete",
+      "status": {
+        "notStarted": "Not started",
+        "inProgress": "In progress",
+        "completed": "Completed"
+      },
+      "filters": {
+        "all": "All",
+        "inProgress": "In progress",
+        "notStarted": "Not started",
+        "completed": "Completed"
+      },
+      "noMatch": "No courses here yet.",
+      "back": "All courses",
+      "lessons": "Lessons",
+      "yourContent": "Your content",
+      "markDone": "Mark complete",
+      "done": "Completed",
+      "markCourse": "Mark course as complete",
+      "courseDone": "Course completed",
+      "markUndo": "Undo",
+      "congrats": "Well done! You completed this course.",
+      "certificate": "Download certificate",
+      "popup": "Please allow pop-ups to open your certificate.",
+      "cert": {
+        "title": "Certificate of Completion",
+        "certify": "This certifies that",
+        "completed": "has successfully completed",
+        "on": "on",
+        "signed": "Abir Diab"
+      },
+      "saveError": "Could not save that. Please try again.",
+      "lessonOne": "{done} of 1 lesson",
+      "welcome": "Welcome back, {name}",
+      "welcomeSub": "Pick up where you left off and keep growing.",
+      "browse": "Browse courses",
+      "stats": {
+        "courses": "Courses",
+        "inProgress": "In progress",
+        "completed": "Completed"
+      },
+      "welcomeNoName": "Welcome back"
+    },
+    "titles": {
+      "sessions": "1:1 Session",
+      "workshops": "Workshops",
+      "learning": "My learning",
+      "gifts": "Gifts",
+      "settings": "Settings"
+    },
+    "seeWorkshops": "See upcoming workshops",
+    "list": {
+      "label": "Filter",
+      "all": "All",
+      "search": "Search by name, date or reference",
+      "searchLearning": "Search your courses",
+      "sortBy": "Sort",
+      "sortSmart": "Upcoming first",
+      "sortNewest": "Newest first",
+      "sortOldest": "Oldest first",
+      "noMatch": "Nothing matches. Try another word or filter.",
+      "typeLabel": "Type",
+      "allTypes": "All types"
+    }
+  },
+  "ar": {
+    "nav": {
+      "sessions": "الجلسة الفردية",
+      "workshops": "الورش",
+      "learning": "رحلة التعلم",
+      "gifts": "الهدايا",
+      "settings": "الإعدادات",
+      "label": "أقسام الحساب"
+    },
+    "upcoming": "القادمة",
+    "past": "السابقة",
+    "settings": {
+      "name": "الاسم الكامل",
+      "save": "حفظ",
+      "saved": "تم الحفظ",
+      "password": "تغيير كلمة المرور",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "اكتبوها مرة أخرى",
+      "update": "تحديث كلمة المرور",
+      "short": "استخدموا 8 أحرف على الأقل، مع حرف ورقم.",
+      "mismatch": "كلمتا المرور غير متطابقتين.",
+      "updated": "تم تحديث كلمة المرور",
+      "error": "حدث خطأ. يُرجى المحاولة مرة أخرى.",
+      "deleteTitle": "حذف حسابي",
+      "deleteWarn": "سيؤدي هذا إلى حذف تسجيل دخولكم وتقدمكم وبياناتكم المحفوظة نهائيًا. لن تتمكنوا بعدها من الوصول إلى دوراتكم وحجوزاتكم، ولا يمكن التراجع عن ذلك. تُحفظ سجلات المشتريات السابقة دون اسمكم أو بيانات التواصل.",
+      "deleteType": "اكتبوا DELETE للتأكيد",
+      "deleteBtn": "احذفوا حسابي نهائيًا",
+      "deleteFailed": "تعذّر حذف حسابكم. يُرجى المحاولة مرة أخرى أو التواصل معنا.",
+      "deleteAdmin": "لا يمكن حذف هذا الحساب من هنا."
+    },
+    "in": {
+      "days": "بعد {n} {u}",
+      "hours": "بعد {n} {u}",
+      "minutes": "بعد {n} {u}",
+      "now": "يبدأ الآن",
+      "days2": "بعد يومين",
+      "hours2": "بعد ساعتين",
+      "minutes2": "بعد دقيقتين"
+    },
+    "units": {
+      "d": [
+        "يوم",
+        "أيام"
+      ],
+      "h": [
+        "ساعة",
+        "ساعات"
+      ],
+      "m": [
+        "دقيقة",
+        "دقائق"
+      ],
+      "arabic": true
+    },
+    "hello": "أهلًا، {name}",
+    "summary": {
+      "none": "لا يوجد حجز بعد. نحن بانتظاركم.",
+      "one": "لديكم حجز واحد قادم.",
+      "many": "لديكم {n} حجوزات قادمة.",
+      "two": "لديكم حجزان قادمان."
+    },
+    "book": "احجزوا جلسة",
+    "ref": "رقم الحجز",
+    "addCal": "أضيفوه إلى التقويم",
+    "empty": {
+      "bookings": "لا توجد حجوزات بعد",
+      "bookingsLead": "احجزوا جلسة فردية أو انضموا إلى ورشة مباشرة، وستظهر هنا.",
+      "courses": "لا توجد دورات بعد",
+      "coursesLead": "الدورات والتأملات والكتيبات التي تشترونها ستكون هنا، جاهزة للفتح في أي وقت.",
+      "browse": "تصفحوا المواد",
+      "gifts": "لا توجد هدايا بعد",
+      "giftsLead": "الهدايا التي ترسلونها ستظهر هنا مع رابطها.",
+      "sessions": "لا توجد جلسات فردية بعد",
+      "sessionsLead": "احجزوا جلسة فردية وستظهر هنا مع رابطها.",
+      "workshops": "لا توجد ورش بعد",
+      "workshopsLead": "الورش التي تحجزونها ستظهر هنا. يصلكم رابط الانضمام قبل كل ورشة بساعتين."
+    },
+    "learn": {
+      "summary": "الدورات: {n} · قيد التقدم: {p} · مكتملة: {c}",
+      "course": [
+        "دورة",
+        "دورات"
+      ],
+      "continue": "تابعوا من حيث توقفتم",
+      "resume": "متابعة",
+      "start": "ابدأوا",
+      "review": "مراجعة",
+      "next": "التالي: {title}",
+      "lessonsDone": "{done} من {total} دروس",
+      "percent": "اكتمل {pct}%",
+      "status": {
+        "notStarted": "لم تبدأ",
+        "inProgress": "قيد التقدم",
+        "completed": "مكتملة"
+      },
+      "filters": {
+        "all": "الكل",
+        "inProgress": "قيد التقدم",
+        "notStarted": "لم تبدأ",
+        "completed": "مكتملة"
+      },
+      "noMatch": "لا توجد دورات هنا بعد.",
+      "back": "كل الدورات",
+      "lessons": "الدروس",
+      "yourContent": "المحتوى الخاص بكم",
+      "markDone": "تحديد كمكتمل",
+      "done": "مكتمل",
+      "markCourse": "تحديد الدورة كمكتملة",
+      "courseDone": "اكتملت الدورة",
+      "markUndo": "تراجع",
+      "congrats": "أحسنتم! أكملتم هذه الدورة.",
+      "certificate": "تنزيل الشهادة",
+      "popup": "يُرجى السماح بالنوافذ المنبثقة لفتح الشهادة.",
+      "cert": {
+        "title": "شهادة إتمام",
+        "certify": "تُمنح هذه الشهادة إلى",
+        "completed": "تقديرًا لإتمام دورة",
+        "on": "بتاريخ",
+        "signed": "عبير دياب"
+      },
+      "saveError": "تعذّر الحفظ. يُرجى المحاولة مرة أخرى.",
+      "lessonOne": "{done} من درس واحد",
+      "welcome": "أهلًا بعودتكم، {name}",
+      "welcomeSub": "أكملوا من حيث توقفتم وواصلوا رحلة نموكم.",
+      "browse": "تصفحوا الدورات",
+      "stats": {
+        "courses": "الدورات",
+        "inProgress": "قيد التقدم",
+        "completed": "مكتملة"
+      },
+      "welcomeNoName": "أهلًا بعودتكم"
+    },
+    "titles": {
+      "sessions": "الجلسة الفردية",
+      "workshops": "الورش",
+      "learning": "رحلة التعلم",
+      "gifts": "الهدايا",
+      "settings": "الإعدادات"
+    },
+    "seeWorkshops": "شاهدوا الورش القادمة",
+    "list": {
+      "label": "تصفية",
+      "all": "الكل",
+      "search": "ابحثوا بالاسم أو التاريخ أو رقم الحجز",
+      "searchLearning": "ابحثوا في دوراتكم",
+      "sortBy": "الترتيب",
+      "sortSmart": "القادمة أولًا",
+      "sortNewest": "الأحدث أولًا",
+      "sortOldest": "الأقدم أولًا",
+      "noMatch": "لا شيء يطابق. جرّبوا كلمة أو تصفية أخرى.",
+      "typeLabel": "النوع",
+      "allTypes": "كل الأنواع"
+    }
+  }
+}
