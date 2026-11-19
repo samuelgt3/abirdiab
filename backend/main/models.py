@@ -21,11 +21,12 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class User(AbstractUser):
+    username=None
     USERNAME_FIELD = 'email'
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
-    email = models.EmailField(('email address'), unique=True) # changes email to unique and blank to false
-    REQUIRED_FIELDS = [first_name, last_name]
+    email = models.EmailField(('email address'), unique=True) 
+    REQUIRED_FIELDS = ["first_name", "last_name"]
     objects = UserManager()
 
 class Series(models.Model):
@@ -33,6 +34,9 @@ class Series(models.Model):
         ENG="English"
         AR="Arabic"
     language=models.CharField(max_length=20, default="English", choices=Language)
+    name=models.TextField()
+    price=models.PositiveIntegerField()
+    downloadable=models.BooleanField()
 
 class Appointment(models.Model):
 
@@ -66,11 +70,45 @@ class VideoCourse(models.Model):
 
     name=models.CharField(max_length=100)
     course = models.ForeignKey(Series, on_delete=models.CASCADE)
-    description=models.TextField()
-    price=models.PositiveIntegerField()
     downloadable=models.BooleanField()
     preview_id=models.TextField()
     playback_id=models.TextField()
+    manage_id=models.TextField()
+    language=models.CharField(max_length=20, default="English", choices=Language)
+    status=models.CharField(max_length=20, default = "Processing", choices=Status)
+    upload_id=models.TextField(default="")
+
+class AudioCourse(models.Model):
+    class Language(models.TextChoices):
+        ENG="English"
+        AR="Arabic"
+
+    class Status(models.TextChoices):
+        PROCESSING="Processing"
+        READY="Ready"
+        FAILED="Failed"
+
+    name=models.CharField(max_length=100)
+    course = models.ForeignKey(Series, on_delete=models.CASCADE)
+    preview_id=models.TextField()
+    playback_id=models.TextField()
+    manage_id=models.TextField()
+    language=models.CharField(max_length=20, default="English", choices=Language)
+    status=models.CharField(max_length=20, default = "Processing", choices=Status)
+    upload_id=models.TextField(default="")
+
+class DocumentCourse(models.Model):
+    class Language(models.TextChoices):
+        ENG="English"
+        AR="Arabic"
+
+    class Status(models.TextChoices):
+        PROCESSING="Processing"
+        READY="Ready"
+        FAILED="Failed"
+
+    name=models.CharField(max_length=100)
+    course = models.ForeignKey(Series, on_delete=models.CASCADE)
     manage_id=models.TextField()
     language=models.CharField(max_length=20, default="English", choices=Language)
     status=models.CharField(max_length=20, default = "Processing", choices=Status)
@@ -90,6 +128,7 @@ class Testimonial(models.Model):
 class GroupSession(models.Model):
     total_capacity=models.IntegerField()
     seats_left=models.IntegerField()
+    description=models.TextField()
     time=models.DateTimeField()
     name=models.TextField()
     zoom_link=models.TextField(default=None)

@@ -1,24 +1,30 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, get_object_or_404
-from .models import Appointment, GroupSession, GroupBooking, BlogPost, Testimonial
-from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import timezone
+from .models import Appointment, GroupSession, GroupBooking, BlogPost, Testimonial, Series, VideoCourse, AudioCourse, DocumentCourse
+from datetime import datetime
 import requests
 import os
 from dotenv import load_dotenv
 from django.db import transaction
 from django.contrib.auth import authenticate, login, logout
 from .courses import createUploadUrl, mux_webhook
+import json
+import time
+import base64
 
 load_dotenv()
 
-zoom_key=os.getenv('ZOOM_KEY')
-bearer_token=os.getenv('BEARER_TOKEN')
-
+_cached_token = None
+_token_expires_at = 0
 
 def login_view(request):
 
-    email = request.POST.get("email")
-    password = request.POST.get("password")
+    data = json.loads(request.body)
+    email = data.get("email")
+    password = data.get("password")
 
     user = authenticate(request, username=email, password=password) 
     
@@ -29,16 +35,13 @@ def login_view(request):
     
     return JsonResponse({"error": "Invalid credentials"}, status=401)
 
+
 def logout_view(request):
 
     logout(request) 
 
     return JsonResponse({"status": "ok"})
 
-ZOOM_HEADERS = {
-    "Content-Type": "application/json",
-    "Authorization": f"Bearer {bearer_token}", #replace with user token
-}
 
 def _parse_and_validate(time_str, duration):
     try:
@@ -46,8 +49,11 @@ def _parse_and_validate(time_str, duration):
 
     except (TypeError, ValueError):
         return None, JsonResponse({"error": "invalid time"}, status=400)
+    
+    CAIRO = ZoneInfo("Africa/Cairo")
+    session_time = timezone.make_aware(appt_time, CAIRO)
 
-    if appt_time < timezone.now():
+    if session_time < timezone.now():
         return None, JsonResponse({"error": "invalid time"}, status=400)
 
     if duration <= 0 or duration > 180:
@@ -56,13 +62,41 @@ def _parse_and_validate(time_str, duration):
     return appt_time, None
 
 
+def get_zoom_access_token():
+
+        global _cached_token, _token_expires_at
+
+        if _cached_token and time.time() < _token_expires_at:
+            return _cached_token
+
+        account_id = os.environ["ZOOM_ACCOUNT_ID"]
+        client_id = os.environ["ZOOM_CLIENT_ID"]
+        client_secret = os.environ["ZOOM_CLIENT_SECRET"]
+
+        credentials = base64.b64encode(f"{client_id}:{client_secret}".encode()).decode()
+
+        response = requests.post(
+            "https://zoom.us/oauth/token",
+            params={"grant_type": "account_credentials", "account_id": account_id},
+            headers={"Authorization": f"Basic {credentials}"},
+        )
+        response.raise_for_status()
+        data = response.json()
+
+        _cached_token = data["access_token"]
+        _token_expires_at = time.time() + data["expires_in"] - 60  # refresh 60s early
+
+        return _cached_token
+
+
 def createAppointment(request):
+    
 
     if not request.user.is_authenticated:
         return redirect("frontend/login") #replace later
 
     user = request.user
-    body = request.POST
+    body = json.loads(request.body)
     time_str = body.get("datetime")
 
     try:
@@ -80,8 +114,11 @@ def createAppointment(request):
 
         try:
             zoom = requests.post(
-                f"https://api.zoom.us/v2/users/{zoom_key}/meetings",
-                headers=ZOOM_HEADERS,
+                f"https://api.zoom.us/v2/users/me/meetings",
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {get_zoom_access_token()}", 
+                    },
                 json={
                     "agenda": f"{user.first_name}'s Consultation",
                     "duration": duration,
@@ -99,7 +136,7 @@ def createAppointment(request):
         if zoom.status_code != 201:
             return JsonResponse({"error": "failed to retrieve zoom link, please try again"}, status=400)
 
-        zoom_link = zoom.json()["registration_url"]
+        zoom_link = zoom.json()["join_url"]
 
         Appointment.objects.create(
             aptTime=appt_time,
@@ -112,14 +149,11 @@ def createAppointment(request):
 
 
 def createGroupSession(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return JsonResponse({"error": "Forbidden"}, status=403)
 
-    body = request.POST
+    body = json.loads(request.body)
     name = body.get("name")
     description = body.get("description")
     time_str = body.get("datetime")
-
     try:
         capacity = int(body.get("capacity"))
         duration = int(body.get("duration"))
@@ -135,8 +169,11 @@ def createGroupSession(request):
 
     try:
         zoom = requests.post(
-            f"https://api.zoom.us/v2/users/{zoom_key}/meetings",
-            headers=ZOOM_HEADERS,
+            f"https://api.zoom.us/v2/users/me/meetings",
+            headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {get_zoom_access_token()}", 
+                    },
             json={
                 "agenda": name,
                 "duration": duration,
@@ -153,7 +190,7 @@ def createGroupSession(request):
     if zoom.status_code != 201:
         return JsonResponse({"error": "failed to retrieve zoom link, please try again"}, status=400)
 
-    zoom_link = zoom.json()["registration_url"]
+    zoom_link = zoom.json()["join_url"]
 
     GroupSession.objects.create(
         name=name,
@@ -166,6 +203,7 @@ def createGroupSession(request):
     )
 
     return JsonResponse({"zoom link": zoom_link}, status=201)
+
 
 def joinGroup(request, id):
 
@@ -195,13 +233,14 @@ def joinGroup(request, id):
         link = group.zoom_link
         return JsonResponse({"link": link}, status=200)  
 
+
 def createBlogPost(request):
 
     user = request.user
     if not user.is_authenticated or not user.is_super_user:
         return JsonResponse({"Access denied"}, status=400)
     
-    body=request.POST
+    body=json.loads(request.body)
     contentA=body.get("contentArabic")
     titleA=body.get("titleArabic")
     contentE=body.get("contentEnglish")
@@ -216,17 +255,43 @@ def createBlogPost(request):
 
     return JsonResponse({"Success"}, status=200)
 
+
 def getBlogPosts():
     blogs = list(BlogPost.objects.all().values)
     return JsonResponse(blogs, safe=False)
 
-'''
-
 
 def getCourses():
+
+    courses = Series.objects.all()
+    seriesList=[]
+
+    #fix this to not include links yet
+    for c in courses:
+        seriesList.append({
+        "id": c.id,
+        "title": c.name,
+        "videos":VideoCourse.objects.filter(course=c),
+        "audios":AudioCourse.objects.filter(course=c),
+        "document":DocumentCourse.objects.filter(course=c),
+        })
+
+    return JsonResponse(seriesList, safe=False)
+
+def getCourse(request, id):
+
+    return 
+'''
+def processPayment():
+
+def showAvailability():
+
+def showUserAppointments():
 
 def getTestimonials():
 
 def processPayment(request):
+
+def viewSchedule():
 '''  
 

@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_COOKIE_HTTPONLY = False  
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]  # REPLACE WITH FRONTEND
+
 
 # Application definition
 
