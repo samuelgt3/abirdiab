@@ -73,5 +73,4 @@ def setup_status(request, user):
         "sms": _set("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_VERIFY_SID"),
         "paymob": _set("PAYMOB_SECRET_KEY", "PAYMOB_PUBLIC_KEY", "PAYMOB_HMAC_SECRET", "PAYMOB_INTEGRATION_IDS"),
         "site_url": _set("SITE_URL"),
-        "zoom": _set("ZOOM_ACCOUNT_ID", "ZOOM_CLIENT_ID", "ZOOM_CLIENT_SECRET"),
     }
