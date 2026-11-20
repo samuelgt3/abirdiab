@@ -54,6 +54,14 @@ Run the tests any time with `python manage.py test`.
 - Needs migration `0004` (run `python manage.py migrate`).
 - Paymob dashboard: nothing to set for callbacks, the website sends them with each payment. Paymob calls `API_URL/api/fn/paymob-webhook`, so `API_URL` must be a public address (use a tunnel such as ngrok to test on your own computer).
 
+## Phase 5: codes, account deletion, scheduled jobs, Google sign-in
+- `POST /api/fn/send-code`, `/check-code`, `/signup-verified`: 6-digit codes that last 10 minutes, 5 tries, single use, only a hash is stored, rate limited. Email codes need nothing extra; SMS/WhatsApp use Twilio Verify (`TWILIO_*`).
+- `POST /api/fn/delete-account`: removes the login and what the person owns; their orders stay for accounting with name, email, phone and notes removed. Admins cannot delete themselves here.
+- Scheduled jobs (`main/jobs.py`): purge expired holds and stray unpaid orders, email the joining link from 2 hours before a session or workshop (keeps trying until 6 hours after), email "X sent you a gift", and clean up old records. Run them every 5 minutes with `python manage.py run_jobs`, or call `POST /api/fn/cron` with the header `x-cron-secret`.
+- Google sign-in: `/api/auth/google/start` and `/callback`. Only addresses Google has verified can sign in. Needs `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` and the switch in Admin > Settings.
+- No new migration in this phase.
+- **`LAUNCH_CHECKLIST.md`** lists everything to do before going live.
+
 ### Running the website against this backend on your computer
 1. Terminal 1, in `backend` (with `(venv)` on): `python manage.py runserver`
 2. Make yourself an admin: `python manage.py make_admin your@email.com --password "ChooseAGoodOne1"`

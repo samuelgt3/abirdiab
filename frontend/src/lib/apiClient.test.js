@@ -190,4 +190,14 @@ describe('functions and files', () => {
     expect(s.data.signedUrl).toMatch(/token=t/);
     expect(calls[2].body).toEqual({ path: 'courses/p.pdf', expiresIn: 3600 });
   });
+
+  it('Google sign-in sends the browser to the backend and back to this page', async () => {
+    const { api } = setup();
+    const assign = vi.fn();
+    vi.stubGlobal('window', { location: { href: 'https://site.test/account', assign } });
+    const r = await api.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: 'https://site.test/account' } });
+    expect(r.error).toBeNull();
+    expect(assign).toHaveBeenCalledWith('http://api.test/api/auth/google/start?redirect_to=https%3A%2F%2Fsite.test%2Faccount');
+    vi.unstubAllGlobals();
+  });
 });

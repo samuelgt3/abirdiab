@@ -246,7 +246,8 @@ def require_verifications(p, details, user, s):
     if s.require_email_verification and not member_ok:
         consume_verification("email", p.get("email_verification"), details["email"])
     if s.require_phone_verification and details["phone"] and not member_ok:
-        consume_verification("phone", p.get("phone_verification"), details["phone"])
+        dial = re.sub(r"\D", "", details["phone_dial"])
+        consume_verification("phone", p.get("phone_verification"), dial + details["phone"].lstrip("0"))
 
 
 # ------------------------------------------------------------------ writing orders

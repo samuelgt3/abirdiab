@@ -102,8 +102,12 @@ export function createApiClient(baseUrl, fetchImpl) {
       setSession(r.data, 'SIGNED_IN');
       return { data: { user: r.data.user, session: r.data }, error: null };
     },
-    async signInWithOAuth() {
-      return { data: null, error: { message: 'Google sign-in is not connected yet.' } };
+    // Google sign-in: the browser goes to the backend, then to Google, and comes back here signed in (see backend/main/google.py)
+    async signInWithOAuth({ options = {} } = {}) {
+      if (typeof window === 'undefined') return { data: null, error: { message: 'Google sign-in needs a browser.' } };
+      const url = `${API}/auth/google/start?${new URLSearchParams({ redirect_to: options.redirectTo || window.location.href })}`;
+      window.location.assign(url);
+      return { data: { url }, error: null };
     },
     async resetPasswordForEmail(email, options = {}) {
       const r = await request('auth/recover', { body: { email, redirect_to: options.redirectTo } });
