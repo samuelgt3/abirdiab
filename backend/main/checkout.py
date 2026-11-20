@@ -18,7 +18,7 @@ from django.db import IntegrityError, transaction
 from django.utils import timezone
 
 from .models import (AvailabilitySlot, CheckoutAttempt, CheckoutHold, Course, CourseAccess, Gift, Order,
-                     PaymentEvent, SiteSettings, Verification, Workshop, WorkshopLink)
+                     PaymentEvent, PendingCheckout, SiteSettings, Verification, Workshop, WorkshopLink)
 from .permissions import ApiError
 from .security import sha256_hex
 
@@ -77,8 +77,9 @@ def clean_details(p, s, user):
 
 
 def _money_or_none(v):
+    """Kept as text so the details can be stored as JSON while a payment is pending."""
     try:
-        return Decimal(str(v)).quantize(TWO_PLACES) if v not in (None, "") else None
+        return str(Decimal(str(v)).quantize(TWO_PLACES)) if v not in (None, "") else None
     except Exception:
         return None
 
@@ -324,6 +325,7 @@ def payload_is_genuine(payload: dict) -> bool:
 
 
 def purge_expired_holds():
+    PendingCheckout.objects.filter(created_at__lte=timezone.now() - datetime.timedelta(days=2)).delete()
     return CheckoutHold.objects.filter(expires_at__lte=timezone.now()).delete()[0]
 
 
@@ -395,11 +397,13 @@ def finalize_paid_order(payload, txn, success, pending, amount_cents, currency, 
         if not genuine:
             return record("unknown_order", "payload not recognised")
         if not success or pending:
-            if not success and not pending:
-                CheckoutHold.objects.filter(ref__in=refs).delete()
-            return record("ignored")
+            return record("ignored")  # holds stay: the customer may retry the same payment and succeed
         if Order.objects.filter(ref__in=refs).exists():
             return record("duplicate")
+        want = payload.get("charge_cents")
+        if want is not None and (int(amount_cents or -1) != int(want)
+                                 or str(currency or "").upper() != str(payload.get("charge_currency") or "").upper()):
+            return record("wrong_amount", f"paid {amount_cents} {currency} but {want} {payload.get('charge_currency')} was expected")
 
         user = User.objects.filter(pk=payload.get("user_id")).first() if payload.get("user_id") else None
         kind = payload["kind"]
@@ -429,4 +433,5 @@ def finalize_paid_order(payload, txn, success, pending, amount_cents, currency, 
                                 ref=refs[0], extra=extra)
         except (IntegrityError, Workshop.DoesNotExist, Course.DoesNotExist):
             return record("needs_refund", "paid, but the item is no longer available")
+        PendingCheckout.objects.filter(pk=refs[0]).delete()
         return record("paid")

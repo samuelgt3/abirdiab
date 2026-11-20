@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import authviews, functions, rpc, rpc_orders, storage, tableapi  # noqa: F401 (rpc_orders registers its functions)
+from . import authviews, functions, rpc, payviews, rpc_orders, storage, tableapi  # noqa: F401 (rpc_orders registers its functions)
 
 urlpatterns = [
     # accounts
@@ -15,6 +15,10 @@ urlpatterns = [
     path("rpc/<str:name>", rpc.call),
     path("fn/geo", functions.geo),
     path("fn/setup-status", functions.setup_status),
+    path("fn/paymob-checkout", payviews.paymob_checkout),
+    path("fn/paymob-webhook", payviews.paymob_webhook),
+    path("fn/test-payment", payviews.test_payment),
+    path("fn/booking-email", payviews.booking_email_view),
     # files (public path keeps the same shape the admin screen already recognises)
     path("storage/<str:bucket>/upload", storage.upload),
     path("storage/<str:bucket>/remove", storage.remove),

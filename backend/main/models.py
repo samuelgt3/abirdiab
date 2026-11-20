@@ -192,6 +192,8 @@ class Order(models.Model):
     paid_at = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL, related_name="orders")
     join_url = models.TextField(blank=True, default="")  # per-booking video link (1:1 sessions)
+    host_url = models.TextField(blank=True, default="")  # the host's own start link (admin only)
+    link_error = models.TextField(blank=True, default="")  # why the video link could not be made (admin pastes one by hand)
     thanks_sent_at = models.DateTimeField(null=True, blank=True)
     join_sent_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -260,6 +262,16 @@ class CheckoutHold(models.Model):
                 fields=["slot_date", "slot_time"], condition=Q(kind="session"), name="hold_session_slot_unique"
             )
         ]
+
+
+class PendingCheckout(models.Model):
+    """What a card payment is for, kept on our side until the payment provider confirms it (no card data)."""
+    ref = models.CharField(max_length=20, primary_key=True)  # the first booking reference of the payment
+    payload = models.JSONField(default=dict)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "pending_checkouts"
 
 
 class CheckoutAttempt(models.Model):

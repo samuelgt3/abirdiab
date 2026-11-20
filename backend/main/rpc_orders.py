@@ -7,7 +7,7 @@ import datetime
 from django.db import transaction
 from django.utils import timezone
 
-from . import checkout
+from . import checkout, fulfil
 from .checkout import LIVE, SOLD, starts_at_for
 from .models import (CourseAccess, Gift, Order, OrderAccessKey, User, Workshop, WorkshopLink)
 from .permissions import ApiError
@@ -44,7 +44,9 @@ def check_booking(user, a, request):
 def place_order(user, a, request):
     if rate_limited("place_order", client_ip(request), 30, 3600):
         raise ApiError("rate_limited", 429)
-    return checkout.create_order(_arg(a), user)
+    out = checkout.create_order(_arg(a), user)
+    fulfil.after_paid([out["ref"]])  # video link + confirmation email; never blocks the booking
+    return out
 
 
 @rpc("order_status")

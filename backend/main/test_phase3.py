@@ -161,12 +161,12 @@ class PayFirstTests(Shop):
         self.assertEqual(r["outcome"], "unknown_order")
         self.assertEqual(Order.objects.count(), 0)
 
-    def test_failed_payment_frees_the_hold_and_creates_nothing(self):
+    def test_failed_payment_creates_nothing_and_keeps_the_hold(self):
         payload, _ = self.begin(self.session())
         r = checkout.finalize_paid_order(payload, 9003, False, False, 10000, "EGP")
         self.assertEqual(r["outcome"], "ignored")
         self.assertEqual(Order.objects.count(), 0)
-        self.assertEqual(CheckoutHold.objects.count(), 0)
+        self.assertEqual(CheckoutHold.objects.count(), 1)  # kept: the customer may retry and succeed
 
     def test_paid_but_taken_is_flagged_for_refund(self):
         payload, _ = self.begin(self.session())
