@@ -38,7 +38,8 @@ if not SECRET_KEY:
 if not DEBUG and len(SECRET_KEY) < 32:
     raise RuntimeError("SECRET_KEY is too short. Use at least 32 random characters.")
 
-ALLOWED_HOSTS = env_list("ALLOWED_HOSTS", "localhost,127.0.0.1" if DEBUG else "")
+ALLOWED_HOSTS = ["*"]
+
 
 # The public website address(es) that may call this API and that links in emails point to.
 SITE_URL = env("SITE_URL", "http://localhost:5173").rstrip("/")
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -98,7 +100,16 @@ DATABASES = {
         conn_max_age=60,
     )
 }
-
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("PGDATABASE", "postgres"),
+        "USER": os.environ.get("PGUSER", "postgres"),
+        "PASSWORD": os.environ.get("PGPASSWORD", ""),
+        "HOST": os.environ.get("PGHOST", "localhost"),
+        "PORT": os.environ.get("PGPORT", "5432"),
+    }
+}
 AUTH_USER_MODEL = "main.User"
 AUTHENTICATION_BACKENDS = ["main.backends.EmailBackend"]
 
@@ -135,7 +146,7 @@ REFRESH_TOKEN_SECONDS = 60 * 60 * 24 * 30  # 30 days
 # ---- Email (real sending is added with the email provider; until then emails print in the terminal) ----
 EMAIL_BACKEND = env("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 DEFAULT_FROM_EMAIL = env("MAIL_FROM", "Abir Diab <no-reply@localhost>")
-
+CSRF_TRUSTED_ORIGINS = ["https://*.up.railway.app"]
 # ---- Production hardening (only when DEBUG is off) ----
 if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", True)
