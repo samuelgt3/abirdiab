@@ -29,11 +29,21 @@ Run the tests any time with `python manage.py test`.
   (visitors: published content only; admins: what the admin screen needs; everything private is admin-only; every admin change is written to the audit trail).
 - `POST /api/rpc/<name>` : the named functions (`main/rpc.py`). Done so far: `public_settings`, `is_admin`, `available_slots`,
   `workshop_seats`, `submit_story`, `newsletter_subscribed`, `set_newsletter`, `my_progress`, `touch_course`, `set_lesson_done`,
-  `course_unlocked`, `can_read_course_file`, `course_access`. The booking / order / gift ones come in Phase 3 and 4.
+  `course_unlocked`, `can_read_course_file`, `course_access`. The booking / order / gift ones are in Phase 3 (below).
 - `POST /api/fn/geo` and `/api/fn/setup-status`.
 - Files: public pictures/audio and private paid files (`main/storage.py`), plus signed Bunny video links (`main/bunny.py`).
   Files are kept in `backend/data/` (or `MEDIA_ROOT` / `PRIVATE_FILES_ROOT` in `.env`). On a real server that folder must be on a disk that survives restarts.
 - The settings row (`site_settings`, id 1) is created automatically with the website's defaults.
+
+## Phase 3: bookings, holds, orders and "my account" lists
+- `main/checkout.py`: the cart rules, 30-minute holds (no personal data in a hold), creating orders, and finishing a paid order
+  (all-or-nothing, safe to repeat, signed so it cannot be forged). Prices are always worked out on the server.
+- A booking only exists once it is paid (or free). Anything with a price answers `payment required` / `payments not open` until Phase 4 connects the card payment.
+- `main/rpc_orders.py`: `check_booking`, `place_order`, `order_status`, `register_access`, `email_has_account`, `booking_page`,
+  `my_orders`, `my_library`, `my_gifts`, `my_payments`, `my_display_name`, `claim_my_orders`, `claim_with_keys`, `gift_info`, `redeem_gift`.
+- Joining links: a 1:1 session link comes with the booking reference until 6 hours after the start. A workshop link is only for the owner
+  (signed in, or the device that paid) from 2 hours before to 6 hours after the start.
+- No new migration is needed for this phase.
 
 ### Running the website against this backend on your computer
 1. Terminal 1, in `backend` (with `(venv)` on): `python manage.py runserver`

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from . import authviews, functions, rpc, storage, tableapi
+from . import authviews, functions, rpc, rpc_orders, storage, tableapi  # noqa: F401 (rpc_orders registers its functions)
 
 urlpatterns = [
     # accounts
