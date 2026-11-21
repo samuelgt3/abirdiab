@@ -6,7 +6,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self)
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com https://cdn.jsdelivr.net https://*.paymob.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://*.paymob.com; img-src 'self' data: blob: https:; font-src 'self' data: https://cdn.jsdelivr.net https://*.paymob.com; media-src 'self' blob: https:; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://open.er-api.com https://*.paymob.com https://cdn.jsdelivr.net; frame-src https://*.paymob.com https://www.youtube.com https://www.youtube-nocookie.com https://iframe.mediadelivery.net; object-src 'none'; base-uri 'self'; form-action 'self' https://*.paymob.com
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.youtube.com https://s.ytimg.com https://cdn.jsdelivr.net https://*.paymob.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://*.paymob.com; img-src 'self' data: blob: https:; font-src 'self' data: https://cdn.jsdelivr.net https://*.paymob.com; media-src 'self' blob: https:; connect-src 'self' https://abirdiab-production.up.railway.app https://*.supabase.co wss://*.supabase.co https://open.er-api.com https://*.paymob.com https://cdn.jsdelivr.net; frame-src https://*.paymob.com https://www.youtube.com https://www.youtube-nocookie.com https://iframe.mediadelivery.net; object-src 'none'; base-uri 'self'; form-action 'self' https://*.paymob.com
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
