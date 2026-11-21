@@ -99,7 +99,7 @@ class SiteSettings(models.Model):
     require_email_verification = models.BooleanField(default=False)
     require_phone_verification = models.BooleanField(default=False)
     session_link_base = models.TextField(blank=True, default="")
-    emails_enabled = models.BooleanField(default=False)  # the owner switches this on once email sending is connected
+    emails_enabled = models.BooleanField(default=True)  # on by default; with no email key the text is printed in the server log instead
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
