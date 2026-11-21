@@ -92,14 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "mysite.wsgi.application"
 
-# PostgreSQL. DATABASE_URL looks like: postgres://USER:PASSWORD@HOST:5432/DBNAME
-DATABASES = {
-    "default": dj_database_url.config(
-        env="DATABASE_URL",
-        default="postgres://postgres:postgres@localhost:5432/abirdiab",
-        conn_max_age=60,
-    )
-}
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
