@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import copy from '../content/checkout.json';
 import Layout from '../components/Layout.jsx';
 import { useSite } from '../hooks/SiteContext.jsx';
+import { useAuth } from '../hooks/AuthContext.jsx';
 import { getOrderStatus, getBookingPage } from '../lib/orders.js';
 import { format } from '../lib/pricing.js';
 
@@ -16,6 +17,7 @@ const POLL_MAX = 12; // ~30 s
  */
 export default function PaymentReturnPage() {
   const { lang } = useSite();
+  const { user } = useAuth();
   const c = copy[lang];
   const r = c.ret;
   const [params] = useSearchParams();
@@ -101,6 +103,14 @@ export default function PaymentReturnPage() {
             ) : (
               <p className="text-[14px] leading-relaxed text-ink/70">{linkTries >= 6 ? r.joinLater : r.joinWait}</p>
             )}
+          </div>
+        )}
+
+        {state === 'paid' && !user && (
+          <div className="mx-auto mb-7 max-w-sm rounded-md border border-green/15 bg-white p-4 text-start">
+            <div className="mb-1 text-[15px] font-semibold text-green">{r.guestTitle}</div>
+            <p className="mb-3 text-[14px] leading-relaxed text-ink/70">{r.guestLead}</p>
+            <Link to="/account?tab=sessions" className="btn-solid inline-block !text-cream no-underline">{r.guestBtn}</Link>
           </div>
         )}
 

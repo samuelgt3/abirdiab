@@ -131,7 +131,10 @@
       "joinOpen": "Join the session",
       "joinWait": "Preparing your video link…",
       "joinLater": "Your video link is also in the confirmation email. If it hasn't arrived in a few minutes, open your booking page.",
-      "bookingPage": "Open my booking page"
+      "bookingPage": "Open my booking page",
+      "guestTitle": "Keep this in My items",
+      "guestLead": "Choose a password (it takes a few seconds) and this booking will always be in My items.",
+      "guestBtn": "Create my password"
     },
     "cardTitle": "Pay by card",
     "cardSaved": "Nothing is booked until your payment goes through. Your times are held for you for 30 minutes.",
@@ -435,7 +438,10 @@
       "joinOpen": "انضموا إلى الجلسة",
       "joinWait": "جارٍ تجهيز رابط الفيديو…",
       "joinLater": "رابط الفيديو موجود أيضًا في رسالة التأكيد. إن لم تصلكم الرسالة خلال دقائق، افتحوا صفحة الحجز.",
-      "bookingPage": "افتحوا صفحة الحجز"
+      "bookingPage": "افتحوا صفحة الحجز",
+      "guestTitle": "احتفظوا بهذا الحجز في «مشترياتي»",
+      "guestLead": "اختاروا كلمة مرور (تستغرق ثوانٍ) ليبقى هذا الحجز دائمًا في «مشترياتي».",
+      "guestBtn": "إنشاء كلمة المرور"
     },
     "cardTitle": "الدفع بالبطاقة",
     "cardSaved": "لا يُحجز شيء قبل إتمام الدفع. نحتفظ بمواعيدكم لمدة 30 دقيقة.",

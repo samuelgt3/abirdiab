@@ -299,6 +299,12 @@ export default function CheckoutModal({ order, settings, onClose }) {
       return false;
     }
     if (!user) await registerAccess(p.refs?.length ? p.refs : [p.ref], accessKey); // lets this device see the session link once the payment is confirmed
+    if (!user) {
+      // The card step can send a guest away to Paymob and back, so remember their details now: "My items" then shows the
+      // one-step "choose a password" screen (or just "enter your password" if the email already has an account).
+      const has = await emailHasAccount(f.email.trim()).catch(() => false);
+      savePending({ first: f.first.trim(), middle: f.middle.trim(), last: f.last.trim(), code: f.code, phone: f.phone, email: f.email.trim(), has: !!has });
+    }
     setCard(p);
     setResult({ ref: p.ref, status: 'awaiting_payment', amount_usd: p.amount_usd });
     setBooked(isSession ? chosen.map((s, i) => ({ s, res: { ref: p.refs?.[i] || p.ref } })) : []);
