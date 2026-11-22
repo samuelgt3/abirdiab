@@ -53,7 +53,7 @@ class CodeTests(Base):
         self.assertEqual(self.check("12").json()["error"], "wrong_code")
 
     def test_rate_limits_and_bad_input(self):
-        for _ in range(5):
+        for _ in range(10):
             self.assertEqual(self.send().status_code, 200)
         r = self.send()
         self.assertEqual((r.status_code, r.json()["error"]), (429, "rate_limited"))

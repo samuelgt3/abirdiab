@@ -66,7 +66,7 @@ def send_code(request, user):
     if kind not in ("email", "phone"):
         raise ApiError("send_failed")
     target = _clean_target(kind, b.get("target"))
-    if rate_limited("otp_ip", client_ip(request), 20, 3600) or rate_limited("otp_target", f"{kind}:{target}", 5, 3600):
+    if rate_limited("otp_ip", client_ip(request), 20, 3600) or rate_limited("otp_target", f"{kind}:{target}", 10, 3600):
         raise ApiError("rate_limited", 429)
     expires = timezone.now() + datetime.timedelta(minutes=CODE_MINUTES)
     if kind == "email":
