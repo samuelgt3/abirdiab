@@ -15,7 +15,7 @@ Where you see "ask Claude", paste the step and what you see on screen and I will
 - [ ] After it is live, test the card form, a video and Google sign-in; a security header that is too strict stops them silently.
 
 ## 3. Card payments (Paymob)
-- [ ] Paymob **test** keys in `.env` (`PAYMOB_SECRET_KEY`, `PAYMOB_PUBLIC_KEY`, `PAYMOB_HMAC_SECRET`, `PAYMOB_INTEGRATION_IDS`). The integration's currency must match "Payment currency" in Admin > Booking settings.
+- [ ] Paymob **test** keys in `.env` (`PAYMOB_SECRET_KEY`, `PAYMOB_PUBLIC_KEY`, `PAYMOB_INTEGRATION_IDS`, plus EITHER `PAYMOB_HMAC_SECRET` OR `PAYMOB_API_KEY`). The integration's currency must match "Payment currency" in Admin > Booking settings.
 - [ ] Make a test payment with Paymob's test card. Check: the order appears as **Paid** in the admin screen, and Paymob's dashboard shows the callback arrived.
 - [ ] Then switch to the **live** keys, make one small real payment, and refund it by hand in Paymob.
 - [ ] Admin > Booking settings: **Test payments OFF**, **Take card payments ON**, a real session price, real free times, real workshops with joining links.

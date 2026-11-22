@@ -215,6 +215,72 @@ class RealModeTests(Shop):
         self.assertEqual(self.webhook(self.txn(ref, is_refunded=True)).json()["outcome"], "ignored")
         self.assertEqual(Order.objects.count(), 0)
 
+    # ---- API-key mode: no HMAC secret, we ask Paymob itself ----
+    def api_mode(self):
+        env = mock.patch.dict(os.environ, {"PAYMOB_API_KEY": "ak"})
+        env.start()
+        self.addCleanup(env.stop)
+        os.environ.pop("PAYMOB_HMAC_SECRET", None)
+        from django.core.cache import cache
+        cache.delete("paymob:token")
+
+    def forged(self, txn_id=777001, **over):
+        obj = {"id": txn_id, "success": True, "amount_cents": 1, "currency": "EGP", "order": {"merchant_order_id": "AD-HACKER"}}
+        obj.update(over)
+        return self.client.post("/api/fn/paymob-webhook", json.dumps({"type": "TRANSACTION", "obj": obj}),
+                                content_type="application/json")
+
+    def paymob_says(self, txn, status=200):
+        tok = mock.Mock(ok=True, status_code=200)
+        tok.json.return_value = {"token": "tok123"}
+        got = mock.Mock(ok=status == 200, status_code=status)
+        got.json.return_value = txn
+        got.raise_for_status.side_effect = None if status < 400 else Exception("boom")
+        return mock.patch("main.paymob.requests.post", return_value=tok), mock.patch("main.paymob.requests.get", return_value=got)
+
+    def test_api_key_mode_uses_paymobs_own_record_not_the_posted_one(self):
+        self.api_mode()
+        ref = self.checkout()[0].json()["refs"][0]
+        post, get = self.paymob_says(self.txn(ref))
+        with post as p, get as g:
+            r = self.forged()  # the posted copy lies about the amount and the order
+        self.assertEqual(r.json(), {"received": True, "outcome": "paid"})
+        o = Order.objects.get()
+        self.assertEqual((o.ref, o.charge_amount_cents, o.paymob_transaction_id), (ref, 250000, 777001))
+        self.assertEqual(p.call_args.kwargs["json"], {"api_key": "ak"})
+        self.assertTrue(g.call_args.args[0].endswith("/api/acceptance/transactions/777001"))
+        self.assertEqual(g.call_args.kwargs["headers"]["Authorization"], "Bearer tok123")
+
+    def test_api_key_mode_a_forged_success_is_not_believed(self):
+        self.api_mode()
+        ref = self.checkout()[0].json()["refs"][0]
+        post, get = self.paymob_says(self.txn(ref, success=False))  # Paymob says it failed
+        with post, get:
+            r = self.forged(success=True, order={"merchant_order_id": ref})
+        self.assertEqual(r.json()["outcome"], "ignored")
+        self.assertEqual(Order.objects.count(), 0)
+
+    def test_api_key_mode_unknown_transaction_is_refused(self):
+        self.api_mode()
+        post, get = self.paymob_says({}, status=404)
+        with post, get:
+            self.assertEqual(self.forged().status_code, 401)
+        self.assertEqual(Order.objects.count(), 0)
+
+    def test_api_key_mode_paymob_unreachable_asks_for_a_retry(self):
+        self.api_mode()
+        post, get = self.paymob_says({}, status=500)
+        with post, get:
+            self.assertEqual(self.forged().status_code, 502)
+        self.assertEqual(Order.objects.count(), 0)
+
+    def test_api_key_alone_counts_as_connected_and_nothing_means_503(self):
+        self.api_mode()
+        self.assertTrue(paymob.configured())
+        os.environ.pop("PAYMOB_API_KEY")
+        self.assertFalse(paymob.configured())
+        self.assertEqual(self.forged().status_code, 503)
+
     def test_taken_meanwhile_needs_refund(self):
         ref = self.checkout()[0].json()["refs"][0]
         CheckoutHold.objects.all().delete()

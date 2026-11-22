@@ -8,6 +8,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from . import paymob
 from .permissions import ApiError, is_admin_user, json_body
 from .tokens import user_from_request
 
@@ -71,6 +72,6 @@ def setup_status(request, user):
         "email_from": _set("MAIL_FROM"),
         "reminders": _set("CRON_SECRET"),
         "sms": _set("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_VERIFY_SID"),
-        "paymob": _set("PAYMOB_SECRET_KEY", "PAYMOB_PUBLIC_KEY", "PAYMOB_HMAC_SECRET", "PAYMOB_INTEGRATION_IDS"),
+        "paymob": paymob.configured(),
         "site_url": _set("SITE_URL"),
     }

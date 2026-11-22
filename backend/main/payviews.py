@@ -66,17 +66,31 @@ def paymob_checkout(request, user):
 
 @fn(methods=("POST",))
 def paymob_webhook(request, user):
-    """Paymob tells us a payment finished. Its signature is the only login: wrong signature = 401 (Paymob retries)."""
+    """Paymob tells us a payment finished. We never trust what the message says about itself:
+    with the HMAC secret we check Paymob's signature; with only the API key we ask Paymob directly and use ITS answer."""
     secret = os.environ.get("PAYMOB_HMAC_SECRET")
-    if not secret:
+    if not secret and not os.environ.get("PAYMOB_API_KEY"):
         raise ApiError("not_configured", 503)
     try:
         body = json.loads(request.body or b"{}")
     except ValueError:
         raise ApiError("invalid json")
     obj = body.get("obj") if isinstance(body, dict) else None
-    if not paymob.verify_hmac(obj, request.GET.get("hmac"), secret):
-        raise ApiError("invalid signature", 401)
+    if secret:
+        if not paymob.verify_hmac(obj, request.GET.get("hmac"), secret):
+            raise ApiError("invalid signature", 401)
+    else:
+        if body.get("type") not in (None, "TRANSACTION"):
+            return {"received": True}
+        if rate_limited("paymob_webhook", client_ip(request), 600, 3600):
+            raise ApiError("rate_limited", 429)
+        try:
+            posted_id = int(obj["id"])
+        except (KeyError, TypeError, ValueError):
+            raise ApiError("invalid json")
+        obj = paymob.fetch_transaction(posted_id)  # Paymob's own record, not the posted one
+        if obj is None:
+            raise ApiError("unknown transaction", 401)
     if body.get("type") not in (None, "TRANSACTION"):
         return {"received": True}
     try:
