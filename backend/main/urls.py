@@ -10,12 +10,14 @@ def csrf_view(request):
 urlpatterns = [
     path("csrf/", csrf_view),
     path("login/", views.login_view),
-    path("logout/", views.logout),
+    path("logout/", views.logout_view),
     path("appointments/", views.createAppointment),
     path("webhooks/mux", views.mux_webhook, name="mux-webhook"),
     path("newgroupsession/", views.createGroupSession),
     path("joingroup/<id>/", views.joinGroup),
     path("blogposts/", views.getBlogPosts),
-    path("uploadvideo/", views.createUploadUrl)
+    path("uploadvideo/", views.createUploadUrl),
+    path("newblogpost/", views.createBlogPost),
+    path("courses/", views.getCourses),
 ]
  

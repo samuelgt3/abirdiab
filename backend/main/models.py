@@ -3,14 +3,14 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, Email, password=None, **extra_fields):
-        if not Email:
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
             raise ValueError("Please fill in the email field")
-        if len(User.objects.filter(email=Email))>0:
+        email = self.normalize_email(email).lower()
+        if self.model.objects.filter(email__iexact=email).exists():
             raise ValueError("This email is already in use. Please use another email or reset your password")
 
-        Email = self.normalize_email(Email)
-        user = self.model(email=Email, **extra_fields)
+        user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -37,6 +37,9 @@ class Series(models.Model):
     name=models.TextField()
     price=models.PositiveIntegerField()
     downloadable=models.BooleanField()
+
+    def __str__(self):
+        return self.name
 
 class Appointment(models.Model):
 
@@ -131,15 +134,19 @@ class GroupSession(models.Model):
     description=models.TextField()
     time=models.DateTimeField()
     name=models.TextField()
-    zoom_link=models.TextField(default=None)
+    zoom_link=models.TextField(default="")
     duration=models.IntegerField(default=0)
 
 class CourseAccess(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     course=models.ForeignKey(Series, on_delete=models.CASCADE)
-    unique_together = ('user', 'course')
+
+    class Meta:
+        unique_together = ('user', 'course')
 
 class GroupBooking(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     session=models.ForeignKey(GroupSession, on_delete=models.CASCADE)
-    unique_together = ('user', 'session')
+
+    class Meta:
+        unique_together = ('user', 'session')

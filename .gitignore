@@ -1,2 +1,13 @@
+# secrets / local config
 backend/mysite/my.conf
 backend/.env
+frontend/.env.local
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store

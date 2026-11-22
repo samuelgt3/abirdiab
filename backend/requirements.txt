@@ -1,0 +1,5 @@
+Django>=6.0
+mysqlclient>=2.2
+python-dotenv>=1.0
+requests>=2.31
+mux-python>=3.0
