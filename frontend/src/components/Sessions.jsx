@@ -10,8 +10,8 @@ export default function Sessions() {
     <section id="sessions" className="scroll-mt-16 bg-[#0f2a23] text-cream">
       <div className="grid md:grid-cols-2">
         <div className="relative min-h-[320px] overflow-hidden">
-          <img loading="lazy" src={`${import.meta.env.BASE_URL}images/pendulum-hand.jpg`}
-            alt={lang === 'ar' ? "عبير تحرّك البندول خلال جلسة شفاء فردية" : "Abir guiding a pendulum during a 1:1 healing session"} className="absolute inset-0 h-full w-full object-cover" />
+          <img loading="lazy" src={`${import.meta.env.BASE_URL}images/incense-session.jpg`}
+            alt={lang === 'ar' ? "بخور يتصاعد دخانه بهدوء لجلسة شفاء فردية" : "Incense smoke curling upward, setting a calm space for a 1:1 healing session"} className="absolute inset-0 h-full w-full object-cover" />
           {/* fade the photo into the panel, on the side that touches the text */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0f2a23] md:bg-gradient-to-r md:to-[#0f2a23] md:rtl:bg-gradient-to-l" />
         </div>
