@@ -36,7 +36,7 @@ export default function PaymentReturnPage() {
       // the booking is created when Paymob confirms the payment, so it may not exist yet: keep waiting
       if ((!o || !PAID.includes(o.status)) && !paymobSaysFailed && n < POLL_MAX) timer = setTimeout(() => check(n + 1), POLL_MS);
     };
-    if (/^AD-[0-9A-F]{6,9}$/.test(ref)) check(1); else setOrder(null);
+    if (/^AD-[0-9A-Z]{6,12}$/.test(ref)) check(1); else setOrder(null);
     return () => { alive = false; clearTimeout(timer); };
   }, [ref, paymobSaysFailed]);
 
@@ -45,7 +45,7 @@ export default function PaymentReturnPage() {
   if (order && PAID.includes(order.status)) state = 'paid';
   else if (paymobSaysFailed || order?.status === 'cancelled') state = 'failed';
   else if (order === undefined) state = 'checking';
-  else if (!/^AD-[0-9A-F]{6,9}$/.test(ref)) state = 'missing';
+  else if (!/^AD-[0-9A-Z]{6,12}$/.test(ref)) state = 'missing';
   else if (tries >= POLL_MAX) state = 'processing';
 
   const icon = { paid: '✓', failed: '!', processing: '…', checking: '…', missing: '?' }[state];
