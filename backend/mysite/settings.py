@@ -44,6 +44,8 @@ ALLOWED_HOSTS = ["*"]
 # The public website address(es) that may call this API and that links in emails point to.
 SITE_URL = env("SITE_URL", "http://localhost:5173").rstrip("/")
 SITE_URLS = env_list("SITE_URLS", SITE_URL)
+# AUTO_CONFIRM_EMAIL=1: new sign-ups are confirmed straight away (no email link). Admin emails are never auto-confirmed.
+AUTO_CONFIRM_EMAIL = env("AUTO_CONFIRM_EMAIL", "").strip().lower() in ("1", "true", "yes", "on")
 
 INSTALLED_APPS = [
     "django.contrib.admin",

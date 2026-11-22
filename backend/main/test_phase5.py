@@ -131,6 +131,32 @@ class SignupVerifiedTests(Base):
         self.assertEqual(self.signup(v2.id, email="member@example.com").json()["error"], "exists")
 
 
+class AutoConfirmSignupTests(Base):
+    """AUTO_CONFIRM_EMAIL=1: no email link; admin emails are never auto-confirmed."""
+
+    def signup(self, email):
+        return self.call("/api/auth/signup", {"email": email, "password": "Sunrise2026", "data": {"full_name": "Sam"}})
+
+    def test_off_by_default_sends_a_link(self):
+        r = self.signup("new@example.com").json()
+        self.assertIsNone(r["session"])
+        self.assertIsNone(User.objects.get(email="new@example.com").email_confirmed_at)
+
+    def test_on_confirms_and_signs_in(self):
+        with self.settings(AUTO_CONFIRM_EMAIL=True):
+            r = self.signup("new@example.com").json()
+        self.assertTrue(r["session"]["access_token"])
+        self.assertIsNotNone(User.objects.get(email="new@example.com").email_confirmed_at)
+
+    def test_on_never_confirms_an_admin_email(self):
+        from .models import AdminEmail
+        AdminEmail.objects.get_or_create(email="owner2@example.com")
+        with self.settings(AUTO_CONFIRM_EMAIL=True):
+            r = self.signup("owner2@example.com").json()
+        self.assertIsNone(r["session"])
+        self.assertIsNone(User.objects.get(email="owner2@example.com").email_confirmed_at)
+
+
 class DeleteAccountTests(Shop):
     def test_scrubs_orders_and_removes_the_login(self):
         o = Order.objects.create(kind="course", item_id=self.paid.id, status="paid", user=self.member, customer_name="Mona",

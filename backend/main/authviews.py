@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from django.utils import timezone
 
 from .mailer import send_email
+from .models import AdminEmail
 from .permissions import ApiError, api, json_body
 from .security import client_ip, password_problem, rate_limited
 from .tokens import decode_token, make_session, make_token, public_user
@@ -99,6 +100,11 @@ def signup(request):
         return {"user": {"id": str(uuid.uuid4()), "email": email, "identities": []}, "session": None}
 
     user = User.objects.create_user(email, password, user_metadata=clean_profile(body.get("data")))
+    if settings.AUTO_CONFIRM_EMAIL and not AdminEmail.objects.filter(email=email).exists():
+        # no email link needed: sign them straight in. Admin emails still have to be confirmed, so nobody can take one over.
+        user.email_confirmed_at = timezone.now()
+        user.save(update_fields=["email_confirmed_at"])
+        return {"user": public_user(user), "session": make_session(user)}
     _send_link_email("signup", user, _link(request, "signup", user, redirect_to))
     return {"user": public_user(user), "session": None}  # no session until the email is confirmed
 
