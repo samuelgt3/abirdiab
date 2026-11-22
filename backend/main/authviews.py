@@ -95,7 +95,7 @@ def signup(request):
     existing = User.objects.filter(email__iexact=email).first()
     if existing is not None:
         # Do not reveal that the address has an account: answer like a fresh sign-up with no identities.
-        if not existing.email_confirmed_at:
+        if not existing.email_confirmed_at and not rate_limited("signup_link", email, 1, 300):  # one link per 5 minutes
             _send_link_email("signup", existing, _link(request, "signup", existing, redirect_to))
         return {"user": {"id": str(uuid.uuid4()), "email": email, "identities": []}, "session": None}
 
@@ -105,6 +105,7 @@ def signup(request):
         user.email_confirmed_at = timezone.now()
         user.save(update_fields=["email_confirmed_at"])
         return {"user": public_user(user), "session": make_session(user)}
+    rate_limited("signup_link", email, 1, 300)  # counts this first link, so a quick repeat does not send a second one
     _send_link_email("signup", user, _link(request, "signup", user, redirect_to))
     return {"user": public_user(user), "session": None}  # no session until the email is confirmed
 

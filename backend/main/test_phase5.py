@@ -142,6 +142,11 @@ class AutoConfirmSignupTests(Base):
         self.assertIsNone(r["session"])
         self.assertIsNone(User.objects.get(email="new@example.com").email_confirmed_at)
 
+    def test_repeated_signups_send_only_one_link(self):
+        for _ in range(3):
+            self.signup("again@example.com")
+        self.assertEqual(len([m for m in mail.outbox if "again@example.com" in m.to]), 1)
+
     def test_on_confirms_and_signs_in(self):
         with self.settings(AUTO_CONFIRM_EMAIL=True):
             r = self.signup("new@example.com").json()
