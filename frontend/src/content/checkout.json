@@ -126,7 +126,12 @@
       "failedLead": "No money was taken. You can try again — your booking is still saved.",
       "missing": "We couldn't find this booking.",
       "home": "Back to the website",
-      "refresh": "Check again"
+      "refresh": "Check again",
+      "joinTitle": "Your session link",
+      "joinOpen": "Join the session",
+      "joinWait": "Preparing your video link…",
+      "joinLater": "Your video link is also in the confirmation email. If it hasn't arrived in a few minutes, open your booking page.",
+      "bookingPage": "Open my booking page"
     },
     "cardTitle": "Pay by card",
     "cardSaved": "Nothing is booked until your payment goes through. Your times are held for you for 30 minutes.",
@@ -425,7 +430,12 @@
       "failedLead": "لم يُخصم أي مبلغ. يمكنكم المحاولة مجددًا — حجزكم ما زال محفوظًا.",
       "missing": "لم نعثر على هذا الحجز.",
       "home": "العودة إلى الموقع",
-      "refresh": "تحقق مجددًا"
+      "refresh": "تحقق مجددًا",
+      "joinTitle": "رابط جلستكم",
+      "joinOpen": "انضموا إلى الجلسة",
+      "joinWait": "جارٍ تجهيز رابط الفيديو…",
+      "joinLater": "رابط الفيديو موجود أيضًا في رسالة التأكيد. إن لم تصلكم الرسالة خلال دقائق، افتحوا صفحة الحجز.",
+      "bookingPage": "افتحوا صفحة الحجز"
     },
     "cardTitle": "الدفع بالبطاقة",
     "cardSaved": "لا يُحجز شيء قبل إتمام الدفع. نحتفظ بمواعيدكم لمدة 30 دقيقة.",

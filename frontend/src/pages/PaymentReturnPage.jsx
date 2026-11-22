@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import copy from '../content/checkout.json';
 import Layout from '../components/Layout.jsx';
 import { useSite } from '../hooks/SiteContext.jsx';
-import { getOrderStatus } from '../lib/orders.js';
+import { getOrderStatus, getBookingPage } from '../lib/orders.js';
 import { format } from '../lib/pricing.js';
 
 const PAID = ['paid', 'confirmed', 'completed'];
@@ -23,6 +23,10 @@ export default function PaymentReturnPage() {
   const paymobSaysFailed = params.get('success') === 'false';
   const [order, setOrder] = useState(undefined); // undefined = loading, null = not found
   const [tries, setTries] = useState(0);
+  const [booking, setBooking] = useState(null); // the booking page data (holds the video link for 1:1 sessions)
+  const [linkTries, setLinkTries] = useState(0);
+  const isPaid = !!order && PAID.includes(order.status);
+  const isSession = order?.kind === 'session';
 
   useEffect(() => {
     let alive = true;
@@ -39,6 +43,22 @@ export default function PaymentReturnPage() {
     if (/^AD-[0-9A-Z]{6,12}$/.test(ref)) check(1); else setOrder(null);
     return () => { alive = false; clearTimeout(timer); };
   }, [ref, paymobSaysFailed]);
+
+  // Once paid, fetch the joining link. It is made just after the payment is confirmed, so retry for a few seconds.
+  useEffect(() => {
+    if (!isPaid || !['session', 'workshop'].includes(order.kind)) return undefined;
+    let alive = true;
+    let timer;
+    const load = async (n) => {
+      const b = await getBookingPage(ref);
+      if (!alive) return;
+      setBooking(b);
+      setLinkTries(n);
+      if (isSession && !b?.join_url && n < 6) timer = setTimeout(() => load(n + 1), 2500);
+    };
+    load(1);
+    return () => { alive = false; clearTimeout(timer); };
+  }, [isPaid, isSession, ref, order?.kind]);
 
   const amount = order?.charge_amount_cents ? format(order.charge_amount_cents / 100, order.charge_currency, lang) : '';
   let state = 'checking';
@@ -70,7 +90,22 @@ export default function PaymentReturnPage() {
           </div>
         )}
 
+        {state === 'paid' && isSession && (
+          <div className="mx-auto mb-7 max-w-sm rounded-md border border-green/15 bg-white p-4 text-start">
+            <div className="mb-2 text-[12px] uppercase tracking-[.03em] text-terracotta">{r.joinTitle}</div>
+            {booking?.join_url ? (
+              <>
+                <a href={booking.join_url} target="_blank" rel="noopener noreferrer" className="btn-solid mb-2 inline-block !text-cream no-underline">{r.joinOpen}</a>
+                <div dir="ltr" className="break-all text-[13px] text-ink/60">{booking.join_url}</div>
+              </>
+            ) : (
+              <p className="text-[14px] leading-relaxed text-ink/70">{linkTries >= 6 ? r.joinLater : r.joinWait}</p>
+            )}
+          </div>
+        )}
+
         <div className="flex flex-wrap justify-center gap-3">
+          {state === 'paid' && ['session', 'workshop'].includes(order.kind) && <Link to={`/booking/${order.ref}`} className="btn-solid !text-cream no-underline">{r.bookingPage}</Link>}
           {state === 'failed' && <Link to="/" className="btn-solid !text-cream no-underline">{c.tryAgain}</Link>}
           {state === 'processing' && <button type="button" onClick={() => window.location.reload()} className="btn-solid">{r.refresh}</button>}
           <Link to="/" className="btn-outline no-underline">{r.home}</Link>
